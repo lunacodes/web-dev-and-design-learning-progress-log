@@ -39,8 +39,8 @@
 
 <a id="sublime-text"></a>
 ### Sublime Text
-* [MultiMarkdown Syntax](https://github.com/SublimeText-Markdown/MarkdownEditing): Syntax highlighting supports Standard Markdown, GitHub 
-flavored Markdown, MultiMarkdown
+* [MultiMarkdown Syntax](https://github.com/SublimeText-Markdown/MarkdownEditing): Syntax highlighting supports Standard Markdown, GitHub flavored Markdown, MultiMarkdown
+* [MarkdownTOC](https://github.com/naokazuterada/MarkdownTOC): Autogenerate a Table of Contents - can autogenerate anchor links as well
 
 <a id="resources"></a>
 ## Resources
