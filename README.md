@@ -38,8 +38,8 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="git--github"></a>
 ### Git & Github
-* Git Tips: The most commonly used git tips and tricks.
-* GitHub Help: Writing on GitHub
+* [Git Tips](https://github.com/git-tips/tips): The most commonly used git tips and tricks.
+* [GitHub Help](https://help.github.com/categories/writing-on-github/): Writing on GitHub
 
 <a id="sublime-text"></a>
 ### Sublime Text
