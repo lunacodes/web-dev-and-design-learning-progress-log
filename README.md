@@ -5,6 +5,7 @@ A progress log of my daily web design and development learning and growth. Also 
 <!-- MarkdownTOC -->
 
 * [Reading Log](#reading-log)
+    * [4/23/18](#42318)
     * [4/24/18](#42418)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
@@ -21,6 +22,10 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="reading-log"></a>
 # Reading Log
+
+<a id="42318"></a>
+## 4/23/18
+* [freeCodeCamp - Useful tricks you might not know about git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
 
 <a id="42418"></a>
 ## 4/24/18
