@@ -1,3 +1,5 @@
+# Table of Contents
+
 <!-- MarkdownTOC -->
 
 * [Reading Log](#reading-log)
