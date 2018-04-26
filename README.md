@@ -9,12 +9,16 @@ A progress log of my daily web design and development learning and growth. Also 
     * [4/23/18](#42318)
     * [4/20/18](#42018)
     * [4/19/18](#41918)
+* [Tutorials Log](#tutorials-log)
+    * [4/25/18](#42518)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
         * [Git & Github](#git--github)
         * [Sublime Text](#sublime-text)
     * [Resources](#resources)
         * [Documentation](#documentation)
+        * [Design](#design)
+            * [Icons](#icons)
         * [DOM](#dom)
         * [Markdown](#markdown)
 * [Techniques & Best Practices](#techniques--best-practices)
@@ -66,6 +70,13 @@ A progress log of my daily web design and development learning and growth. Also 
         * Start worrying about other things, like font sizes, capitalization, bolds, and italics
             * [My note: italics are often a very bad idea for accessibility]
 
+<a id="tutorials-log"></a>
+# Tutorials Log
+
+<a id="42518"></a>
+## 4/25/18
+* [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska 
+
 <a id="tools--resources"></a>
 # Tools & Resources
 
@@ -89,6 +100,14 @@ A progress log of my daily web design and development learning and growth. Also 
 ### Documentation
 * [DevDocs.io](https://devdocs.io): the number one goto resource for 
 Documentation in any language - absolutely essential
+
+<a id="design"></a>
+### Design
+
+<a id="icons"></a>
+#### Icons
+* [Font Awesome](https://fontawesome.com/)
+* [Glyphicons](http://glyphicons.com/)
 
 <a id="dom"></a>
 ### DOM
