@@ -19,6 +19,11 @@ A progress log of my daily web design and development learning and growth. Also 
         * [Markdown](#markdown)
 * [Techniques & Best Practices](#techniques--best-practices)
     * [Form Design](#form-design)
+    * [Typography](#typography)
+        * [Font Choices](#font-choices)
+            * [Short List \(Web Only\)](#short-list-web-only)
+            * [Extended List \(Grouped By Letter Structure\)](#extended-list-grouped-by-letter-structure)
+        * [Font Sizes](#font-sizes)
 
 <!-- /MarkdownTOC -->
 
@@ -102,3 +107,46 @@ Documentation in any language - absolutely essential
 * Inline error validation for username and passwords
     * Premature inline validation causes more user errors and frustrations
 * onBlur for post-field validation
+
+<a id="typography"></a>
+## Typography
+
+<a id="font-choices"></a>
+### Font Choices
+* Only use a small list of "go-to" fonts:
+
+<a id="short-list-web-only"></a>
+#### Short List (Web Only) 
+* Georgia for a sophisticated serif
+* Helvetica for a clean and neutral design
+* Lato for a friendly and "natural" look
+* Raleway for a more modern geometric look
+
+<a id="extended-list-grouped-by-letter-structure"></a>
+#### Extended List (Grouped By Letter Structure)
+* Humanist:
+    * Adobe Garamond (Print)
+    * Gill Sans (Print)
+    * Lucida Grande (Web)
+    * Museo Slab (Print/Web)
+    * Palatino (Print/Web)
+    * Tahoma (Web)
+    * Trebuchet MS (Web)
+    * Verdana (Web)
+* Realist:
+    * Arial (Web)
+    * Bodoni (Print - Also Geometric)
+    * Baskerville (Print)
+    * Georgia (Web)
+    * Helvetica (Print)
+* Geometric:
+    * Bodoni (Print - also Realist)
+    * Futura (Print)
+    * Rockwell (Print)
+
+<a id="font-sizes"></a>
+### Font Sizes
+* Only use a 3:4 typographic scale 
+    * 5 7 9 12 16 21 28 37 50 67 89 119 159
+    * For pixels: 12px, 16px, etc
+    * For rems: 1.2rem, 1.6rem, etc
