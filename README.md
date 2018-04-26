@@ -5,8 +5,10 @@ A progress log of my daily web design and development learning and growth. Also 
 <!-- MarkdownTOC -->
 
 * [Reading Log](#reading-log)
-    * [4/23/18](#42318)
     * [4/24/18](#42418)
+    * [4/23/18](#42318)
+    * [4/20/18](#42018)
+    * [4/19/18](#41918)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
         * [Git & Github](#git--github)
@@ -23,10 +25,6 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="reading-log"></a>
 # Reading Log
 
-<a id="42318"></a>
-## 4/23/18
-* [freeCodeCamp - Useful tricks you might not know about git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
-
 <a id="42418"></a>
 ## 4/24/18
 * [UX Movement - Why Users Make More Errors with Instant Inline Validation](http://uxmovement.com/forms/why-users-make-more-errors-with-instant-inline-validation/?ref=webdesignernews.com) 
@@ -34,6 +32,34 @@ A progress log of my daily web design and development learning and growth. Also 
     errors. Only use where appropriate
     * Comment: heard of ‘onBlur’? The field is validated once the user 
     leaves it.
+
+<a id="42318"></a>
+## 4/23/18
+* [freeCodeCamp - Useful tricks you might not know about git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
+
+<a id="42018"></a>
+## 4/20/18
+* Reduce your worries about font size by exclusively using a 3:4 typographic scale
+    * 5 7 9 12 16 21 28 37 50 67 89 119 159
+        * Each font is approximately 75% the size of the larger font
+        * For pixels: 12px, 16px, etc
+        * For rems: 1.2rem, 1.6rem, etc
+
+<a id="41918"></a>
+## 4/19/18
+* [Design For Hackers - Design Pitfalls - Font Anxiety](https://designforhackers.com/)
+    * Font Anxiety - you can waste immense time and mental resources trying to choose a single font
+        * There is no design choice that has a higher stress-to-results ration than choosing fonts
+    * Pairing Fonts adds unnecessary complexity and makes the problem even worse!
+    * Recommendations:
+        * Use one font per project
+        * Have a small number of "go-to" fonts
+            * Georgia for a sophisticated serif
+            * Helvetica for a clean and neutral design
+            * Lato for a friendly and "natural" look
+            * Raleway for a more modern geometric look
+        * Start worrying about other things, like font sizes, capitalization, bolds, and italics
+            * [My note: italics are often a very bad idea for accessibility]
 
 <a id="tools--resources"></a>
 # Tools & Resources
