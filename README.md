@@ -34,6 +34,33 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="april-2018"></a>
 ## April 2018
 
+**4/26/18**
+* [UX Movement - the Best Place for Error Messages on Forms](http://uxmovement.com/forms/the-best-place-for-error-messages-on-forms/)
+    * Placing form validation error messages in the wrong location causes high cognitive load on user memory and results in more mistakes.
+        * [Research Study 1](http://doc.rero.ch/record/304897/files/iwc24-0107.pdf): the distance between the erroneous field and error message influences the efficiency of error correction.
+        * [Research Study 2](https://www.researchgate.net/publication/221054469_Online_Form_Validation_Don't_Show_Errors_Right_Away): displaying all error messages at the top of the form puts a high cognitive load on user memory. This forces users to recall each error message for each erroneous field.   
+    * For Western English speakers, placing validation errors to the right of the field is ideal, because it goes along with the natural flow of reading.
+        * For mobile users with limited horizontal screen place, placing the error messages below the field is ideal
+        * Left of Field and Top of Field are the worst choices, because they go against the natural flow of reading and rereading
+* [Design For Hackers - Design Pitfalls: Kill Your Color Clashes](https://designforhackers.com/)
+    * Combining colors is even more complex than combining fonts - using 4-5 colors in design schemes can get incredibly overwhelming
+    * Combining complementary colors (on the color wheel) causes color clash, and makes text nearly unreadable.
+    * Most Icons and App interfaces only make use of 1 color (along with either White or Black)
+        * Spotify, Instagram, Twitter, Facebook, etc
+    * Recommendation: pick one color and 1-2 shades of grey
+* [Design For Hackers - Cool Your Column Soup](https://designforhackers.com/)
+    * Point: "the grid system is an aid, not a guarantee."
+    * You don't need to use all 12 columns
+        * (My note: It is usually a bad idea to use all 12 columns, since it takes away margins/whitespace, and makes things vastly harder for users to read)
+    * Don't get locked in the grid unnecessarily
+* [Design For Hackers - Design Pitfalls: See through your "Nerd-Eye Blindness"](https://designforhackers.com/)
+    * UI and UX design needs to come first, before planning technologies.
+        * Technologies are a means to make your design happen
+    * Instead of using a code first approach, get a comfortable chair, a bubbly drink, and a moleskin notebook, and close your eyes. 
+        * Really imagine what the experience could be like apart from all your technological constraints
+            * This will result in fresher and more insightful solutions
+
+
 <a id="42418"></a>
 **4/24/18**
 * [UX Movement - Why Users Make More Errors with Instant Inline Validation](http://uxmovement.com/forms/why-users-make-more-errors-with-instant-inline-validation/?ref=webdesignernews.com) 
