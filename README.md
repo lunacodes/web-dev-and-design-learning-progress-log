@@ -5,12 +5,9 @@ A progress log of my daily web design and development learning and growth. Also 
 <!-- MarkdownTOC -->
 
 * [Reading Log](#reading-log)
-    * [4/24/18](#42418)
-    * [4/23/18](#42318)
-    * [4/20/18](#42018)
-    * [4/19/18](#41918)
+    * [April 2018](#april-2018)
 * [Tutorials Log](#tutorials-log)
-    * [4/25/18](#42518)
+    * [April 2018](#april-2018-1)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
         * [Git & Github](#git--github)
@@ -34,8 +31,11 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="reading-log"></a>
 # Reading Log
 
+<a id="april-2018"></a>
+## April 2018
+
 <a id="42418"></a>
-## 4/24/18
+**4/24/18**
 * [UX Movement - Why Users Make More Errors with Instant Inline Validation](http://uxmovement.com/forms/why-users-make-more-errors-with-instant-inline-validation/?ref=webdesignernews.com) 
     * Point: using premature inline validation causes users to make more 
     errors. Only use where appropriate
@@ -43,20 +43,21 @@ A progress log of my daily web design and development learning and growth. Also 
     leaves it.
 
 <a id="42318"></a>
-## 4/23/18
+**4/23/18**
 * [freeCodeCamp - Useful tricks you might not know about git stash](https://medium.freecodecamp.org/useful-tricks-you-might-not-know-about-git-stash-e8a9490f0a1a)
 
 <a id="42018"></a>
-## 4/20/18
-* Reduce your worries about font size by exclusively using a 3:4 typographic scale
-    * 5 7 9 12 16 21 28 37 50 67 89 119 159
-        * Each font is approximately 75% the size of the larger font
-        * For pixels: 12px, 16px, etc
-        * For rems: 1.2rem, 1.6rem, etc
+**4/20/18**
+* [Design For Hackers - Design Pitfalls: Stop Your Size Stress](https://designforhackers.com/)
+    * Reduce your worries about font size by exclusively using a 3:4 typographic scale
+        * 5 7 9 12 16 21 28 37 50 67 89 119 159
+            * Each font is approximately 75% the size of the larger font
+            * For pixels: 12px, 16px, etc
+            * For rems: 1.2rem, 1.6rem, etc
 
 <a id="41918"></a>
-## 4/19/18
-* [Design For Hackers - Design Pitfalls - Font Anxiety](https://designforhackers.com/)
+**4/19/18**
+* [Design For Hackers - Design Pitfalls: Eliminate Your Font Anxiety](https://designforhackers.com/)
     * Font Anxiety - you can waste immense time and mental resources trying to choose a single font
         * There is no design choice that has a higher stress-to-results ration than choosing fonts
     * Pairing Fonts adds unnecessary complexity and makes the problem even worse!
@@ -73,8 +74,10 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="tutorials-log"></a>
 # Tutorials Log
 
+<a id="april-2018-1"></a>
+## April 2018
 <a id="42518"></a>
-## 4/25/18
+**4/25/18**
 * [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska 
 
 <a id="tools--resources"></a>
