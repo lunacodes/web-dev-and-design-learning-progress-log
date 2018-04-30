@@ -103,6 +103,9 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="april-2018-1"></a>
 ## April 2018
+**4/30/18**
+* [Tutorial: Intro to React](https://reactjs.org/tutorial/tutorial.html#functional-components)
+
 <a id="42518"></a>
 **4/25/18**
 * [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska 
