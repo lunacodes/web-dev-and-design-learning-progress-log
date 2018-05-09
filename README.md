@@ -5,6 +5,7 @@ A progress log of my daily web design and development learning and growth. Also 
 <!-- MarkdownTOC -->
 
 * [Reading Log](#reading-log)
+    * [May 2018](#may-2018)
     * [April 2018](#april-2018)
 * [Tutorials Log](#tutorials-log)
     * [April 2018](#april-2018-1)
@@ -30,6 +31,13 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="reading-log"></a>
 # Reading Log
+
+<a id="may-2018"></a>
+## May 2018
+**Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time**
+
+**5/9/18**
+* [Breaking Through The Vim Learning Curve](https://www.stridenyc.com/blog/breaking-through-the-vim-learning-curve)
 
 <a id="april-2018"></a>
 ## April 2018
