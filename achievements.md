@@ -1,10 +1,10 @@
 # Accomplishments
 
-Fight Imposter Syndrome!!
+**Fighting Imposter Syndrome!!**
 
 ## 5/11
 * Installed Ubuntu on Windows 10
-    * Began environment setup for Habitica
+    * Began [environment setup](https://github.com/lunacodes/zemanim-mod) for Habitica local development
 * Installed PHP [on Windows 10 and IIS](https://jamesmccaffrey.wordpress.com/2017/01/26/installing-php-on-windows-10-and-iis/)
 * Realized I could cut my Google Drive sync amount down from 54 GB to 18 GB
 
@@ -26,3 +26,4 @@ Fight Imposter Syndrome!!
 * Get Habitica Local Development set up 
 * Catch up on Steven Universe
 * Finish up [Zemanim app](https://github.com/lunacodes/zemanim-mod)!
+* Do more coding exercises!
