@@ -25,3 +25,4 @@ Fight Imposter Syndrome!!
 * Write a Habitica blog post - about why it's so incredibly awesome and helpful, and the psychology and mechanics of how it impacts my daily life!
 * Get Habitica Local Development set up 
 * Catch up on Steven Universe
+* Finish up Zemanim app!
