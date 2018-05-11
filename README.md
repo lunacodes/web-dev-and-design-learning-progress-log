@@ -8,6 +8,7 @@ A progress log of my daily web design and development learning and growth. Also 
     * [May 2018](#may-2018)
     * [April 2018](#april-2018)
 * [Tutorials Log](#tutorials-log)
+    * [May 2018](#may-2018-1)
     * [April 2018](#april-2018-1)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
@@ -19,6 +20,9 @@ A progress log of my daily web design and development learning and growth. Also 
             * [Icons](#icons)
         * [DOM](#dom)
         * [Markdown](#markdown)
+        * [Shell Scripting](#shell-scripting)
+            * [BASH](#bash)
+            * [Powershell](#powershell)
 * [Techniques & Best Practices](#techniques--best-practices)
     * [Form Design](#form-design)
     * [Typography](#typography)
@@ -109,6 +113,12 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="tutorials-log"></a>
 # Tutorials Log
 
+<a id="may-2018-1"></a>
+## May 2018
+**5/10/18**
+* [Habitica Wiki - Setting Up Habitica Locally on Windows](http://habitica.wikia.com/wiki/Setting_up_Habitica_Locally_on_Windows) (In-progress)
+* [James D. McCaffrey - Installing PHP on Windows 10 & IIS](https://jamesmccaffrey.wordpress.com/2017/01/26/installing-php-on-windows-10-and-iis/)
+
 <a id="april-2018-1"></a>
 ## April 2018
 **4/30/18**
@@ -158,6 +168,17 @@ Documentation in any language - absolutely essential
 ### Markdown
 * [Adam P - Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet): extremely useful Markdown cheatsheet
 * [Daring Fireball - Markdown](https://daringfireball.net/projects/markdown/): the original Markdown spec by creator John Guber
+
+<a id="shell-scripting"></a>
+### Shell Scripting
+
+<a id="bash"></a>
+#### BASH
+[LeCoupa - awesome-cheatsheets - BASH](https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh)
+
+<a id="powershell"></a>
+#### Powershell
+* [Chocolatey - PowerShell Functions aka Helpers Reference](https://chocolatey.org/docs/helpers-reference)
 
 <a id="techniques--best-practices"></a>
 # Techniques & Best Practices
