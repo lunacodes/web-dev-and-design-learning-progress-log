@@ -3,16 +3,16 @@
 **Fighting Imposter Syndrome!!**
 
 ## 5/11
-* Installed Ubuntu on Windows 10
-    * Began [environment setup](https://github.com/lunacodes/zemanim-mod) for Habitica local development
-* Installed PHP [on Windows 10 and IIS](https://jamesmccaffrey.wordpress.com/2017/01/26/installing-php-on-windows-10-and-iis/)
-* Realized I could cut my Google Drive sync amount down from 54 GB to 18 GB
-
+* Read [SitePoint - 10 Essential Sublime Text Plugins for JavaScript Developers](https://www.sitepoint.com/essential-sublime-text-javascript-plugins/)
 
 ## 5/10
 * Got Chocolatey Powershell Tab Completions working (solution here). 
     * Solution: [Chocolatey - PowerShell Functions aka Helpers Reference](https://chocolatey.org/docs/helpers-reference)
-* Set up Powershell Aliases for "restarting" (i.e. new tab + close existing) and for 
+* Set up Powershell Aliases for "restarting" (i.e. new tab + close existing) powershell, and for starting a new instance
+* Installed Ubuntu on Windows 10
+    * Began [environment setup](https://github.com/lunacodes/zemanim-mod) for Habitica local development
+* Installed PHP [on Windows 10 and IIS](https://jamesmccaffrey.wordpress.com/2017/01/26/installing-php-on-windows-10-and-iis/)
+* Realized I could cut my Google Drive sync amount down from 54 GB to 18 GB (and thus have access to my important files sooner)
 
 ### Random Discoveries:
 * CatOps (mentioned in a talk description for NGW)

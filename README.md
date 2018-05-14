@@ -4,6 +4,7 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <!-- MarkdownTOC -->
 
+* [In-Progress](#in-progress)
 * [Reading Log](#reading-log)
     * [May 2018](#may-2018)
     * [April 2018](#april-2018)
@@ -33,12 +34,24 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <!-- /MarkdownTOC -->
 
+<a id="in-progress"></a>
+# In-Progress
+
+**5/11/18**
+* [Using the Google Maps JavaScript API in a React Project](https://medium.com/front-end-hacking/using-the-google-maps-javascript-api-in-a-react-project-b3ed734375c6)
+<a id="reading-log"></a>
+* [Previewing Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f)
+* [Creating a Website with Nuxt.js and WordPress REST API](https://medium.com/@moustachedesign/creating-a-website-with-nuxt-js-and-wordpress-rest-api-51cf66599cf3)
+
 <a id="reading-log"></a>
 # Reading Log
 
 <a id="may-2018"></a>
 ## May 2018
 **Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time**
+
+**5/11/18**
+* [Tobias Van Schneider - Why Are Our Portfolios Written in Third Person?](https://medium.com/@vanschneider/why-are-our-portfolios-written-in-third-person-71cbad1dd226)
 
 **5/9/18**
 * [Breaking Through The Vim Learning Curve](https://www.stridenyc.com/blog/breaking-through-the-vim-learning-curve)
