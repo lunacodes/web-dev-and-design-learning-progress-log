@@ -43,21 +43,43 @@ A progress log of my daily web design and development learning and growth. Also 
 * [Previewing Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f)
 * [Creating a Website with Nuxt.js and WordPress REST API](https://medium.com/@moustachedesign/creating-a-website-with-nuxt-js-and-wordpress-rest-api-51cf66599cf3)
 
+
 <a id="reading-log"></a>
 # Reading Log
 
 <a id="may-2018"></a>
 ## May 2018
-**Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time**
+
+**5/16/18**
+* [The Sass Way - Nested selectors: the inception rule](http://thesassway.com/beginner/the-inception-rule)
+    * Avoid chaining yourself to the DOM - never nest selecters more than 4 layers deep!
+    * Think about how the compiler will build your code. 
+        * Is the code it's generating really needed in your CSS?
+        * Can it be achieved in less selectors?
+    * Be creative: Is there a way to make the HTML code easier to work with CSS without adding extra classes? 
+        * If there is, and it doesn't affect semantics: Do it!
+            - (ex: using adjacent selectors, targeting direct child elements, etc)
+* [The Sass Way - How to structure a Sass project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
+* [The Sass Way - Choosing great variable names](http://thesassway.com/beginner/variable-naming)
+    * Name your variables semantically (ex: $brand-color, $accent-color)
+        - Note: [naming variables modularly](https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364) (ex: $border-blue, $border-blue-light, $border-blue-lightest) may be a better solution.
+            - Insightful comment from article: "CSS preprocessors don't teach bad code, but they DO often expose bad CSS authoring practices. Preprocessors are extremely convenient for design systems, where you would expect some style reuse. They're most beneficial when your design already has structure".
+    - Keep all variables in a central __config.scss file that you @import.
+        - Note: this can lead to variable stew (i.e. variables accross files) issues! Do this at your own discretion.
+* [The Sass Way - Getting started with Sass and Compass](http://thesassway.com/beginner/getting-started-with-sass-and-compass)
+* 
 
 **5/15/18** 
 * [WP Beginner - How to Create a Custom WordPress Widget](http://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/)
+* [Sass Basics](https://sass-lang.com/guide)
 
 **5/11/18**
 * [Tobias Van Schneider - Why Are Our Portfolios Written in Third Person?](https://medium.com/@vanschneider/why-are-our-portfolios-written-in-third-person-71cbad1dd226)
 
 **5/9/18**
 * [Breaking Through The Vim Learning Curve](https://www.stridenyc.com/blog/breaking-through-the-vim-learning-curve)
+ 
+Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time
 
 <a id="april-2018"></a>
 ## April 2018
