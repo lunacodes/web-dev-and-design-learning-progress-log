@@ -1,6 +1,12 @@
-# Accomplishments
+# Achievements and Progress
 
 **Fighting Imposter Syndrome!!**
+
+## 5/15
+* Refactored Zemanim Plugin on Staging Site
+* Setup haSepharadi for local dev
+* Went through some js exercises
+* Forked Big Chaos Band site archive, for the fun of it!
 
 ## 5/11
 * Read [SitePoint - 10 Essential Sublime Text Plugins for JavaScript Developers](https://www.sitepoint.com/essential-sublime-text-javascript-plugins/)

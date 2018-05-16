@@ -50,6 +50,9 @@ A progress log of my daily web design and development learning and growth. Also 
 ## May 2018
 **Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time**
 
+**5/15/18** 
+* [WP Beginner - How to Create a Custom WordPress Widget](http://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/)
+
 **5/11/18**
 * [Tobias Van Schneider - Why Are Our Portfolios Written in Third Person?](https://medium.com/@vanschneider/why-are-our-portfolios-written-in-third-person-71cbad1dd226)
 
