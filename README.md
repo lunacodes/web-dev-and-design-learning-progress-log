@@ -63,12 +63,11 @@ A progress log of my daily web design and development learning and growth. Also 
     * See notes here
 * [The Sass Way - Choosing great variable names](http://thesassway.com/beginner/variable-naming)
     * Name your variables semantically (ex: $brand-color, $accent-color)
-        - Note: [naming variables modularly](https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364) (ex: $border-blue, $border-blue-light, $border-blue-lightest) may be a better solution.
-            - Insightful comment from article: "CSS preprocessors don't teach bad code, but they DO often expose bad CSS authoring practices. Preprocessors are extremely convenient for design systems, where you would expect some style reuse. They're most beneficial when your design already has structure".
-    - Keep all variables in a central __config.scss file that you @import.
-        - Note: this can lead to variable stew (i.e. variables accross files) issues! Do this at your own discretion.
+        * Note: [naming variables modularly](https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364) (ex: $border-blue, $border-blue-light, $border-blue-lightest) may be a better solution.
+            * Insightful comment from article: "CSS preprocessors don't teach bad code, but they DO often expose bad CSS authoring practices. Preprocessors are extremely convenient for design systems, where you would expect some style reuse. They're most beneficial when your design already has structure".
+    * Keep all variables in a central `__config.scss` file that you `@import`.
+        * Note: this can lead to variable stew (i.e. variables accross files) issues! Do this at your own discretion.
 * [The Sass Way - Getting started with Sass and Compass](http://thesassway.com/beginner/getting-started-with-sass-and-compass)
-* 
 
 **5/15/18** 
 * [WP Beginner - How to Create a Custom WordPress Widget](http://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/)
