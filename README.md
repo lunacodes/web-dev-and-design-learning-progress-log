@@ -60,6 +60,7 @@ A progress log of my daily web design and development learning and growth. Also 
         * If there is, and it doesn't affect semantics: Do it!
             - (ex: using adjacent selectors, targeting direct child elements, etc)
 * [The Sass Way - How to structure a Sass project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
+    * See notes here
 * [The Sass Way - Choosing great variable names](http://thesassway.com/beginner/variable-naming)
     * Name your variables semantically (ex: $brand-color, $accent-color)
         - Note: [naming variables modularly](https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364) (ex: $border-blue, $border-blue-light, $border-blue-lightest) may be a better solution.
@@ -153,6 +154,9 @@ Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having 
 
 <a id="may-2018-1"></a>
 ## May 2018
+**5/16/18**
+* [freeCodeCamp - Learn React.js in 5 minutes](https://medium.freecodecamp.org/learn-react-js-in-5-minutes-526472d292f4)
+
 **5/10/18**
 * [Habitica Wiki - Setting Up Habitica Locally on Windows](http://habitica.wikia.com/wiki/Setting_up_Habitica_Locally_on_Windows) (In-progress)
 * [James D. McCaffrey - Installing PHP on Windows 10 & IIS](https://jamesmccaffrey.wordpress.com/2017/01/26/installing-php-on-windows-10-and-iis/)

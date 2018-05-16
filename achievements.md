@@ -2,6 +2,9 @@
 
 **Fighting Imposter Syndrome!!**
 
+## 5/16
+* Installed Sass & Compass
+
 ## 5/15
 * Refactored Zemanim Plugin on Staging Site
 * Setup haSepharadi for local dev
