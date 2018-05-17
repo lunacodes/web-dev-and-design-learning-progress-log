@@ -4,6 +4,8 @@
 
 ## 5/16
 * Installed Sass & Compass
+* Wrote blog post [Never Graduate Week 2018!](https://lunacodes.wordpress.com/2018/05/16/never-graduate-week-2018/)
+* Installed LAMP stack, PHP, and Composer in Ubuntu bash
 
 ## 5/15
 * Refactored Zemanim Plugin on Staging Site
