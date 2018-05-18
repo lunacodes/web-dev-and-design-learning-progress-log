@@ -5,6 +5,7 @@ A progress log of my daily web design and development learning and growth. Also 
 <!-- MarkdownTOC -->
 
 * [In-Progress](#in-progress)
+* [Stashed](#stashed)
 * [Reading Log](#reading-log)
     * [May 2018](#may-2018)
     * [April 2018](#april-2018)
@@ -36,6 +37,15 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="in-progress"></a>
 # In-Progress
+
+**5/18/18**
+* [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
+    * Excellent tutorial for the logic and structuring of the game. The code examples are inconsistent, and I can't get the final code to run outside of their sandbox environment yet
+    I'm on Section 6 out of 8
+* [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
+    * Much more accessible and straightforward tutorial!
+<a id="stashed"></a>
+# Stashed
 
 **5/11/18**
 * [Using the Google Maps JavaScript API in a React Project](https://medium.com/front-end-hacking/using-the-google-maps-javascript-api-in-a-react-project-b3ed734375c6)
@@ -86,8 +96,11 @@ A progress log of my daily web design and development learning and growth. Also 
 
 **5/9/18**
 * [Breaking Through The Vim Learning Curve](https://www.stridenyc.com/blog/breaking-through-the-vim-learning-curve)
- 
-Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having pushed to the remote branch in that time
+
+**5/1/18**
+* [freeCodeCamp - How to write your first React.js component - React’s function and class components, props, state, and event handlers](https://medium.freecodecamp.org/how-to-write-your-first-react-js-component-d728d759cabc)
+
+Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not having pushed to the remote branch in that time
 
 <a id="april-2018"></a>
 ## April 2018
