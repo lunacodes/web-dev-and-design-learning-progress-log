@@ -16,7 +16,7 @@ A progress log of my daily web design and development learning and growth. Also 
         * [Git & Github](#git--github)
         * [Sublime Text](#sublime-text)
     * [Resources](#resources)
-        * [Documentation](#documentation)
+        * [Documentation & General Reference](#documentation--general-reference)
         * [Design](#design)
             * [Icons](#icons)
         * [DOM](#dom)
@@ -49,6 +49,14 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="may-2018"></a>
 ## May 2018
+
+**5/18/18**
+* [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024) 
+    * Underscores give people a false sense of "private"ness that could lead to bugs.
+    * Private means inaccessible. Your intent to privacy is irrelevant if the value is reachable, ie public.
+    * The point of a private property is that you can trust private variables not to be changed by outside code.
+    * Javascript **doesn't have private properties**
+        * The logical thing to do is therefore to treat every property as a public property (because it is) - your code needs to assume that it can change at any time.
 
 **5/16/18**
 * [The Sass Way - Nested selectors: the inception rule](http://thesassway.com/beginner/the-inception-rule)
@@ -188,10 +196,10 @@ Note: Progress prior to 5/9/18 was lost due to a laptop failure, and not having 
 <a id="resources"></a>
 ## Resources
 
-<a id="documentation"></a>
-### Documentation
-* [DevDocs.io](https://devdocs.io): the number one goto resource for 
-Documentation in any language - absolutely essential
+<a id="documentation--general-reference"></a>
+### Documentation & General Reference
+* [DevDocs.io](https://devdocs.io): the number one goto resource for Documentation in any language - absolutely essential
+* [List of XML and HTML character entity references - Character entity references in HTML](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_entity_references_in_HTML)
 
 <a id="design"></a>
 ### Design
