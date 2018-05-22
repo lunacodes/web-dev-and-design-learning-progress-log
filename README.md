@@ -61,7 +61,8 @@ A progress log of my daily web design and development learning and growth. Also 
 **5/22/18**
 * [Kat Marchán - Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
 * [Jedi Saboteur - Creating a React App… From Scratch](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658?token=Y1V_ksk1Ow-IyWWo)
-
+    * Outlines the basic directory structure of a React Project in an accessible manner.
+    
 **5/18/18**
 * [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024) 
     * Underscores give people a false sense of "private"ness that could lead to bugs.
