@@ -42,8 +42,6 @@ A progress log of my daily web design and development learning and growth. Also 
 * [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
     * Excellent tutorial for the logic and structuring of the game. The code examples are inconsistent, and I can't get the final code to run outside of their sandbox environment yet
     I'm on Section 6 out of 8
-* [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
-    * Much more accessible and straightforward tutorial!
 <a id="stashed"></a>
 # Stashed
 
@@ -60,6 +58,8 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="may-2018"></a>
 ## May 2018
 
+**5/22/18**
+* [Jedi Saboteur - Creating a React App… From Scratch](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658?token=Y1V_ksk1Ow-IyWWo)
 **5/18/18**
 * [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024) 
     * Underscores give people a false sense of "private"ness that could lead to bugs.
@@ -174,6 +174,10 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 
 <a id="may-2018-1"></a>
 ## May 2018
+**5/22/18**
+* [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
+    * Very accessible and straightforward tutorial!
+
 **5/16/18**
 * [freeCodeCamp - Learn React.js in 5 minutes](https://medium.freecodecamp.org/learn-react-js-in-5-minutes-526472d292f4)
 
