@@ -4,7 +4,7 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <!-- MarkdownTOC -->
 
-* [In-Progress](#in-progress)
+* [To Read & In-Progress](#to-read--in-progress)
 * [Stashed](#stashed)
 * [Reading Log](#reading-log)
     * [May 2018](#may-2018)
@@ -22,6 +22,7 @@ A progress log of my daily web design and development learning and growth. Also 
             * [Icons](#icons)
         * [DOM](#dom)
         * [Markdown](#markdown)
+        * [React](#react)
         * [Shell Scripting](#shell-scripting)
             * [BASH](#bash)
             * [Powershell](#powershell)
@@ -35,8 +36,12 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <!-- /MarkdownTOC -->
 
-<a id="in-progress"></a>
-# In-Progress
+<a id="to-read--in-progress"></a>
+# To Read & In-Progress
+
+**5/22/18**
+* [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
+    * DEFINITELY STICK WITH THIS!!
 
 **5/18/18**
 * [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
@@ -62,7 +67,9 @@ A progress log of my daily web design and development learning and growth. Also 
 * [Kat Marchán - Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
 * [Jedi Saboteur - Creating a React App… From Scratch](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658?token=Y1V_ksk1Ow-IyWWo)
     * Outlines the basic directory structure of a React Project in an accessible manner.
-    
+* [IT Pro - Powershell Basics: Console Configuration](http://www.itprotoday.com/management-mobility/powershell-basics-console-configuration)
+    * You can modify the console's appearance through its property settings. Click the PowerShell icon in the top-left corner of the console window and click Properties to open the Properties dialog box.
+
 **5/18/18**
 * [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024) 
     * Underscores give people a false sense of "private"ness that could lead to bugs.
@@ -238,6 +245,9 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 * [Adam P - Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet): extremely useful Markdown cheatsheet
 * [Daring Fireball - Markdown](https://daringfireball.net/projects/markdown/): the original Markdown spec by creator John Guber
 
+<a id="react"></a>
+### React
+* [GitHub - Runtime type checking for React props and similar objects](https://github.com/facebook/prop-types)
 <a id="shell-scripting"></a>
 ### Shell Scripting
 
