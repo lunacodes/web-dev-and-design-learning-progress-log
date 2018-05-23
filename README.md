@@ -22,6 +22,7 @@ A progress log of my daily web design and development learning and growth. Also 
             * [Icons](#icons)
         * [DOM](#dom)
         * [Markdown](#markdown)
+        * [NPM](#npm)
         * [React](#react)
         * [Shell Scripting](#shell-scripting)
             * [BASH](#bash)
@@ -42,6 +43,11 @@ A progress log of my daily web design and development learning and growth. Also 
 **5/22/18**
 * [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
     * DEFINITELY STICK WITH THIS!!
+* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
+    * Currently on the [React Components](https://www.tutorialspoint.com/reactjs/reactjs_components.htm) page
+    * Good for filling in the little details that other tutorials leave unstated.
+        * Slightly outdated in terms of environment setup and initial process
+            * This is good for getting an understanding of what's going on under the hood. Helpful for understanding the details of what `create-react-app` and npm do.
 
 **5/18/18**
 * [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
@@ -64,6 +70,24 @@ A progress log of my daily web design and development learning and growth. Also 
 ## May 2018
 
 **5/22/18**
+* [Daijiro Wachi - dep: a little Node.js dependency installer](https://medium.com/@watilde/dep-a-little-node-js-dependency-installer-b8fead7596d3)
+    * npm is overly complicated, relative to the amount of sub-commands people use on a daily basis
+    * The end user is who makes a software with the modules and doesn’t make their own module to publish.
+    * The end user does 3 things:
+        * Install dependencies defined in package.json
+        * Deploy an app to production with locked dependencies
+        * Run test/build/release scripts defined in package.json
+    * [dep.js](https://github.com/depjs/dep) only has the following 3 features:
+        * Install the dependencies defined in a local package.json.
+        * [WIP]Lock the dependencies installed in a local node_modules.
+        * Run an arbitrary command from scripts in a local package.json.
+* [Hacker Noon - It's OK to not use Yarn](BMtrSe{bZ;cH6zZ5]p'9L+Gh2&zn)
+    * npm works fine offline:
+        * `npm install` works just fine offline
+        * `npm install some-package` updates `package.json` by default without appending `--save`
+        * `npm install some-package` creates/updates `package-lock.json` by default
+* [Kat Marchán - On the Design of Women’s Spaces](https://medium.com/@maybekatz/on-the-design-of-womens-spaces-72bf8f396dc0)
+* [Kat Marchán - Kat’s Short Guide To JS Devops Ecosystem](https://medium.com/@maybekatz/kat-s-short-guide-to-js-devops-ecosystem-9ffef67fdb8e)
 * [Kat Marchán - Introducing npx: an npm package runner](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)
 * [Jedi Saboteur - Creating a React App… From Scratch](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658?token=Y1V_ksk1Ow-IyWWo)
     * Outlines the basic directory structure of a React Project in an accessible manner.
@@ -244,6 +268,10 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 ### Markdown
 * [Adam P - Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet): extremely useful Markdown cheatsheet
 * [Daring Fireball - Markdown](https://daringfireball.net/projects/markdown/): the original Markdown spec by creator John Guber
+
+<a id="npm"></a>
+### NPM
+* [dep - A little Node.js dependency installer](https://depjs.github.io/)
 
 <a id="react"></a>
 ### React
