@@ -10,8 +10,7 @@ function Restart-PowerShell {
     exit #Exit existing Powershell Host window
 }
 
-# Note: maybe name this "restart" instead?
-#
+# Restart PowerShell in the current window
 Set-Alias -Name rps -Value Restart-PowerShell
 
 # Start a new Powershell window, while keeping current one open
