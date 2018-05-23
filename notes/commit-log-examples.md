@@ -2,7 +2,7 @@
 
 A list of commit log examples, intended to serve as a sort of style guide
 
-1. NPM Repo 
+1. Node.js Repo 
 
 ```
 Example from: https://medium.com/@watilde/cheers-to-a-node-js-conference-in-japan-b9e6e90acd46
