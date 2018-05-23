@@ -42,7 +42,8 @@ A progress log of my daily web design and development learning and growth. Also 
 
 **5/23/18**
 * [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
-    * See [Javascript Snippets](snippets/Javascript/js.md) for notes
+    * Added: Spread operator, for... of iterator, 
+        * See [Javascript Snippets](snippets/Javascript/js.md) for notes
 
 **5/22/18**
 * [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
@@ -219,6 +220,7 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 ## May 2018
 
 **5/23/18**
+* [James K Nelson - Learn Raw React — no JSX, no Flux, no ES6, no Webpack…](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/)
 * [GitHub - workshopper - learnyoureact](https://github.com/workshopper/learnyoureact)
     * I did exercise 1 and then stopped, as the code is 3 years old, and not following modern conventions
 
