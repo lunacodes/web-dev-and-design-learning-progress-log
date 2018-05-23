@@ -1,3 +1,4 @@
+```powershell
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
@@ -23,3 +24,4 @@ $scripts = "$(split-path $profile)\Scripts"
 $modules = "$(split-path $profile)\Modules"
 $docs    =  $(resolve-path "$Env:userprofile\documents")
 $desktop =  $(resolve-path "$Env:userprofile\desktop")
+```

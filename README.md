@@ -40,6 +40,10 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="to-read--in-progress"></a>
 # To Read & In-Progress
 
+**5/23/18**
+* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
+    * See [Javascript Snippets](snippets/Javascript/js.md) for notes
+
 **5/22/18**
 * [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
     * DEFINITELY STICK WITH THIS!!
@@ -68,6 +72,11 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="may-2018"></a>
 ## May 2018
+
+**5/23/18**
+* [Daijiro Wachi - Cheers to a Node.js conference in Japan](https://medium.com/@watilde/cheers-to-a-node-js-conference-in-japan-b9e6e90acd46)
+    * I Created [Commit Log Examples](notes/commit-log-examples.md), as a result of reading this
+* [Daijiro Wachi - What's the one thing you would change on GitHub?](https://medium.com/@watilde/whats-the-one-thing-you-would-change-on-github-21693066196c)
 
 **5/22/18**
 * [Daijiro Wachi - dep: a little Node.js dependency installer](https://medium.com/@watilde/dep-a-little-node-js-dependency-installer-b8fead7596d3)
@@ -208,6 +217,11 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 
 <a id="may-2018-1"></a>
 ## May 2018
+
+**5/23/18**
+* [GitHub - workshopper - learnyoureact](https://github.com/workshopper/learnyoureact)
+    * I did exercise 1 and then stopped, as the code is 3 years old, and not following modern conventions
+
 **5/22/18**
 * [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
     * Very accessible and straightforward tutorial!
