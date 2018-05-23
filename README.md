@@ -22,6 +22,8 @@ A progress log of my daily web design and development learning and growth. Also 
             * [Icons](#icons)
         * [DOM](#dom)
         * [Markdown](#markdown)
+            * [Standard Markdown](#standard-markdown)
+            * [GitHub Markdown](#github-markdown)
         * [NPM](#npm)
         * [React](#react)
         * [Shell Scripting](#shell-scripting)
@@ -41,9 +43,13 @@ A progress log of my daily web design and development learning and growth. Also 
 # To Read & In-Progress
 
 **5/23/18**
+* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
+    * Need to go through and make sure I understand the code flow and organization from the starter code, before I move on to Exercise 2
 * [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
     * Added: Spread operator, for... of iterator, 
         * See [Javascript Snippets](snippets/Javascript/js.md) for notes
+* [Delicious Brains - GDPR For WordPress Developers: Announcing The (Free) Anonymization Addon](https://deliciousbrains.com/gdpr-local-development/)
+    * Specific to WP Migrate DB - but otherwise great information, as well as a PHP snippet for complying with the EU's new GDPR legislation
 
 **5/22/18**
 * [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
@@ -52,7 +58,7 @@ A progress log of my daily web design and development learning and growth. Also 
     * Currently on the [React Components](https://www.tutorialspoint.com/reactjs/reactjs_components.htm) page
     * Good for filling in the little details that other tutorials leave unstated.
         * Slightly outdated in terms of environment setup and initial process
-            * This is good for getting an understanding of what's going on under the hood. Helpful for understanding the details of what `create-react-app` and npm do.
+        * This is good for getting an understanding of what's going on under the hood. Helpful for understanding the details of what `create-react-app` and npm do.
 
 **5/18/18**
 * [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
@@ -227,6 +233,7 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 **5/22/18**
 * [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
     * Very accessible and straightforward tutorial!
+    * It’s always a good idea to separate application logic from presentation logic, and React encourages this practice. 
 
 **5/16/18**
 * [freeCodeCamp - Learn React.js in 5 minutes](https://medium.freecodecamp.org/learn-react-js-in-5-minutes-526472d292f4)
@@ -265,7 +272,7 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 
 <a id="documentation--general-reference"></a>
 ### Documentation & General Reference
-* [DevDocs.io](https://devdocs.io): the number one goto resource for Documentation in any language - absolutely essential
+* [DevDocs.io](https://devdocs.io): the number one goto resource for Documentation in any programming language - absolutely essential
 * [List of XML and HTML character entity references - Character entity references in HTML](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_entity_references_in_HTML)
 
 <a id="design"></a>
@@ -282,8 +289,16 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 
 <a id="markdown"></a>
 ### Markdown
+
+<a id="standard-markdown"></a>
+#### Standard Markdown
 * [Adam P - Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet): extremely useful Markdown cheatsheet
 * [Daring Fireball - Markdown](https://daringfireball.net/projects/markdown/): the original Markdown spec by creator John Guber
+
+<a id="github-markdown"></a>
+#### GitHub Markdown
+* [Github - linguist - languages.yml](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
+* [rubycoloredglasses - Languages Supported by Github Flavored Markdown](http://www.rubycoloredglasses.com/2013/04/languages-supported-by-github-flavored-markdown/)
 
 <a id="npm"></a>
 ### NPM
