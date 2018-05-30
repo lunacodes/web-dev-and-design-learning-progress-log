@@ -48,6 +48,7 @@ A progress log of my daily web design and development learning and growth. Also 
         * A decent amount of the earlier pages are useful - but the tutorial uses old or deprecated convetions, and many examples are unclear
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
     * Currently on Exercise 3 - Saving contacts
+* [How much JavaScript basic is required to jump into a framework like React?](https://www.quora.com/How-much-JavaScript-basic-is-required-to-jump-into-a-framework-like-React)
 
 **5/23/18**
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
