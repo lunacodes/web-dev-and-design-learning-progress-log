@@ -42,6 +42,13 @@ A progress log of my daily web design and development learning and growth. Also 
 <a id="to-read--in-progress"></a>
 # To Read & In-Progress
 
+**5/29/18**
+* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
+    * Currently on the [Reactjs - Router](https://www.tutorialspoint.com/reactjs/reactjs_router.htm) page
+        * A decent amount of the earlier pages are useful - but the tutorial uses old or deprecated convetions, and many examples are unclear
+* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
+    * Currently on Exercise 3 - Saving contacts
+
 **5/23/18**
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
     * Need to go through and make sure I understand the code flow and organization from the starter code, before I move on to Exercise 2
