@@ -1,4 +1,5 @@
-Progress logs of my daily web design and development learning and growth. Also contains useful tools and resources.
+# Web Development and Design Learning Progress
+Progress logs of my daily web development and design learning and growth. Also contains useful tools and resources.
 
 # Table of Contents
 
