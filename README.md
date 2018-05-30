@@ -4,14 +4,14 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <!-- MarkdownTOC -->
 
-* [To Read & In-Progress](#to-read--in-progress)
-* [Stashed](#stashed)
 * [Reading Log](#reading-log)
     * [May 2018](#may-2018)
     * [April 2018](#april-2018)
 * [Tutorials Log](#tutorials-log)
     * [May 2018](#may-2018-1)
     * [April 2018](#april-2018-1)
+* [To Read & In-Progress](#to-read--in-progress)
+* [Stashed](#stashed)
 * [Tools & Resources](#tools--resources)
     * [Tools](#tools)
         * [Git & Github](#git--github)
@@ -38,47 +38,6 @@ A progress log of my daily web design and development learning and growth. Also 
         * [Font Sizes](#font-sizes)
 
 <!-- /MarkdownTOC -->
-
-<a id="to-read--in-progress"></a>
-# To Read & In-Progress
-
-**5/29/18**
-* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
-    * Currently on the [Reactjs - Router](https://www.tutorialspoint.com/reactjs/reactjs_router.htm) page
-        * A decent amount of the earlier pages are useful - but the tutorial uses old or deprecated convetions, and many examples are unclear
-* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
-    * Currently on Exercise 3 - Saving contacts
-
-**5/23/18**
-* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
-    * Need to go through and make sure I understand the code flow and organization from the starter code, before I move on to Exercise 2
-* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
-    * Added: Spread operator, for... of iterator, 
-        * See [Javascript Snippets](snippets/Javascript/js.md) for notes
-* [Delicious Brains - GDPR For WordPress Developers: Announcing The (Free) Anonymization Addon](https://deliciousbrains.com/gdpr-local-development/)
-    * Specific to WP Migrate DB - but otherwise great information, as well as a PHP snippet for complying with the EU's new GDPR legislation
-
-**5/22/18**
-* [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
-    * DEFINITELY STICK WITH THIS!!
-* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
-    * Currently on the [React Components](https://www.tutorialspoint.com/reactjs/reactjs_components.htm) page
-    * Good for filling in the little details that other tutorials leave unstated.
-        * Slightly outdated in terms of environment setup and initial process
-        * This is good for getting an understanding of what's going on under the hood. Helpful for understanding the details of what `create-react-app` and npm do.
-
-**5/18/18**
-* [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
-    * Excellent tutorial for the logic and structuring of the game. The code examples are inconsistent, and I can't get the final code to run outside of their sandbox environment yet
-    I'm on Section 6 out of 8
-<a id="stashed"></a>
-# Stashed
-
-**5/11/18**
-* [Using the Google Maps JavaScript API in a React Project](https://medium.com/front-end-hacking/using-the-google-maps-javascript-api-in-a-react-project-b3ed734375c6)
-* [Previewing Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f)
-* [Creating a Website with Nuxt.js and WordPress REST API](https://medium.com/@moustachedesign/creating-a-website-with-nuxt-js-and-wordpress-rest-api-51cf66599cf3)
-
 
 <a id="reading-log"></a>
 # Reading Log
@@ -263,6 +222,46 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 <a id="42518"></a>
 **4/25/18**
 * [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska 
+
+<a id="to-read--in-progress"></a>
+# To Read & In-Progress
+
+**5/29/18**
+* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
+    * Currently on the [Reactjs - Router](https://www.tutorialspoint.com/reactjs/reactjs_router.htm) page
+        * A decent amount of the earlier pages are useful - but the tutorial uses old or deprecated convetions, and many examples are unclear
+* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
+    * Currently on Exercise 3 - Saving contacts
+
+**5/23/18**
+* [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
+    * Need to go through and make sure I understand the code flow and organization from the starter code, before I move on to Exercise 2
+* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
+    * Added: Spread operator, for... of iterator, 
+        * See [Javascript Snippets](snippets/Javascript/js.md) for notes
+* [Delicious Brains - GDPR For WordPress Developers: Announcing The (Free) Anonymization Addon](https://deliciousbrains.com/gdpr-local-development/)
+    * Specific to WP Migrate DB - but otherwise great information, as well as a PHP snippet for complying with the EU's new GDPR legislation
+
+**5/22/18**
+* [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
+    * DEFINITELY STICK WITH THIS!!
+* [TutorialsPoint - Reactjs](https://www.tutorialspoint.com/reactjs/reactjs_components.htm)
+    * Currently on the [React Components](https://www.tutorialspoint.com/reactjs/reactjs_components.htm) page
+    * Good for filling in the little details that other tutorials leave unstated.
+        * Slightly outdated in terms of environment setup and initial process
+        * This is good for getting an understanding of what's going on under the hood. Helpful for understanding the details of what `create-react-app` and npm do.
+
+**5/18/18**
+* [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
+    * Excellent tutorial for the logic and structuring of the game. The code examples are inconsistent, and I can't get the final code to run outside of their sandbox environment yet
+    I'm on Section 6 out of 8
+<a id="stashed"></a>
+# Stashed
+
+**5/11/18**
+* [Using the Google Maps JavaScript API in a React Project](https://medium.com/front-end-hacking/using-the-google-maps-javascript-api-in-a-react-project-b3ed734375c6)
+* [Previewing Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f)
+* [Creating a Website with Nuxt.js and WordPress REST API](https://medium.com/@moustachedesign/creating-a-website-with-nuxt-js-and-wordpress-rest-api-51cf66599cf3)
 
 <a id="tools--resources"></a>
 # Tools & Resources
