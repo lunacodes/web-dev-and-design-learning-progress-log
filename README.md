@@ -48,7 +48,6 @@ A progress log of my daily web design and development learning and growth. Also 
         * A decent amount of the earlier pages are useful - but the tutorial uses old or deprecated convetions, and many examples are unclear
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
     * Currently on Exercise 3 - Saving contacts
-* [How much JavaScript basic is required to jump into a framework like React?](https://www.quora.com/How-much-JavaScript-basic-is-required-to-jump-into-a-framework-like-React)
 
 **5/23/18**
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
@@ -77,7 +76,6 @@ A progress log of my daily web design and development learning and growth. Also 
 
 **5/11/18**
 * [Using the Google Maps JavaScript API in a React Project](https://medium.com/front-end-hacking/using-the-google-maps-javascript-api-in-a-react-project-b3ed734375c6)
-<a id="reading-log"></a>
 * [Previewing Material Design 2.0](https://uxdesign.cc/previewing-material-design-2-0-ec0215f0588f)
 * [Creating a Website with Nuxt.js and WordPress REST API](https://medium.com/@moustachedesign/creating-a-website-with-nuxt-js-and-wordpress-rest-api-51cf66599cf3)
 
@@ -87,6 +85,9 @@ A progress log of my daily web design and development learning and growth. Also 
 
 <a id="may-2018"></a>
 ## May 2018
+
+**5/29/18**
+* [How much JavaScript basic is required to jump into a framework like React?](https://www.quora.com/How-much-JavaScript-basic-is-required-to-jump-into-a-framework-like-React)
 
 **5/23/18**
 * [Daijiro Wachi - Cheers to a Node.js conference in Japan](https://medium.com/@watilde/cheers-to-a-node-js-conference-in-japan-b9e6e90acd46)
@@ -232,6 +233,10 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 
 <a id="may-2018-1"></a>
 ## May 2018
+
+**5/30/18**
+* [MDN - Game Dev - 2D breakout game using Phaser](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser)
+* [MDN - Game Dev - 2D breakout game using pure JavaScript](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
 
 **5/23/18**
 * [James K Nelson - Learn Raw React — no JSX, no Flux, no ES6, no Webpack…](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/)
