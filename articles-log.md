@@ -7,11 +7,15 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 * [May 2018](#may-2018)
 * [April 2018](#april-2018)
+* [In-Progress](#in-progress)
 
 <!-- /MarkdownTOC -->
 
 <a id="may-2018"></a>
 ## May 2018
+
+**5/31**
+* [webapplog - Top 10 ES6 Features Every Busy JavaScript Developer Must Know](https://webapplog.com/es6/)
 
 **5/29**
 * [How much JavaScript basic is required to jump into a framework like React?](https://www.quora.com/How-much-JavaScript-basic-is-required-to-jump-into-a-framework-like-React)
@@ -158,5 +162,11 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
             * [My note: italics are often a very bad idea for accessibility]
 
 <br> 
+
+<a id="in-progress"></a>
+# In-Progress
+* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
+    * Added: `Spread` operator, and `for... of` iterator to my [Javascript Snippets](snippets/Javascript/js.md) file
+
 
 [Back to Top](#top)

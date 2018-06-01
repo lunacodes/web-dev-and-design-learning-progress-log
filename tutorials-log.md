@@ -15,6 +15,10 @@ A log of tutorials completed from April 2018 to present.
 <a id="may-2018"></a>
 ## May 2018
 
+**5/31**
+* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
+    * Started on: 5/23
+
 **5/30**
 * [MDN - Game Dev - 2D breakout game using Phaser](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser)
 * [MDN - Game Dev - 2D breakout game using pure JavaScript](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
