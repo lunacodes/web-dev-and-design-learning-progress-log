@@ -5,17 +5,29 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- MarkdownTOC -->
 
+* [June 2018](#june-2018)
 * [May 2018](#may-2018)
 * [April 2018](#april-2018)
 * [In-Progress](#in-progress)
 
 <!-- /MarkdownTOC -->
 
+<a id="june-2018"></a>
+## June 2018
+
+**6/12/18**
+* [Henry Stanley - Becoming a dramatically better programmer](https://recurse.henrystanley.com/post/better/)
+    * Notes [here](notes/notes-from-becoming-a-dramatically-better-programmer-6-12-18.md)
+* [Azeria - The Importance of Deep Work & The 30-Hour Method for Learning a New Skill](https://azeria-labs.com/the-importance-of-deep-work-the-30-hour-method-for-learning-a-new-skill/)
+    * Excellent article, and highly recommended read!
+
 <a id="may-2018"></a>
 ## May 2018
 
 **5/31**
 * [webapplog - Top 10 ES6 Features Every Busy JavaScript Developer Must Know](https://webapplog.com/es6/)
+* [Tom McFarlin - Does WordPress Hold You Back as a Developer, Really?](https://tommcfarlin.com/does-wordpress-hold-you-back/)
+* [Tom McFarlin - Let the Code Review Process Stand on Its Own](https://tommcfarlin.com/code-review-process/)
 
 **5/29**
 * [How much JavaScript basic is required to jump into a framework like React?](https://www.quora.com/How-much-JavaScript-basic-is-required-to-jump-into-a-framework-like-React)
