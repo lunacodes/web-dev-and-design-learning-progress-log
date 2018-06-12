@@ -82,7 +82,7 @@ A log of my daily reading for web design and web development from April 2018 to 
         * If there is, and it doesn't affect semantics: Do it!
             - (ex: using adjacent selectors, targeting direct child elements, etc)
 * [The Sass Way - How to structure a Sass project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
-    * See notes here
+    * See [notes here](notes/notes-from-structuring-sass-projects-article.md)
 * [The Sass Way - Choosing great variable names](http://thesassway.com/beginner/variable-naming)
     * Name your variables semantically (ex: $brand-color, $accent-color)
         * Note: [naming variables modularly](https://webdesign.tutsplus.com/articles/quick-tip-name-your-sass-variables-modularly--webdesign-13364) (ex: $border-blue, $border-blue-light, $border-blue-lightest) may be a better solution.
