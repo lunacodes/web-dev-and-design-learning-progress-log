@@ -15,6 +15,10 @@ A log of my daily reading for web design and web development from April 2018 to 
 <a id="june-2018"></a>
 ## June 2018
 
+**6/18/18**
+* Assorted questions
+    * [Quora - In JavaScript is much better use ternary if instead of if/else?](https://www.quora.com/In-JavaScript-is-much-better-use-ternary-if-instead-of-if-else)
+
 **6/12/18**
 * [Henry Stanley - Becoming a dramatically better programmer](https://recurse.henrystanley.com/post/better/)
     * Notes [here](notes/notes-from-becoming-a-dramatically-better-programmer-6-12-18.md)

@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [June 2018](#june-2018)
 * [May 2018](#may-2018)
 * [April 2018](#april-2018)
 * [To Read & In-Progress](#to-read--in-progress)
@@ -12,12 +13,14 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- /MarkdownTOC -->
 
+<a id="june-2018"></a>
+## June 2018
+
+**6/26**
+* [The Ultimate Git Alias Setup](https://gist.github.com/mwhite/6887990)
+
 <a id="may-2018"></a>
 ## May 2018
-
-**5/31**
-* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
-    * Started on: 5/23
 
 **5/30**
 * [MDN - Game Dev - 2D breakout game using Phaser](https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser)
@@ -68,8 +71,6 @@ A log of tutorials completed from April 2018 to present.
 **5/23**
 * [James K Nelson - Learn Raw React: Ridiculously Simple Forms](http://jamesknelson.com/learn-raw-react-ridiculously-simple-forms/)
     * Need to go through and make sure I understand the code flow and organization from the starter code, before I move on to Exercise 2
-* [freeCodeCamp - These JavaScript methods will boost your skills in just a few minutes](https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f)
-    * Added: `Spread` operator, and `for... of` iterator to my [Javascript Snippets](snippets/Javascript/js.md) file
 
 **5/22**
 * [auth0 - Developing Games with React, Redux, and SVG - Part 1](https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/)
