@@ -14,3 +14,7 @@ A progress log of my daily web development and design learning and growth. Also 
 > When you encounter a copy-paste code — Apply code reuse.
 > When you are faced with a monolithic bulk of code — Break it up.
 > When you scroll through old code that was commented out — Omit it.
+
+## ToDo
+
+* Change naming convention for directories to lowercase
