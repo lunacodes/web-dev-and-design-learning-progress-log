@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [July 2018](#july-2018)
 * [June 2018](#june-2018)
 * [May 2018](#may-2018)
 * [April 2018](#april-2018)
@@ -13,6 +14,12 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- /MarkdownTOC -->
 
+<a id="july-2018"></a>
+## July 2018
+
+**7/11**
+* (Number Systems: An Introduction to Binary, Hexadecimal, and More)[https://code.tutsplus.com/articles/number-systems-an-introduction-to-binary-hexadecimal-and-more--active-10848]
+    * See notes [here](math/number-systems-bases-and-conversions.md)
 <a id="june-2018"></a>
 ## June 2018
 
