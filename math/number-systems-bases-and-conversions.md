@@ -15,8 +15,8 @@ Notes on [Envato Tuts - Number Systems: An Introduction to Binary, Hexadecimal, 
 
 **Result:** 2266<sub>8</sub>
 
-<a id="formula-for-convert-from-base-10-to-any-base"></a>
-## Formula for Convert from Base-10 to any Base
+<a id="formula-for-conversion-from-base-10-to-any-base"></a>
+## Formula for Conversion from Base-10 to any Base
 **d = any digit**<br>
 **b = base**
 
