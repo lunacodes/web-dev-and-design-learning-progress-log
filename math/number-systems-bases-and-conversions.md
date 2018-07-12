@@ -1,5 +1,7 @@
 # Number Systems: Bases and Conversions
 
+Notes on [Envato Tuts - Number Systems: An Introduction to Binary, Hexadecimal, and More](https://code.tutsplus.com/articles/number-systems-an-introduction-to-binary-hexadecimal-and-more--active-10848)
+
 <a id="base-10-to-base-8"></a>
 ## Base-10 to Base-8
 
@@ -113,7 +115,7 @@ Numbers greater than 9 are represented by letters:
 
 **Result:** 5D<sub>16</sub>
 
-<a id="converting-hex-to-binary"></a>
+<a id="hex-to-binary"></a>
 ### Hex to Binary
 
 **Problem:** Convert B7<sub>16</sub> to Binary
@@ -135,8 +137,10 @@ Group 2 - 7:
 
 **Result:** 10110111<sub>2</sub>
 
+<a id="rgb-conversions"></a>
 ## RGB Conversions
 
+<a id="hex-to-rgb"></a>
 ### Hex to RGB
 
 1. Split hex into 3 pairs of 2
@@ -161,14 +165,17 @@ Group 2 - 7:
 | **Green** | 9 \*  16 + 5       | 149 | 
 | **Blue**  | 9 \*  16 + 9       | 153 | 
 
+<a id="rgb-to-hex"></a>
 ### RGB to Hex
 
+<a id="formula"></a>
 #### Formula: 
  
 1. a = n / 16 (round down)
 2. b = n % 16
 3. c = a comb b 
 
+<a id="examples"></a>
 #### Examples
 
 **RGB:** 100, 149, 153
