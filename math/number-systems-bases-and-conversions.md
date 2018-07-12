@@ -1,19 +1,5 @@
 # Number Systems: Bases and Conversions
 
-<!-- MarkdownTOC -->
-
-* [Base-10 to Base-8](#base-10-to-base-8)
-* [Formula for Convert from Base-10 to any Base](#formula-for-convert-from-base-10-to-any-base)
-* [Base-16 \(Hexidecimal\)](#base-16-hexidecimal)
-    * [Base-16 to Base-10 Conversion](#base-16-to-base-10-conversion)
-* [Base-2 \(Binary\)](#base-2-binary)
-    * [Base-2 to Base-10](#base-2-to-base-10)
-    * [Base-10 to Base-2](#base-10-to-base-2)
-    * [Binary to Hex](#binary-to-hex)
-    * [Converting Hex to Binary](#converting-hex-to-binary)
-
-<!-- /MarkdownTOC -->
-
 <a id="base-10-to-base-8"></a>
 ## Base-10 to Base-8
 
@@ -117,86 +103,99 @@ Numbers greater than 9 are represented by letters:
     (note the added 0 on the left side)
 2. Find the value for each group
 
-| 0101               |                      |                      |                      | Total  |
-| ------------------ | -------------------- | -------------------- | -------------------- | ------ |  
-| 0 \* 2<sup>3</sup> | + 1 \* 2<sup>2</sup> | + 0 \* 2<sup>1</sup> | + 1 \* 2<sup>0</sup> |        |  
-| 0                  | 4                    | 0                    | 1                    | 5      |  
-| **1101**           |                      |                      |                      |        |
-| 1 \* 2<sup>3</sup> | + 1 \* 2<sup>2</sup> | + 0 \* 2<sup>1</sup> | + 1 \* 2<sup>0</sup> |        |  
-| 8                  | 4                    | 0                    | 1                    | 13 = D |
-
-
-| 0101               | Hex | 1011               | Hex |
-| ------------------ | --- | ------------------ | --- | 
-| 0 \* 2<sup>3</sup> | 0   | 1 \* 2<sup>3</sup> | 8   |
-| 1 \* 2<sup>2</sup> | 4   | 1 \* 2<sup>2</sup> | 4   |
-| 0 \* 2<sup>1</sup> | 0   | 0 \* 2<sup>1</sup> | 0   |
-| 1 \* 2<sup>0</sup> | 1   | 1 \* 2<sup>0</sup> | 1   |
-|                    | 5   |                    | 13  |
+| 0101               | Hex | 1011               | Hex    |
+| ------------------ | --- | ------------------ | ------ | 
+| 0 \* 2<sup>3</sup> | 0   | 1 \* 2<sup>3</sup> | 8      |
+| 1 \* 2<sup>2</sup> | 4   | 1 \* 2<sup>2</sup> | 4      |
+| 0 \* 2<sup>1</sup> | 0   | 0 \* 2<sup>1</sup> | 0      |
+| 1 \* 2<sup>0</sup> | 1   | 1 \* 2<sup>0</sup> | 1      |
+|                    | 5   |                    | 13 = D |
 
 **Result:** 5D<sub>16</sub>
 
 <a id="converting-hex-to-binary"></a>
-### Converting Hex to Binary
-    B716
-    [11]716 ([11]7 in Base-16) 
+### Hex to Binary
 
-    11/2^3 = 1 % 3
-    3/2^2 = 0 % 3
-    3/2^1 = 1 % 1
-    1/2^0 = 1
-    1011
+**Problem:** Convert B7<sub>16</sub> to Binary
 
-    7/2^2 = 1 % 3
-    3/2^1 = 1 % 1
-    1/2^0 = 1
-    0111
-        Note: place 0 in front of group
-    1011 comb 0111
-    101101112 (10110111 in Base-2)
+Group 1 - B:
 
+1. 11 / 2<sup>3</sup> = 1 % 3
+2. 3 / 2<sup>2</sup>  = 0 % 3
+3. 3 / 2<sup>1</sup>  = 1 % 1
+4. 1 / 2<sup>0</sup>  = 1
+5. Group = 1011
 
+Group 2 - 7:
 
-Formula for converting Hex to RGB:
-    Split hex into 3 pairs of 2
-    For each pair
-        a*16+b = c
-        if c >= A
-            c - 16
+5. 7 / 2<sup>2</sup> = 1 % 3
+6. 3 / 2<sup>1</sup> = 1 % 1
+7. 1 / 2<sup>0</sup> = 1
+8. Group = 0111 (place 0 in front of group)
 
-    Examples:
-        Hex: 6495AA
-        R: 6*16+4 = 100
-        G: 9*16+5 = 149
-        B: 11*16+11 = 187 - 16 = 171
+**Result:** 10110111<sub>2</sub>
 
-        Hex: 649599
-        R: 6*16+4 = 100
-        G: 9*16+5 = 149
-        B: 9*16+9 = 153
+## RGB Conversions
 
-        Hex: 6495ED
-        R: 6*16+4 = 100
-        G: 9*16+5 = 149
-        B: 15*16+14 = 254 -16 = 238
+### Hex to RGB
 
+1. Split hex into 3 pairs of 2
+2. For each pair:
+    a \* 16 + b = c <br>
+    if c >= A <br>
+        c - 16
 
-        RGB to Hex
-            a = n/16 (round down)
-            b = n%16
-            c = a comb b 
-            Multiply decimal remainder by 
-        RGB: 100, 149, 153
-        Pair 1: 
-            a = 100/16 = 6 
-            b = 100%16 = 4
-            c = 64
-        Pair 2:  
-            a = 149/16 = 9
-            b = 5
-            c = 95
-        Pair 3: 
-            a = 153/16 = 9
-            b = 153%16 = 9
-            c = 99
-        Hex = 649599
+**Examples**
+
+| Hex       | 6495AA             |     | 
+| --------- | ------------------ | --- |
+| **Red**   | 6 \*  16 + 4       | 100 | 
+| **Green** | 9 \*  16 + 5       | 149 | 
+| **Blue**  | 11 \* 16 + 11 - 16 | 171 | 
+
+**Note:** If Hex >= a, Subtract 16 to get proper total
+
+| Hex       | 649599             |     | 
+| --------- | ------------------ | --- |
+| **Red**   | 6 \*  16 + 4       | 100 | 
+| **Green** | 9 \*  16 + 5       | 149 | 
+| **Blue**  | 9 \*  16 + 9       | 153 | 
+
+### RGB to Hex
+
+#### Formula: 
+ 
+1. a = n / 16 (round down)
+2. b = n % 16
+3. c = a comb b 
+
+#### Examples
+
+**RGB:** 100, 149, 153
+
+Pair 1:
+
+```
+a = 100 / 16 = 6 
+b = 100 % 16 = 4
+c = 64
+```
+
+Pair 2:  
+
+```
+a = 149/16 = 9 <br>
+b = 5 <br>
+c = 95
+```
+
+Pair 3: 
+
+```
+a = 153/16 = 9
+b = 153%16 = 9
+c = 99
+```
+
+**Result:** 649599
+
