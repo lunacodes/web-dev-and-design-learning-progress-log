@@ -1,5 +1,14 @@
 # Javascript Snippets
 
+<!-- MarkdownTOC -->
+
+* [Mechanical](#mechanical)
+* [Websites & User Interaction](#websites--user-interaction)
+* [Positioning](#positioning)
+
+<!-- /MarkdownTOC -->
+
+<a id="mechanical"></a>
 ## Mechanical
 
 1. Spread Operator: list all items in array w/o for loop: 
@@ -27,6 +36,7 @@ for (const item of toolBox) {
 // Ruler
 ```
 
+<a id="websites--user-interaction"></a>
 # Websites & User Interaction
 
 1. Add Source Link When Someone Copies Text
@@ -88,3 +98,29 @@ jQuery(document).on('copy', function(e)
 
 ```
 
+<a id="positioning"></a>
+## Positioning
+
+1. Get Browser Width and Height: 
+
+```js
+function getBrowserWidth() {
+  return Math.max(
+    document.body.scrollWidth,
+    document.documentElement.scrollWidth,
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  );
+}
+
+function getBrowserHeight() {
+  return Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight,
+    document.documentElement.clientHeight
+  );
+}
+```
