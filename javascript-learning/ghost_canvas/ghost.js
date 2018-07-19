@@ -8,16 +8,10 @@ window.addEventListener('load', (e) => {
   /* canvas setup */
   var canvas = get('canvas');
   var ctx    = canvas.getContext('2d');
-  // canvas.width = 578;
-  // canvas.height = 500;
   canvas.width = getBrowserWidth() * 0.5;
   canvas.height = getBrowserHeight() * 0.5;
   var center_x = canvas.width * 0.5;
   var center_y = canvas.width * 0.25;
-  console.log('Canvas Width: ', canvas.width);
-  console.log('Canvas Height: ', canvas.height);
-  console.log('Canvas Center X: ', center_x);
-  console.log('Canvas Center Y ', center_y);
 
   drawGhost(ctx, center_x, center_y)
 });
@@ -55,10 +49,8 @@ function getBrowserHeight() {
  */
 
 function drawGhost(ctx, center_x, center_y) {
-  console.log(center_x, center_y);
   var x = center_x - 40;
   var y = center_y + 30;
-  console.log(x, y);
 
   ctx.beginPath();
   ctx.strokeStyle = "black";
