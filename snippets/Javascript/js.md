@@ -5,6 +5,7 @@
 * [Mechanical](#mechanical)
 * [Websites & User Interaction](#websites--user-interaction)
 * [Positioning](#positioning)
+* [Geolocation](#geolocation)
 
 <!-- /MarkdownTOC -->
 
@@ -123,4 +124,35 @@ function getBrowserHeight() {
     document.documentElement.clientHeight
   );
 }
+```
+
+<a id="geolocation"></a>
+# Geolocation
+
+1. Get User Lattitude and Longitude via HTML5 Geolocation API
+
+```js
+// navigator = new google.maps.LatLng(lat, long);
+if (navigator.geolocation) {
+    var testing = navigator.geolocation;
+    console.log(testing);
+    navigator.geolocation.getCurrentPosition(showPosition);
+}
+else {
+    // console.log("fail");
+    zemanim.innerHtml = "Please enable location services to display the most up-to-date Zemanim";
+
+    console.log("Geolocation is not supported by this browser");
+}
+
+function showPosition(position) {
+  var posLog = position;
+  console.log(posLog);
+  console.log(JSON.stringify(posLog));
+  console.log(posLog.toString());
+  var lat = position.coords.latitude;
+  var long = position.coords.longitude;
+}
+
+
 ```
