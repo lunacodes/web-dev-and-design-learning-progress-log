@@ -17,9 +17,25 @@ A log of tutorials completed from April 2018 to present.
 <a id="july-2018"></a>
 ## July 2018
 
+**7/27**
+* [nixCraft - BASH Shell Change The Color of Shell Prompt on Linux or UNIX](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/)
+
+**7/23**
+* [PHP-FIG - PHP Standards Recommendations](https://www.php-fig.org/psr/)
+    * [PSR-1: Basic Coding Standard](https://www.php-fig.org/psr/psr-1/)
+    * [PSR-2: Coding Style Guide](https://www.php-fig.org/psr/psr-2/)
+    * [WPMU DEV - The Ultimate Guide to WordPress Localization](https://premium.wpmudev.org/blog/ultimate-guide-wordpress-localization/)
+
+**7/19/**
+* [How to Draw a Ghost in HTML5 Canvas](http://loopandtouch.com/2014/04/22/how-to-draw-a-ghost-in-html5-canvas)
+    * [GitHub - uhoffman - canvas_ghost](https://github.com/uhoffman/canvas_ghost)
+* [Stack Overflow - How to get Browser Width using Javascript Code](https://stackoverflow.com/questions/1038727/how-to-get-browser-width-using-javascript-code)
+* [Quora - How do you Center an HTML Canvas](https://www.quora.com/How-do-you-center-an-HTML-canvas)
+
 **7/11**
 * (Number Systems: An Introduction to Binary, Hexadecimal, and More)[https://code.tutsplus.com/articles/number-systems-an-introduction-to-binary-hexadecimal-and-more--active-10848]
     * See notes [here](math/number-systems-bases-and-conversions.md)
+
 <a id="june-2018"></a>
 ## June 2018
 
