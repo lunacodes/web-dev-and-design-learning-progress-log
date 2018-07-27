@@ -5,7 +5,9 @@
 * [Mechanical](#mechanical)
 * [Websites & User Interaction](#websites--user-interaction)
 * [Positioning](#positioning)
+* [Networking](#networking)
 * [Geolocation](#geolocation)
+* [General](#general)
 
 <!-- /MarkdownTOC -->
 
@@ -126,8 +128,11 @@ function getBrowserHeight() {
 }
 ```
 
+<a id="networking"></a>
+# Networking
+
 <a id="geolocation"></a>
-# Geolocation
+## Geolocation
 
 1. Get User Lattitude and Longitude via HTML5 Geolocation API
 
@@ -155,4 +160,35 @@ function showPosition(position) {
 }
 
 
+```
+<a id="general"></a>
+## General
+
+1. Fetch API Example
+
+```js
+// Basic Fetch Request
+let urlStr = 'https://api.db-ip.com/v2/free/self';
+fetch(urlStr)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(myJson);
+  });
+```
+
+2. Get visitor's IP Address
+
+```js
+async function getIP(sub) {
+  const URL = 'https://api.ipify.org?format=json';
+  const fetchResult = fetch(URL);
+  const response = await fetchResult;
+  const jsonData = await response.json();
+  let ip = jsonData["ip"];
+  // const res = new Array(jsonData);
+  getGeoDetailsByIp(ip);
+}
+getIP('javascript');
 ```
