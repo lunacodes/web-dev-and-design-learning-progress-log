@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [August 2018](#august-2018)
 * [July 2018](#july-2018)
 * [June 2018](#june-2018)
 * [May 2018](#may-2018)
@@ -14,12 +15,23 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- /MarkdownTOC -->
 
+<a id="august-2018"></a>
+## August 2018
+
+**8/1**
+* [Python Database Programming: SQLite (tutorial)](https://pythonspot.com/en/python-database-programming-sqlite-tutorial/)
+    * Sqlalchemy is so much nicer!!
+* [Python Central - Introductory Tutorial of Python’s SQLAlchemy (pt. 1 of 11)](https://www.pythoncentral.io/introductory-tutorial-python-sqlalchemy/)
+    * Skimmed pt 2 & 3 (Installing Sqlalchemy & Sqlalchemy vs other ORMs)
+* [Python Central Overview of SQLAlchemy’s Expression Language and ORM Queries (pt 4 of 11)](https://www.pythoncentral.io/overview-sqlalchemys-expression-language-orm-queries/)
+    * At this point, I switched to reading through the Sqlalchemy docs, and other tutorials more directly relevant to what I wanted to build
+
 <a id="july-2018"></a>
 ## July 2018
 
 **7/31**
 * [Python Tutorials - Login authentication with Flask](https://pythonspot.com/login-authentication-with-flask/)
-* 
+* [Flask Web Forms (form validation)](https://pythonspot.com/flask-web-forms/)
 
 **7/27**
 * [nixCraft - BASH Shell Change The Color of Shell Prompt on Linux or UNIX](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/)
