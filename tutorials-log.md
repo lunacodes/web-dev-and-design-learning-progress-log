@@ -17,9 +17,14 @@ A log of tutorials completed from April 2018 to present.
 <a id="july-2018"></a>
 ## July 2018
 
+**7/31**
+* [Python Tutorials - Login authentication with Flask](https://pythonspot.com/login-authentication-with-flask/)
+* 
+
 **7/27**
 * [nixCraft - BASH Shell Change The Color of Shell Prompt on Linux or UNIX](https://www.cyberciti.biz/faq/bash-shell-change-the-color-of-my-shell-prompt-under-linux-or-unix/)
 * [Programming Historian: Creating Web APIs with Python and Flask](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask)
+
 
 **7/23**
 * [PHP-FIG - PHP Standards Recommendations](https://www.php-fig.org/psr/)
