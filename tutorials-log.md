@@ -25,6 +25,7 @@ A log of tutorials completed from April 2018 to present.
     * Skimmed pt 2 & 3 (Installing Sqlalchemy & Sqlalchemy vs other ORMs)
 * [Python Central Overview of SQLAlchemy’s Expression Language and ORM Queries (pt 4 of 11)](https://www.pythoncentral.io/overview-sqlalchemys-expression-language-orm-queries/)
     * At this point, I switched to reading through the Sqlalchemy docs, and other tutorials more directly relevant to what I wanted to build
+* [Codementor - Building a CRUD application with Flask and SQLAlchemy](https://www.codementor.io/garethdwyer/building-a-crud-application-with-flask-and-sqlalchemy-dm3wv7yu2)
 
 <a id="july-2018"></a>
 ## July 2018
