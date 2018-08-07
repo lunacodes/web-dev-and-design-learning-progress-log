@@ -1,3 +1,5 @@
+# My Powershell Profile
+
 ```powershell
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
@@ -10,7 +12,8 @@ function Restart-PowerShell {
     exit #Exit existing Powershell Host window
 }
 
-# Restart PowerShell in the current window
+# Note: maybe name this "restart" instead?
+#
 Set-Alias -Name rps -Value Restart-PowerShell
 
 # Start a new Powershell window, while keeping current one open
@@ -23,4 +26,7 @@ $scripts = "$(split-path $profile)\Scripts"
 $modules = "$(split-path $profile)\Modules"
 $docs    =  $(resolve-path "$Env:userprofile\documents")
 $desktop =  $(resolve-path "$Env:userprofile\desktop")
+
+Set-Alias -Name idlepy -Value "C:\Users\Luna\AppData\Local\Programs\Python\Python36-32\Lib\idlelib\idle.bat"
+
 ```

@@ -1,5 +1,21 @@
 # Powershell Snippets
 
+<!-- MarkdownTOC -->
+
+* [Powershell Profile](#powershell-profile)
+* [Run Multiple Commands](#run-multiple-commands)
+* [Restart Powershell as Admin](#restart-powershell-as-admin)
+    * [Explanation:](#explanation)
+
+<!-- /MarkdownTOC -->
+
+<a id="powershell-profile"></a>
+## Powershell Profile
+
+* Find Profile path by typing `$PROFILE`
+* Edit with `subl $PROFILE`
+
+<a id="run-multiple-commands"></a>
 ## Run Multiple Commands
 
 ```powershell
@@ -8,6 +24,7 @@
 command1; command2; command 3;
 ```
 
+<a id="restart-powershell-as-admin"></a>
 ## Restart Powershell as Admin
 
 For a fancier way of doing this, see [here](/scripts/restart-powershell-as-admin.md)
@@ -18,6 +35,7 @@ from: https://blogs.technet.microsoft.com/benshy/2012/06/04/using-a-powershell-s
 Start-Process powershell.exe -Credential "TestDomain\Me" -NoNewWindow -ArgumentList "Start-Process powershell.exe -Verb runAs"
 ```
 
+<a id="explanation"></a>
 ### Explanation:
 
 > The following section starts the PowerShell command-line process with Start-Process prompting for user credentials. You may not need this dependent on UAC settings, as you might already get an over-the-shoulder prompt for creds during elevation.  
