@@ -61,4 +61,7 @@ Set-Alias -Name gf -Value git-fetch
 function git-clone { git clone $args }
 Set-Alias -Name gcl -Value git-clone
 
+function git-push-origin-master { git push origin master $args }
+Set-Alias -Name gpom -Value git-push-origin-master
+
 ```
