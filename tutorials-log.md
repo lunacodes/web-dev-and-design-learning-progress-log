@@ -18,6 +18,18 @@ A log of tutorials completed from April 2018 to present.
 <a id="august-2018"></a>
 ## August 2018
 
+**8/15**
+* [zafar's log - Fixing mnemonic not found bug in Sublime Text](http://dufferzafar.github.io/2015/06/16/fixing-mnemonic-not-found-bug-in-sublime-text/)
+* [Deluxe Blog Tips - How to install WP-CLI on Windows](https://deluxeblogtips.com/install-wp-cli-windows/)
+* [evanwill - How to add more to Git Bash on Windows](https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058)
+* [Smashing Magazine - An Introduction To Automated Testing Of WordPress Plugins With PHPUnit](https://www.smashingmagazine.com/2017/12/automated-testing-wordpress-plugins-phpunit/)
+
+**8/9**
+* [Florian Brinkmann - Creating theme editor styles for Gutenberg](https://florianbrinkmann.com/en/4544/editor-styles-gutenberg/)
+    * Read, but didn't try code. 
+* (Gutenberg: wrap core block in element)[https://florianbrinkmann.com/en/5339/gutenberg-wrap-core-block-in-element/]
+    * Currently reading - looks useful!!
+
 **8/1**
 * [Python Database Programming: SQLite (tutorial)](https://pythonspot.com/en/python-database-programming-sqlite-tutorial/)
     * Sqlalchemy is so much nicer!!

@@ -5,6 +5,7 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- MarkdownTOC -->
 
+* [August 2018](#august-2018)
 * [June 2018](#june-2018)
 * [May 2018](#may-2018)
 * [April 2018](#april-2018)
@@ -12,14 +13,21 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- /MarkdownTOC -->
 
+<a id="august-2018"></a>
+## August 2018
+
+**8/9**
+* [WP Tavern - Gutenberg 1.8 Adds Greater Extensibility for Plugin Developers](https://wptavern.com/gutenberg-1-8-adds-greater-extensibility-for-plugin-developers)
+    * Exciting: Plugin authors can explicitly declare Gutenberg incompatibility when registering meta boxes. This will trigger a warning to the end user, and WordPress will fallback to the classic editor!
+
 <a id="june-2018"></a>
 ## June 2018
 
-**6/18/18**
+**6/18**
 * Assorted questions
     * [Quora - In JavaScript is much better use ternary if instead of if/else?](https://www.quora.com/In-JavaScript-is-much-better-use-ternary-if-instead-of-if-else)
 
-**6/12/18**
+**6/12**
 * [Henry Stanley - Becoming a dramatically better programmer](https://recurse.henrystanley.com/post/better/)
     * Notes [here](notes/notes-from-becoming-a-dramatically-better-programmer-6-12-18.md)
 * [Azeria - The Importance of Deep Work & The 30-Hour Method for Learning a New Skill](https://azeria-labs.com/the-importance-of-deep-work-the-30-hour-method-for-learning-a-new-skill/)
