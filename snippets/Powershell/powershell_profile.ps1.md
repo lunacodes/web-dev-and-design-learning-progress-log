@@ -31,6 +31,7 @@ Set-Alias -Name idlepy -Value "C:\Users\Luna\AppData\Local\Programs\Python\Pytho
 ## Git Aliases ##
 # Remove Defaults
 rename-item alias:\gcm gcmd -force
+rename-item alias:\gc gct -force
 rename-item alias:\gl gll -force
 
 # Git
@@ -41,13 +42,17 @@ Set-Alias -Name gs -Value git-status
 function git-diff { git diff $args }
 Set-Alias -Name gd -Value git-diff
 
+function git-add { git add $args }
+Set-Alias -Name ga -Value git-add
+
+function git-commit { git commit $args }
+Set-Alias -Name gc -Value git-commit
+
 function git-commit-all { git commit -a }
 Set-Alias -Name gca -Value git-commit-all
 
-# Note: this is the same as 'git commit -am'
-function git-commit-m { git commit -m $args }
-Set-Alias -Name gcm -Value git-commit-m
-Set-Alias -Name gcam -Value git-commit-m
+function git-commit-am { git commit -am $args }
+Set-Alias -Name gcam -Value git-commit-am
 
 function git-checkout { git checkout $args }
 Set-Alias -Name gco -Value git-checkout
@@ -61,7 +66,23 @@ Set-Alias -Name gf -Value git-fetch
 function git-clone { git clone $args }
 Set-Alias -Name gcl -Value git-clone
 
+function git-remote { git remote $args }
+Set-Alias -Name gr -Value git-remote
+
+function git-remote-view { git remote -v }
+Set-Alias -Name grv -Value git-remote-view
+
+function git-remote-add { git remote add $args }
+Set-Alias -Name gra -Value git-remote-add
+
+function git-remote-add-origin { git remote add origin $args }
+Set-Alias -Name gro -Value git-remote-add-origin
+
 function git-push-origin-master { git push origin master $args }
 Set-Alias -Name gpom -Value git-push-origin-master
+
+function git-remote-remove { git remote remove $args }
+Set-Alias -Name gmrv -Value git-remote-remove
+
 
 ```
