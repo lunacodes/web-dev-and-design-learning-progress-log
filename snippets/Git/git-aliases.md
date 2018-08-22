@@ -99,11 +99,16 @@ esac
 ```powershell
 # from: https://gist.githubusercontent.com/dunckr/8334213/raw/99de0a4eaca1114edf343fd5823bfb08037dfed5/$profile.ps1
 # Remove Defaults
-rename-item alias:\gc gk -force
-rename-item alias:\gcm gkm -force
+rename-item alias:\gcm gcmd -force
+rename-item alias:\gc gct -force
 rename-item alias:\gl gll -force
-rename-item alias:\gsn gsnn -force
-rename-item alias:\gm gmm -force
+
+## Not currently using these aliases
+# rename-item alias:\gc gk -force
+# rename-item alias:\gcm gkm -force
+# rename-item alias:\gsn gsnn -force
+# rename-item alias:\gm gmm -force
+
 
 # Git
 function git-status { git status }
@@ -127,8 +132,14 @@ Set-Alias -Name gdm -Value git-diff-master
 function git-diff-dev { git diff dev }
 Set-Alias -Name gdd -Value git-diff-dev
 
+function git-commit { git commit $args }
+Set-Alias -Name gc -Value git-commit
+
 function git-commit-all { git commit -a }
 Set-Alias -Name gca -Value git-commit-all
+
+function git-commit-am { git commit -am $args }
+Set-Alias -Name gcam -Value git-commit-am
 
 function git-commit-m { git commit -m $args }
 Set-Alias -Name gcm -Value git-commit-m
@@ -144,6 +155,27 @@ Set-Alias -Name gf -Value git-fetch
 
 function git-rebase-continue { git rebase --continue }
 Set-Alias -Name grc -Value git-rebase-continue
+
+function git-clone { git clone $args }
+Set-Alias -Name gcl -Value git-clone
+
+function git-remote { git remote $args }
+Set-Alias -Name gr -Value git-remote
+
+function git-remote-view { git remote -v }
+Set-Alias -Name grv -Value git-remote-view
+
+function git-remote-add { git remote add $args }
+Set-Alias -Name gra -Value git-remote-add
+
+function git-remote-add-origin { git remote add origin $args }
+Set-Alias -Name gro -Value git-remote-add-origin
+
+function git-push-origin-master { git push origin master $args }
+Set-Alias -Name gpom -Value git-push-origin-master
+
+function git-remote-remove { git remote remove $args }
+Set-Alias -Name gmrv -Value git-remote-remove
 
 # Misc
 function back-dir { cd .. }
