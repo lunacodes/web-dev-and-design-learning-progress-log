@@ -45,6 +45,9 @@ Set-Alias -Name gd -Value git-diff
 function git-add { git add $args }
 Set-Alias -Name ga -Value git-add
 
+function git-add-all { git add -A }
+Set-Alias -Name gaa -Value git-add-all
+
 function git-commit { git commit $args }
 Set-Alias -Name gc -Value git-commit
 
@@ -83,6 +86,5 @@ Set-Alias -Name gpom -Value git-push-origin-master
 
 function git-remote-remove { git remote remove $args }
 Set-Alias -Name gmrv -Value git-remote-remove
-
 
 ```
