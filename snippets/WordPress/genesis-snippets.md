@@ -47,6 +47,8 @@
     * [/genesis/lib/widgets/featured-post-widget.php](#genesislibwidgetsfeatured-post-widgetphp)
     * [/genesis/lib/widgets/user-profile-widget.php](#genesislibwidgetsuser-profile-widgetphp)
 * [Snippets](#snippets)
+    * [Genesis Column Classes](#genesis-column-classes)
+    * [Other](#other)
 * [CSS](#css)
 
 <!-- /MarkdownTOC -->
@@ -464,20 +466,72 @@ Hint: To search for what filter hooks are available in any theme or plugin, sear
 <a id="snippets"></a>
 ## Snippets
 
+<a id="genesis-column-classes"></a>
+### Genesis Column Classes
+
+```css
+/* Column Classes
+    Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+
+.five-sixths,
+.four-sixths,
+.one-fourth,
+.one-half,
+.one-sixth,
+.one-third,
+.three-fourths,
+.three-sixths,
+.two-fourths,
+.two-sixths,
+.two-thirds {
+    float: left;
+    margin-left: 2.564102564102564%;
+}
+
+.one-half,
+.three-sixths,
+.two-fourths {
+    width: 48.717948717948715%;
+}
+
+.one-third,
+.two-sixths {
+    width: 31.623931623931625%;
+}
+
+.four-sixths,
+.two-thirds {
+    width: 65.81196581196582%;
+}
+
+.one-fourth {
+    width: 23.076923076923077%;
+}
+
+.three-fourths {
+    width: 74.35897435897436%;
+}
+
+.one-sixth {
+    width: 14.52991452991453%;
+}
+
+.five-sixths {
+    width: 82.90598290598291%;
+}
+
+.first {
+    clear: both;
+    margin-left: 0;
+}
+```
+
+<a id="other"></a>
+### Other
+
 ```php
 <?php
-
-//* Unregister Genesis widgets
-add_action( 'widgets_init', 'unregister_genesis_widgets', 20 );
-function unregister_genesis_widgets() {
-    unregister_widget( 'Genesis_eNews_Updates' );
-    unregister_widget( 'Genesis_Featured_Page' );
-    unregister_widget( 'Genesis_Featured_Post' );
-    unregister_widget( 'Genesis_Latest_Tweets_Widget' );
-    unregister_widget( 'Genesis_Menu_Pages_Widget' );
-    unregister_widget( 'Genesis_User_Profile_Widget' );
-    unregister_widget( 'Genesis_Widget_Menu_Categories' );
-}
 
 //* Display author box on single posts
 add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
@@ -857,6 +911,14 @@ add_filter('excerpt_more', 'custom_excerpt_more');
  * @param type $text
  * @return string
  */
+
+// Simple way
+function new_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+// Fancy way
  function custom_excerpt($text) {
 //    $text= substr_replace($text,"...",strpos($text, "</p>"),0);
 $excerpt = $text . '<a href="' . get_permalink() . '"><button class="read-more-btn" type="button" value="read_more">Read More</button></a>';
@@ -864,6 +926,13 @@ return $excerpt;
 }
 
 add_filter('the_excerpt', 'custom_excerpt');
+
+//* Disable the superfish script
+add_action( 'wp_enqueue_scripts', 'sp_disable_superfish' );
+function sp_disable_superfish() {
+    wp_deregister_script( 'superfish' );
+    wp_deregister_script( 'superfish-args' );
+}
 ```
 
 
@@ -940,3 +1009,19 @@ add_filter('the_excerpt', 'custom_excerpt');
 }
 ```
 
+Remove Archive Page Titles
+
+```php
+//Removes Title and Description on CPT Archive
+remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
+//Removes Title and Description on Blog Archive
+remove_action( 'genesis_before_loop', 'genesis_do_posts_page_heading' );
+//Removes Title and Description on Date Archive
+remove_action( 'genesis_before_loop', 'genesis_do_date_archive_title' );
+//Removes Title and Description on Archive, Taxonomy, Category, Tag
+remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
+//Removes Title and Description on Author Archive
+remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
+//Removes Title and Description on Blog Template Page
+remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
+```
