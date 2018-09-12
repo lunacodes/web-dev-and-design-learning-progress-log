@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [September 2018](#september-2018)
 * [August 2018](#august-2018)
 * [July 2018](#july-2018)
 * [June 2018](#june-2018)
@@ -14,6 +15,16 @@ A log of tutorials completed from April 2018 to present.
 * [Stashed](#stashed)
 
 <!-- /MarkdownTOC -->
+
+<a id="september-2018"></a>
+## September 2018
+
+**9/12**
+* [scotch.io - How to Use SaSS Mixins](https://scotch.io/tutorials/how-to-use-sass-mixins)
+* [MarkSheet - CSS Programming - Sass mixins](https://marksheet.io/sass-mixins.html)
+
+**9/2**
+* [Badly Wired - Stopping Genesis Full Menu Loading Momentarily Before the Responsive Menu](http://badlywired.com/2018/04/stopping-genesis-full-menu-loading-momentarily-before-the-responsive-menu/)
 
 <a id="august-2018"></a>
 ## August 2018
@@ -26,7 +37,7 @@ A log of tutorials completed from April 2018 to present.
 
 **8/9**
 * [Florian Brinkmann - Creating theme editor styles for Gutenberg](https://florianbrinkmann.com/en/4544/editor-styles-gutenberg/)
-    * Read, but didn't try code. 
+    * Read, but didn't try code.
 * (Gutenberg: wrap core block in element)[https://florianbrinkmann.com/en/5339/gutenberg-wrap-core-block-in-element/]
     * Currently reading - looks useful!!
 
@@ -95,7 +106,7 @@ A log of tutorials completed from April 2018 to present.
 **5/22**
 * [Codementor - React Beginner Tutorial: Building a Board Game from Scratch](https://www.codementor.io/reactjs/tutorial/beginner-tutorial-building-a-game-from-scratch)
     * Very accessible and straightforward tutorial!
-    * Key Point: It’s always a good idea to separate application logic from presentation logic, and React encourages this practice. 
+    * Key Point: It’s always a good idea to separate application logic from presentation logic, and React encourages this practice.
 
 **5/16**
 * [freeCodeCamp - Learn React.js in 5 minutes](https://medium.freecodecamp.org/learn-react-js-in-5-minutes-526472d292f4)
@@ -111,8 +122,8 @@ A log of tutorials completed from April 2018 to present.
 
 <a id="42518"></a>
 **4/25**
-* [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska 
-    * A really excellent introduction to CSS Animations, written by a [Recurse Center](https://recurse.com) almuna 
+* [Drawing with CSS - part 1: box shadows](https://trueskawka.github.io/blog/programming/2018/02/07/drawing-with-CSS-part-1-box-shadows.html) by Alicja Raszkowska
+    * A really excellent introduction to CSS Animations, written by a [Recurse Center](https://recurse.com) almuna
 
 <a id="to-read--in-progress"></a>
 # To Read & In-Progress
@@ -132,7 +143,7 @@ A log of tutorials completed from April 2018 to present.
 
 **5/18**
 * [freeCodeCamp - Do you want to learn more about React? Let’s build — and then play — a game.](https://medium.freecodecamp.org/do-you-want-to-learn-more-about-react-lets-build-and-then-play-a-game-218e0da5be44)
-    * Excellent tutorial for game logic and structuring. 
+    * Excellent tutorial for game logic and structuring.
     * Currently on: Section 6 out of 8
     * Note: Code examples are inconsistent, and I'm having trouble getting the final code to run outside of their sandbox environment.
 

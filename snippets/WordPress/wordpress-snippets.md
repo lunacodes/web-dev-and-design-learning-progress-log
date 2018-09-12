@@ -1,13 +1,60 @@
 # WordPress Snippets
 
-do_action( string $tag,  $arg = '' )
-Execute functions hooked on a specific action hook.
+<!-- MarkdownTOC -->
 
-### Description
+* [Theme Development](#theme-development)
+    * [Change Name & Path of Theme](#change-name--path-of-theme)
+* [Action Hooks](#action-hooks)
+    * [do_action](#do_action)
+    * [Parameters](#parameters)
+* [Template Tags](#template-tags)
+* [Include Tags](#include-tags)
+    * [Useful Header Functions](#useful-header-functions)
+    * [The Loop](#the-loop)
+        * [Customizing Excerpts](#customizing-excerpts)
+    * [Navigation](#navigation)
+        * [Default Navigation Menu](#default-navigation-menu)
+        * [Specific Navigation Menu](#specific-navigation-menu)
+        * [Page Based Navigation](#page-based-navigation)
+
+<!-- /MarkdownTOC -->
+
+<a id="theme-development"></a>
+## Theme Development
+
+<a id="change-name--path-of-theme"></a>
+### Change Name & Path of Theme
+
+```php
+<?php
+require_once 'wp-config.php';
+$current_theme = wp_get_theme();
+
+$name = $current_theme->get_stylesheet();
+$path = $current_theme->get_stylesheet_directory();
+
+$new_stylesheet_name = 'haSepharadi'; // The new folder name. Just the name e.g. 'mynewtheme'
+
+if( $new_stylesheet_name ) {
+    rename( $path, get_theme_root() . '/' . $new_stylesheet_name );
+    switch_theme( $new_stylesheet_name );
+}
+```
+
+<a id="action-hooks"></a>
+## Action Hooks
+
+<a id="do_action"></a>
+### do_action
+
+Execute functions hooked on a specific action hook:
+`do_action( string $tag,  $arg = '' )`
+
 This function invokes all functions attached to action hook $tag. It is possible to create new action hooks by simply calling this function, specifying the name of the new hook using the $tag parameter.
 
 You can pass extra arguments to the hooks, much like you can with apply_filters().
 
+<a id="parameters"></a>
 ### Parameters
 $tag
 (string) (Required) The name of the action to be executed.
@@ -17,6 +64,7 @@ $arg,...
 
 
 
+<a id="template-tags"></a>
 ## Template Tags
 
 WordPress template tags are used to return information dynamically.
@@ -42,6 +90,7 @@ For example, the_title() tag would display title of the specific post.
 * wp_register(); – Show register link
 * wp_loginout(); – Displays login or logout links (for registered users)
 
+<a id="include-tags"></a>
 ## Include Tags
 
 Use these tags to include templates to your theme.
@@ -51,6 +100,7 @@ Use these tags to include templates to your theme.
 * <?php get_footer(); ?> – Includes the footer.php.
 * <?php comments_template(); ?> – Load specific template for comments.
 
+<a id="useful-header-functions"></a>
 ### Useful Header Functions
 site_url();
 wp_title();
@@ -61,6 +111,7 @@ bloginfo('template_url');
 bloginfo('atom_url');
 bloginfo('rss2_url');
 
+<a id="the-loop"></a>
 ### The Loop
 
 The Loop is PHP code used by WordPress to return posts. It processes individual posts and displays them on the current page. It also formats the post according to how it matches specified parameters.
@@ -73,10 +124,38 @@ The Loop is PHP code used by WordPress to return posts. It processes individual 
 <?php endif; ?>
 ```
 
-### Navigation 
+<a id="customizing-excerpts"></a>
+#### Customizing Excerpts
+
+```php
+<?php
+/**
+ * Append ellipses to excerpts and then show "Read More"  button for manual & automatic excerpts.
+ *
+ * @param type $text
+ * @return string
+ */
+ function custom_excerpt($text) {
+//    $text= substr_replace($text,"...",strpos($text, "</p>"),0);
+$excerpt = $text . '<a href="' . get_permalink() . '"><button class="read-more-btn" type="button" value="read_more">Read More</button></a>';
+return $excerpt;
+}
+
+add_filter('the_excerpt', 'custom_excerpt');
+
+
+function new_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+```
+<a id="navigation"></a>
+### Navigation
+<a id="default-navigation-menu"></a>
 #### Default Navigation Menu
 * <?php wp_nav_menu(); ?>
 
+<a id="specific-navigation-menu"></a>
 #### Specific Navigation Menu
 ```
 <?php wp_nav_menu( array('menu' => My Navigation' )); ?>
@@ -88,6 +167,7 @@ Category Based Navigation
 </ul>
 ```
 
+<a id="page-based-navigation"></a>
 #### Page Based Navigation
 ```php
 <ul id="menu">

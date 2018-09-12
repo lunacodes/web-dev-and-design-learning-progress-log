@@ -50,6 +50,10 @@
     * [Genesis Column Classes](#genesis-column-classes)
     * [Other](#other)
 * [CSS](#css)
+* [Unsorted](#unsorted)
+* [Mobile Menu](#mobile-menu)
+    * [Remove text from next to hamburger menu:](#remove-text-from-next-to-hamburger-menu)
+    * [Prevent Ugly Load of Mobile Menu](#prevent-ugly-load-of-mobile-menu)
 
 <!-- /MarkdownTOC -->
 
@@ -666,10 +670,10 @@ function sp_footer_backtotop_text($backtotop) {
 //* Add custom body class to the head
 add_filter( 'body_class', 'sp_body_class' );
 function sp_body_class( $classes ) {
-    
+
     $classes[] = 'custom-class';
     return $classes;
-    
+
 }
 
 //* Add custom body class to the head
@@ -691,17 +695,17 @@ function sp_body_class( $classes ) {
 //* Add custom body class to the head
 add_filter( 'body_class', 'sp_body_class' );
 function sp_body_class( $classes ) {
-    
+
     if ( is_category( 'sample-category' ) )
         $classes[] = 'custom-class';
         return $classes;
-        
+
 }
 
 //* Add custom body class to the head
 add_filter( 'body_class', 'sp_body_class' );
 function sp_body_class( $classes ) {
-    
+
     if ( is_category( '1' ) )
         $classes[] = 'custom-class';
         return $classes;
@@ -713,17 +717,17 @@ function sp_body_class( $classes ) {
     if ( is_tag( 'sample-tag' ) )
         $classes[] = 'custom-class';
         return $classes;
-        
+
 }
 
 //* Add custom body class to the head
 add_filter( 'body_class', 'sp_body_class' );
 function sp_body_class( $classes ) {
-    
+
     if ( is_tag( '1' ) )
         $classes[] = 'custom-class';
         return $classes;
-    
+
 }
 
 //* Add support for structural wraps
@@ -816,7 +820,7 @@ function unregister_genesis_widgets() {
 add_filter( 'genesis_pre_get_option_site_layout', 'custom_set_single_posts_layout' );
 /**
  * Apply Content Sidebar content layout to single posts.
- * 
+ *
  * @return string layout ID.
  */
 function custom_set_single_posts_layout() {
@@ -829,13 +833,13 @@ function custom_set_single_posts_layout() {
 unregister_sidebar( 'header-right' );
 
 
-/** Add support for custom header **/ 
-add_theme_support( ‘genesis-custom-header’, array( ‘width’ => 960, ‘height’ => 100 ) ); 
+/** Add support for custom header **/
+add_theme_support( ‘genesis-custom-header’, array( ‘width’ => 960, ‘height’ => 100 ) );
 
-// The code above should be placed anywhere after this: 
-// require_once(TEMPLATEPATH.’/lib/init.php’); 
+// The code above should be placed anywhere after this:
+// require_once(TEMPLATEPATH.’/lib/init.php’);
 
-// And before the following closing code (if it exists): 
+// And before the following closing code (if it exists):
 // Custom Header Parameters
 // ‘width’ integer, default is 960
 // ‘height’ integer, default is 80
@@ -896,7 +900,7 @@ add_action('genesis_entry_content', 'the_excerpt');
 
 /**
  * Override the default string for automatic excerpts
- * 
+ *
  * @param type $more
  * @return string
 */
@@ -907,7 +911,7 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 /**
  * Append ellipses to excerpts and then show "Read More"  button for manual & automatic excerpts.
- * 
+ *
  * @param type $text
  * @return string
  */
@@ -1025,3 +1029,51 @@ remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 
 //Removes Title and Description on Blog Template Page
 remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 ```
+
+<a id="unsorted"></a>
+## Unsorted
+
+<a id="mobile-menu"></a>
+## Mobile Menu
+
+<a id="remove-text-from-next-to-hamburger-menu"></a>
+### Remove text from next to hamburger menu:
+To change or remove the text, find the following code in the functions file:
+
+```php
+$output = array(
+    'mainMenu' => __( 'Menu', 'genesis-sample' ),
+    'subMenu'  => __( 'Menu', 'genesis-sample' ),
+);
+
+// Simply remove the text from around line 38 like this:
+$output = array(
+    'mainMenu' => __( '', 'genesis-sample' ),
+    'subMenu'  => __( '', 'genesis-sample' ),
+);
+```
+
+<a id="prevent-ugly-load-of-mobile-menu"></a>
+### Prevent Ugly Load of Mobile Menu
+
+<?php
+
+add_filter( 'body_class', function ( $classes ) {
+    $classes[] = 'no-js';
+    return $classes;
+} );
+add_action( 'genesis_before', function () {
+    ?>
+    <script>
+        //<![CDATA[
+        (function () {
+            var c = document.body.classList;
+            console.log(c);
+            c.remove('no-js');
+            c.add('js');
+            console.log(c);
+        })();
+        //]]>
+    </script>
+    <?php
+}, 1 );

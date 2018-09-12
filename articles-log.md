@@ -5,6 +5,7 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- MarkdownTOC -->
 
+* [September 2018](#september-2018)
 * [August 2018](#august-2018)
 * [June 2018](#june-2018)
 * [May 2018](#may-2018)
@@ -12,6 +13,15 @@ A log of my daily reading for web design and web development from April 2018 to 
 * [In-Progress](#in-progress)
 
 <!-- /MarkdownTOC -->
+
+<a id="september-2018"></a>
+## September 2018
+
+**9/12**
+* [engage - Top 10 CSS Mixins](https://engageinteractive.co.uk/blog/top-10-scss-mixins)
+
+**9/2**
+* [Zack Leatherman - No @font-face Syntax will ever be Bulletproof -  Nor Should It Be](https://www.zachleat.com/web/retire-bulletproof-syntax/)
 
 <a id="august-2018"></a>
 ## August 2018
@@ -77,7 +87,7 @@ A log of my daily reading for web design and web development from April 2018 to 
     * You can modify the console's appearance through its property settings. Click the PowerShell icon in the top-left corner of the console window and click Properties to open the Properties dialog box.
 
 **5**
-* [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024) 
+* [AirBnb - GitHub Issues - Why are underscore prefixes for internal methods of a React component considered bad?](https://github.com/airbnb/javascript/issues/1024)
     * Underscores give people a false sense of "private"ness that could lead to bugs.
     * Private means inaccessible. Your intent to privacy is irrelevant if the value is reachable, ie public.
     * The point of a private property is that you can trust private variables not to be changed by outside code.
@@ -87,10 +97,10 @@ A log of my daily reading for web design and web development from April 2018 to 
 **5/16**
 * [The Sass Way - Nested selectors: the inception rule](http://thesassway.com/beginner/the-inception-rule)
     * Avoid chaining yourself to the DOM - never nest selecters more than 4 layers deep!
-    * Think about how the compiler will build your code. 
+    * Think about how the compiler will build your code.
         * Is the code it's generating really needed in your CSS?
         * Can it be achieved in less selectors?
-    * Be creative: Is there a way to make the HTML code easier to work with CSS without adding extra classes? 
+    * Be creative: Is there a way to make the HTML code easier to work with CSS without adding extra classes?
         * If there is, and it doesn't affect semantics: Do it!
             - (ex: using adjacent selectors, targeting direct child elements, etc)
 * [The Sass Way - How to structure a Sass project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
@@ -103,7 +113,7 @@ A log of my daily reading for web design and web development from April 2018 to 
         * Note: this can lead to variable stew (i.e. variables accross files) issues! Do this at your own discretion.
 * [The Sass Way - Getting started with Sass and Compass](http://thesassway.com/beginner/getting-started-with-sass-and-compass)
 
-**5/15** 
+**5/15**
 * [WP Beginner - How to Create a Custom WordPress Widget](http://www.wpbeginner.com/wp-tutorials/how-to-create-a-custom-wordpress-widget/)
 * [Sass Basics](https://sass-lang.com/guide)
 
@@ -125,7 +135,7 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 * [UX Movement - the Best Place for Error Messages on Forms](http://uxmovement.com/forms/the-best-place-for-error-messages-on-forms/)
     * Placing form validation error messages in the wrong location causes high cognitive load on user memory and results in more mistakes.
         * [Research Study 1](http://doc.rero.ch/record/304897/files/iwc24-0107.pdf): the distance between the erroneous field and error message influences the efficiency of error correction.
-        * [Research Study 2](https://www.researchgate.net/publication/221054469_Online_Form_Validation_Don't_Show_Errors_Right_Away): displaying all error messages at the top of the form puts a high cognitive load on user memory. This forces users to recall each error message for each erroneous field.   
+        * [Research Study 2](https://www.researchgate.net/publication/221054469_Online_Form_Validation_Don't_Show_Errors_Right_Away): displaying all error messages at the top of the form puts a high cognitive load on user memory. This forces users to recall each error message for each erroneous field.
     * For Western English speakers, placing validation errors to the right of the field is ideal, because it goes along with the natural flow of reading.
         * For mobile users with limited horizontal screen place, placing the error messages below the field is ideal
         * Left of Field and Top of Field are the worst choices, because they go against the natural flow of reading and rereading
@@ -143,17 +153,17 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
 * [Design For Hackers - Design Pitfalls: See through your "Nerd-Eye Blindness"](https://designforhackers.com/)
     * UI and UX design needs to come first, before planning technologies.
         * Technologies are a means to make your design happen
-    * Instead of using a code first approach, get a comfortable chair, a bubbly drink, and a moleskin notebook, and close your eyes. 
+    * Instead of using a code first approach, get a comfortable chair, a bubbly drink, and a moleskin notebook, and close your eyes.
         * Really imagine what the experience could be like apart from all your technological constraints
             * This will result in fresher and more insightful solutions
 
 
 <a id="42418"></a>
 **4/24**
-* [UX Movement - Why Users Make More Errors with Instant Inline Validation](http://uxmovement.com/forms/why-users-make-more-errors-with-instant-inline-validation/?ref=webdesignernews.com) 
-    * Point: using premature inline validation causes users to make more 
+* [UX Movement - Why Users Make More Errors with Instant Inline Validation](http://uxmovement.com/forms/why-users-make-more-errors-with-instant-inline-validation/?ref=webdesignernews.com)
+    * Point: using premature inline validation causes users to make more
     errors. Only use where appropriate
-    * Comment: heard of ‘onBlur’? The field is validated once the user 
+    * Comment: heard of ‘onBlur’? The field is validated once the user
     leaves it.
 
 <a id="42318"></a>
@@ -185,7 +195,7 @@ Note: Progress between 5/1 and 5/9 was lost due to a laptop failure, and not hav
         * Start worrying about other things, like font sizes, capitalization, bolds, and italics
             * [My note: italics are often a very bad idea for accessibility]
 
-<br> 
+<br>
 
 <a id="in-progress"></a>
 # In-Progress
