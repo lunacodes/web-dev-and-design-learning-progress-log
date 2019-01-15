@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC -->
 
+* [Needs Sorting](#needs-sorting)
 * [Genesis Template Action Hooks](#genesis-template-action-hooks)
     * [genesis/comments.php](#genesiscommentsphp)
     * [genesis/footer.php](#genesisfooterphp)
@@ -56,6 +57,23 @@
     * [Prevent Ugly Load of Mobile Menu](#prevent-ugly-load-of-mobile-menu)
 
 <!-- /MarkdownTOC -->
+
+<a id="needs-sorting"></a>
+## Needs Sorting
+```php
+<?php
+acf_form_head();
+get_header();
+$author_id = get_the_author_meta('ID');
+$avatar_image= get_field('avatar_image', 'user_'. $author_id );
+$linkedin_link= get_field('linkedin_link', 'user_'. $author_id );
+$twitter_handle= get_field('twitter_handle', 'user_'. $author_id );
+?>
+
+<img src="<?php echo $avatar_image['url']; ?>" alt="<?php echo $avatar_image['alt']; ?>" />
+<a href="<?php echo $linkedin_link; ?>">LinkedIn</a>
+<a href="https://twitter.com/<?php echo $twitter_handle; ?>">Twitter</a>
+```
 
 <a id="genesis-template-action-hooks"></a>
 ## Genesis Template Action Hooks
@@ -1056,6 +1074,7 @@ $output = array(
 <a id="prevent-ugly-load-of-mobile-menu"></a>
 ### Prevent Ugly Load of Mobile Menu
 
+```php
 <?php
 
 add_filter( 'body_class', function ( $classes ) {
@@ -1077,3 +1096,4 @@ add_action( 'genesis_before', function () {
     </script>
     <?php
 }, 1 );
+```

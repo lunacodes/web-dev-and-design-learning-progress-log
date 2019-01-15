@@ -5,6 +5,7 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- MarkdownTOC -->
 
+* [October 2018](#october-2018)
 * [September 2018](#september-2018)
 * [August 2018](#august-2018)
 * [June 2018](#june-2018)
@@ -13,6 +14,12 @@ A log of my daily reading for web design and web development from April 2018 to 
 * [In-Progress](#in-progress)
 
 <!-- /MarkdownTOC -->
+
+<a id="october-2018"></a>
+## October 2018
+
+**10/22**
+* [Media Temple - The Different Logical Ways to Group CSS Properties](http://mediatemple.net/blog/tips/different-logical-ways-group-css-properties/)
 
 <a id="september-2018"></a>
 ## September 2018

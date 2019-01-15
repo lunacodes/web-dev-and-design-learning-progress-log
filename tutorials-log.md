@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [October 2018](#october-2018)
 * [September 2018](#september-2018)
 * [August 2018](#august-2018)
 * [July 2018](#july-2018)
@@ -15,6 +16,17 @@ A log of tutorials completed from April 2018 to present.
 * [Stashed](#stashed)
 
 <!-- /MarkdownTOC -->
+
+<a id="october-2018"></a>
+## October 2018
+
+**10/23**
+
+* [](https://www.sitepoint.com/css-layouts-floats-flexbox-grid/)
+* [](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_and_Progressive_Enhancement)
+* [](https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/)
+* [](https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/)
+* [](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 <a id="september-2018"></a>
 ## September 2018

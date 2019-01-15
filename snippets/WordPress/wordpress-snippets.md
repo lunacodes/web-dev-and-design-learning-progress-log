@@ -2,6 +2,8 @@
 
 <!-- MarkdownTOC -->
 
+* [General](#general)
+    * [Use $ in jQuery Code](#use-%24-in-jquery-code)
 * [Theme Development](#theme-development)
     * [Change Name & Path of Theme](#change-name--path-of-theme)
 * [Action Hooks](#action-hooks)
@@ -18,6 +20,18 @@
         * [Page Based Navigation](#page-based-navigation)
 
 <!-- /MarkdownTOC -->
+
+<a id="general"></a>
+## General
+
+<a id="use-%24-in-jquery-code"></a>
+### Use $ in jQuery Code
+```js
+jQuery( document ).ready( function( $ ) {
+    // $() will work as an alias for jQuery() inside of this function
+    [ your code goes here ]
+} );
+```
 
 <a id="theme-development"></a>
 ## Theme Development
