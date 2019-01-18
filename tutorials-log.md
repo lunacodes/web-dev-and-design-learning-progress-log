@@ -5,6 +5,7 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- MarkdownTOC -->
 
+* [January 2019](#january-2019)
 * [October 2018](#october-2018)
 * [September 2018](#september-2018)
 * [August 2018](#august-2018)
@@ -17,16 +18,22 @@ A log of tutorials completed from April 2018 to present.
 
 <!-- /MarkdownTOC -->
 
+<a id="january-2019"></a>
+## January 2019
+
+**1/17**
+* [Exove - Developing with WordPress – part 4: WP-CLI basics](https://www.exove.com/blog/developing-with-wordpress-part-4-wp-cli-basics/)
+
 <a id="october-2018"></a>
 ## October 2018
 
 **10/23**
 
-* [](https://www.sitepoint.com/css-layouts-floats-flexbox-grid/)
-* [](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_and_Progressive_Enhancement)
-* [](https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/)
-* [](https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/)
-* [](https://css-tricks.com/snippets/css/complete-guide-grid/)
+* [SitePoint - CSS Layouts, Float, Flexbox, and Grid](https://www.sitepoint.com/css-layouts-floats-flexbox-grid/)
+* [MDN - CSS Grid and Progressive Enhancement](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/CSS_Grid_and_Progressive_Enhancement)
+* [Mozilla Hacks - Using Feature Queries in CSS](https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/)
+* [Flywheel - How To Combine Flexbox And Css Grids For Layouts](https://getflywheel.com/layout/combine-flexbox-and-css-grids-for-layouts-how-to/)
+* [CSS-Tricks - A Complete Guide to CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 <a id="september-2018"></a>
 ## September 2018

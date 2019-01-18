@@ -5,6 +5,7 @@ A log of my daily reading for web design and web development from April 2018 to 
 
 <!-- MarkdownTOC -->
 
+* [January 2019](#january-2019)
 * [October 2018](#october-2018)
 * [September 2018](#september-2018)
 * [August 2018](#august-2018)
@@ -14,6 +15,15 @@ A log of my daily reading for web design and web development from April 2018 to 
 * [In-Progress](#in-progress)
 
 <!-- /MarkdownTOC -->
+
+<a id="january-2019"></a>
+## January 2019
+
+**1/16**
+* [keep a changelog](https://keepachangelog.com/en/1.0.0/)
+
+**1/14**
+* [Sass Techniques from the Trenches](https://css-tricks.com/sass-techniques-from-the-trenches/)
 
 <a id="october-2018"></a>
 ## October 2018
