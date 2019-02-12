@@ -16,7 +16,7 @@ Let’s walk through this in detail. You can also refer to the WP-CLI handbook.
 
 ## The Basics
 
-### Step#1
+### Step 1
 
 To set up PHPUnit with your WordPress plugin, start your Vagrant instance with vagrant up and then ssh into it with vagrant ssh. Once you’re in, navigate to the root directory of your WordPress installation.
 
@@ -25,11 +25,11 @@ In my case, I’m working with the WordPress installation test.dev
 >$cd /srv/www/test/htdocs/
 
 Navigate to WordPress install
-### Step#2
+### Step 2
 
 Your plugin (from your host machine) should already be available in the wp-contents directory. To configure unit tests for the plugin, we need to use the WP-CLI’s scaffold command as below:
 
-wp scaffold plugin-tests your_plugin
+`wp scaffold plugin-tests your_plugin`
 
 >$wp scaffold plugin-tests phpunit-demo-plugin
 
@@ -40,23 +40,26 @@ Cat test sample
 If you now check your plugin’s directory, you’ll notice a few additional files, the most important being in the test subdirectory. PHPUnit will automatically run any tests (files prefixed with test-) it finds under the tests directory. The auto discovery happens through the phpunit.xml, which is the main manifest file that tells PHPUnit where to find the tests and how things are setup.
 
 PHP Unit XML
-### Step#3
+### Step 3
 
 We now only need to set up a testing copy of the database for our plugin. When tests are run, PHPUnit will use this for our test environment. If you wish to use a working db instance, be sure to back it up.
 
-We need to execute the install-wp-tests.sh script located under “bin/” that was also created by the wp scaffold command:
+We need to execute the `install-wp-tests.sh` script located under `bin/` that was also created by the `wp scaffold` command:
 
-bash plugin_dir/bin/install-wp-tests.sh db_name db_user db_password db_host version
+>$bash plugin_dir/bin/install-wp-tests.sh db_name db_user db_password db_host version
 
-db_name is the name of the test database (all data will be deleted!)
-db_user is the MySQL user name
-db_pass  is the MySQL user password
-db_host is the MySQL server host
-Version is the WordPress version
+* `db_name` is the name of the test database (all data will be deleted!)
+* `db_user` is the MySQL user name
+* `db_pass`  is the MySQL user password
+* `db_host` is the MySQL server host
+* `Version` is the WordPress version
+
+Install WP tests:
+
 >$bash bin/install-wp-tests.sh wordpress_test root root localhost latest
 
-Install WP tests
-### Step#4
+
+### Step 4
 
 To test if everything installed correctly, all you need to do is run the command phpunit. A sample test file test-sample.php that was created earlier will be executed.
 
@@ -65,31 +68,30 @@ To test if everything installed correctly, all you need to do is run the command
 
 ## WordPress Testing API
 Writing Unit Tests for WordPress
-If you look at the included test-sample.php under tests, you’ll notice that the class SampleTest extends WP_UnitTestCase and not PHPUnit_Framework_TestCase. That’s because WordPress ships with its own testing library that offers WordPress specific functionality and is built on top of PHPUnit_Framework_TestCase.
+If you look at the included test-sample.php under tests, you’ll notice that the `class SampleTest` extends `WP_UnitTestCase` and not `PHPUnit_Framework_TestCase`. That’s because WordPress ships with its own testing library that offers WordPress specific functionality and is built on top of `PHPUnit_Framework_TestCase`.
 
-With WP_UnitTestCase, every method that begins with test will be run automatically.
+With `WP_UnitTestCase`, every method that begins with test will be run automatically.
 
-When we ran phpunit above, the test_sample() was executed as it was prefixed with test_ and asserted that True was true.
+When we ran `phpunit` above, the `test_sample()` was executed as it was prefixed with `test_` and asserted that True was true.
 
-Guarantee Stamp1.6 million WordPress Superheroes read and trust our blog. Join them and get daily posts delivered to your inbox - free!
-Email address
-Your email address
- SUBSCRIBE
-WP unit test case
-Here’s how we can make use of WP_UnitTestCase for our own tests:
+Here’s how we can make use of `WP_UnitTestCase` for our own tests:
 
-WP_UnitTestCase provides us with Object Factories, Utility Methods, and WordPress specific assertions in addition to assertions provided by PHPUnit,
+`WP_UnitTestCase` provides us with Object Factories, Utility Methods, and WordPress specific assertions in addition to assertions provided by PHPUnit,
 
 ### WordPress Test Assertions
 
 #### Assertions for Errors
+```php
 $this->assertWPError($actual, $message)
 $this->assertNotWPError($actual, $message)
 $this->assertIXRError($actual, $message)
 $this->assertNotIXRError($actual, $message)
 Assertions to test WP_Query for conditional tags
 $this->assertQueryTrue($args)
-E.g. $this->assertQueryTrue('is_single', 'is_feed') means is_single() and is_feed() must be true to pass.
+
+// Example:
+$this->assertQueryTrue('is_single', 'is_feed') means is_single() and is_feed() must be true to pass.
+```
 
 ### WordPress Object Factories
 
@@ -225,15 +227,18 @@ class PhpUnitDemoPluginTest extends WP_UnitTestCase {
 }
 ```
 
-When you run the test using phpunit (I’m using phpunit --debug for a detailed output) it should pass:
+When you run the test using phpunit (I’m using `phpunit --debug` for a detailed output) it should pass:
 
-First unit test
+**First unit test:**
+
 Now, let’s create a failing test by creating a user with a role of “Editor,” and then compare the user meta value for preferred_browser with an empty string.
 
-First failing test code
+**First failing test code:**
+
 On running phpunit the test fails.
 
-First failed test phpunit
+**First failed test phpunit:**
+
 Note: When an assertion fails, no other tests are run. You can modify this behavior in phpunit.xml.
 
 To fix this, we can either test that the meta value was not empty or perform a string comparison for “chrome”. Also, we’ll split the tests into two functions – to test users with and without an “Editor” role. This way, by separating the assertions, we have a good model to find bugs as they appear.
@@ -268,7 +273,7 @@ To fix this, we can either test that the meta value was not empty or perform a s
 ### Passing test metakey chrome
 Testing callback or its priority
 
-In our plugin, we added a callback for the user_register action hook with a priority value different from the default one of 10. Here, we can use the has_action function, which returns the priority of the callback on a specified hook.
+In our plugin, we added a callback for the `user_register action` hook with a priority value different from the default one of 10. Here, we can use the `has_action` function, which returns the priority of the callback on a specified hook.
 
 A failing test as the priority needs to be greater than 10
 
@@ -279,7 +284,7 @@ Passing the test with a priority check greater than 10
 
 ### Testing form submission
 
-To test whether the preferred_browser field is correctly updated from the user’s profile, we’ll have to spoof the POST variable, and then call the method that updates the user meta. This is testing in isolation. We’re only concerned about our plugin’s function that updates the meta, and not with the rest of the system like if the profile form was submitted correctly or not.
+To test whether the `preferred_browser` field is correctly updated from the user’s profile, we’ll have to spoof the `POST` variable, and then call the method that updates the user meta. This is testing in isolation. We’re only concerned about our plugin’s function that updates the meta, and not with the rest of the system like if the profile form was submitted correctly or not.
 
 A failing test after updating the meta value
 
@@ -375,7 +380,7 @@ Here are some tests I wrote for a simple admin plugin utility that uses object-o
 
 Note: To take advantage of PHPUnit TestDoubles in a plugin without a class you’ll need to use namespaces, and PHP 5.3 or above.
 
-For some advanced test examples check out:
+For some advanced test examples check out (Note: I need to grab the actual URLs):
 
 * Tests for the WordPress core
 * WooCommerce Unit Tests
@@ -394,8 +399,7 @@ TDD is a software design paradigm where unit tests are written first, and then t
 I hope this article helps you get started with PHPUnit tests in WordPress. You could also look at automating your tests using a task runner like gulp or grunt. Finally, you can follow WordPress Trac, which will help you write tests using best practices for WordPress.
 
 ## Additional Resources
-https://make.wordpress.org/cli/2013/02/19/plugin-unit-tests/
-http://wordpress.tv/?s=unit+test
-https://carlalexander.ca/introduction-wordpress-unit-testing/
-https://jtreminio.com/2013/03/unit-testing-tutorial-part-5-mock-methods-and-overriding-constructors/
-
+* [WordPress WP-CLI Handbook: Easily Set Up Unit Tests For Your Plugin](https://make.wordpress.org/cli/2013/02/19/plugin-unit-tests/)
+* [WordPress.tv: Search - Unit Tests](http://wordpress.tv/?s=unit+test)
+* [Carl Alexander - Introduction To Wordpress Unit Testing](https://carlalexander.ca/introduction-wordpress-unit-testing/)
+* [Juan Treminio -Unit Testing Tutorial Part V: Mock Methods and Overriding Constructors](https://jtreminio.com/2013/03/unit-testing-tutorial-part-5-mock-methods-and-overriding-constructors/) (2013)

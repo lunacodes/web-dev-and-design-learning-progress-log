@@ -3,12 +3,15 @@
 <!-- MarkdownTOC -->
 
 * [File Tracking](#file-tracking)
-    * [General](#general)
-    * [Git Ignore](#git-ignore)
-* [Branching](#branching)
+	* [General](#general)
+	* [Git Ignore](#git-ignore)
+* [Branch](#branch)
 * [Diff](#diff)
-    * [Diff multiple commits ago](#diff-multiple-commits-ago)
-    * [Diff with remote](#diff-with-remote)
+	* [Diff multiple commits ago](#diff-multiple-commits-ago)
+	* [Diff with remote](#diff-with-remote)
+* [Merge](#merge)
+* [Pull](#pull)
+* [Stash](#stash)
 
 <!-- /MarkdownTOC -->
 
@@ -43,8 +46,9 @@
 !*/a/b/c/*
 ```
 
-<a id="branching"></a>
-## Branching
+<a id="branch"></a>
+## Branch
+* `git branch` list of local branches
 * `git branch -a` list all branches (remote and local)
 
 Note: git pull will pull into whatever branch you're currently in. git push will push the current branch into whatever branch you specify
@@ -67,3 +71,27 @@ $ git diff HEAD~2 HEAD -- main.c
 # Note: you can compare any branch to any other (ex master -> remote/dev)
 git diff branch remote/name/branch
 ```
+
+<a id="merge"></a>
+## Merge
+To merge changes from branch `dev` into `master`:
+* on `master`: `git merge branch`
+* on branch-B -> A: switch to branch-A
+* on branch-A: `git merge dev`
+
+List Merge conflicts:
+git diff --name-only --diff-filter=U
+<a id="pull"></a>
+## Pull
+* `git pull origin branchname --allow-unrelated-histories`
+
+
+<a id="stash"></a>
+## Stash
+* `git stash list` to list your stashed changes.
+* `git stash show` to see what n is in the below commands.
+* `git stash apply` to apply the most recent stash.
+* `git stash apply stash@{n}` to apply an older stash.
+
+
+

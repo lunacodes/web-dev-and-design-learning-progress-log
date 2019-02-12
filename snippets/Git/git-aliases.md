@@ -10,7 +10,9 @@ about-alias 'common git abbreviations'
 # Aliases
 alias gcl='git clone'
 alias ga='git add'
+alias gaa='git add -A'
 alias grm='git rm'
+alias grmc='git rm --cached'
 alias gap='git add -p'
 alias gall='git add -A'
 alias gf='git fetch --all --prune'
@@ -39,9 +41,14 @@ alias gpu='git push --set-upstream'
 alias gpuo='git push --set-upstream origin'
 alias gpom='git push origin master'
 alias gr='git remote'
+alias grmt='git remote'
 alias grv='git remote -v'
 alias gra='git remote add'
+alias grao='git remote add origin'
+alias grau='git remote add upstream'
+alias grmv='git remote remove'
 alias gd='git diff'
+alias gdmom='git diff master origin/master'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
@@ -96,7 +103,8 @@ esac
 ```
 
 ## Git Aliases - Powershell
-```powershell
+
+```sh
 # from: https://gist.githubusercontent.com/dunckr/8334213/raw/99de0a4eaca1114edf343fd5823bfb08037dfed5/$profile.ps1
 # Remove Defaults
 rename-item alias:\gcm gcmd -force

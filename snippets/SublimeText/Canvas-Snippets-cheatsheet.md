@@ -1,4 +1,4 @@
-<!-- 
+<!--
     Plugin Author: Adi SK - skadimoolam
     Git Repo: https://github.com/skadimoolam/Canvas-Snippets/
     Cheatsheet URL: https://github.com/skadimoolam/Canvas-Snippets/blob/master/CheatSheet.md
@@ -6,7 +6,7 @@
 Below is a list of all the methods and properties of the Canvas' Context followed by its respective tabtrigger.
 
 #### Example:
-    1. To revel "fillStyle" property, type "fist" and enter TAB
+    1. To reveal "fillStyle" property, type "fist" and enter TAB
     2. To insert "clearRect()" methods, type "clre" and enter TAB
     and so on............
 

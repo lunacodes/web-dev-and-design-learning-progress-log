@@ -4,20 +4,33 @@
 
 * [General](#general)
     * [Use $ in jQuery Code](#use-%24-in-jquery-code)
+* [Site Optimization](#site-optimization)
+    * [Remove Plugin Stylesheets and Scripts](#remove-plugin-stylesheets-and-scripts)
+* [General](#general-1)
+    * [Remove From Header and Add to Footer](#remove-from-header-and-add-to-footer)
+* [Debugging](#debugging)
+    * [Find Out All Plugin \(Script?\) Handles](#find-out-all-plugin-script-handles)
 * [Theme Development](#theme-development)
     * [Change Name & Path of Theme](#change-name--path-of-theme)
+    * [Site Settings](#site-settings)
+* [Plugin Development](#plugin-development)
+    * [Conditional Display of Widgets](#conditional-display-of-widgets)
+    * [Custom Dashboard Widgets](#custom-dashboard-widgets)
+* [WordPress Coding Standards - Linting](#wordpress-coding-standards---linting)
+* [Images](#images)
+    * [Replace Uploaded Images](#replace-uploaded-images)
 * [Action Hooks](#action-hooks)
     * [do_action](#do_action)
     * [Parameters](#parameters)
 * [Template Tags](#template-tags)
 * [Include Tags](#include-tags)
     * [Useful Header Functions](#useful-header-functions)
-    * [The Loop](#the-loop)
-        * [Customizing Excerpts](#customizing-excerpts)
-    * [Navigation](#navigation)
-        * [Default Navigation Menu](#default-navigation-menu)
+* [The Loop](#the-loop)
+    * [Customizing Excerpts](#customizing-excerpts)
+* [Navigation](#navigation)
+    * [Default Navigation Menu](#default-navigation-menu)
         * [Specific Navigation Menu](#specific-navigation-menu)
-        * [Page Based Navigation](#page-based-navigation)
+    * [Page Based Navigation](#page-based-navigation)
 
 <!-- /MarkdownTOC -->
 
@@ -31,6 +44,135 @@ jQuery( document ).ready( function( $ ) {
     // $() will work as an alias for jQuery() inside of this function
     [ your code goes here ]
 } );
+```
+
+<a id="site-optimization"></a>
+## Site Optimization
+
+<a id="remove-plugin-stylesheets-and-scripts"></a>
+### Remove Plugin Stylesheets and Scripts
+
+<a id="general-1"></a>
+## General
+
+1. Deregister Stylesheet Handle:
+
+```php
+// For a script w/ id="gdwpm_styles-css":
+add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
+function my_deregister_styles() {
+wp_deregister_style( 'gdwpm_styles-css' );
+}
+
+// FOr multiple files:
+add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
+function my_deregister_styles() {
+wp_deregister_style( 'gdwpm_styles-css' );
+wp_deregister_style( 'bfa-font-awesome-css' );
+wp_deregister_style( 'some-other-stylesheet-handle' );
+}
+```
+
+2. Find plugin handles and then deregister
+
+```php
+function wpb_display_pluginhandles() {
+$wp_scripts = wp_scripts();
+$handlename .= "<ul>";
+    foreach( $wp_scripts->queue as $handle ) :
+      $handlename .=  '<li>' . $handle .'</li>';
+    endforeach;
+$handlename .= "</ul>";
+return $handlename;
+}
+add_shortcode( 'pluginhandles', 'wpb_display_pluginhandles');
+```
+
+```php
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+function my_deregister_javascript() {
+wp_deregister_script( 'contact-form-7' );
+}
+
+// Multiple Scripts
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+function my_deregister_javascript() {
+wp_deregister_script( 'contact-form-7' );
+wp_deregister_script( 'gdwpm_lightbox-script' );
+wp_deregister_script( 'another-plugin-script' );
+}
+```
+
+3. Load Scripts on specific pages:
+
+```php
+// Load Scripts only on Specific Pages
+
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+
+function my_deregister_javascript() {
+    if ( !is_page('Contact') ) {
+    wp_deregister_script( 'contact-form-7' );
+    }
+}
+```
+
+4. Deregister in specific location
+
+```php
+function remove_scripts_styles_footer() {
+    //----- CSS
+    wp_deregister_style('jetpack_css'); // Jetpack
+
+    //----- JS
+    wp_deregister_script('devicepx'); // Jetpack
+}
+
+add_action('wp_footer', 'remove_scripts_styles_footer');
+```
+
+5. Remove the Action
+
+```php
+remove_action('wp_head', 'devicepx');
+```
+
+<a id="remove-from-header-and-add-to-footer"></a>
+### Remove From Header and Add to Footer
+
+From: [Stack Exchange - WordPress Development - Move scripts to footer, but exclude one script?](https://wordpress.stackexchange.com/questions/205938/move-scripts-to-footer-but-exclude-one-script)
+
+```php
+function dequeue_my_scripts() {
+   wp_dequeue_script('script-handle-here');
+}
+add_action( 'wp_print_scripts', 'dequeue_my_scripts', 11 );
+```
+
+```php
+function enqueue_scripts_to_footer() {
+   wp_enqueue_script('script-handle-here');
+}
+add_action( 'wp_footer', 'enqueue_scripts_to_footer' );
+```
+
+<a id="debugging"></a>
+## Debugging
+
+<a id="find-out-all-plugin-script-handles"></a>
+### Find Out All Plugin (Script?) Handles
+
+```php
+function wpb_display_pluginhandles() {
+$wp_scripts = wp_scripts();
+$handlename .= "<ul>";
+    foreach( $wp_scripts->queue as $handle ) :
+      $handlename .=  '<li>' . $handle .'</li>';
+    endforeach;
+$handlename .= "</ul>";
+return $handlename;
+}
+add_shortcode( 'pluginhandles', 'wpb_display_pluginhandles');
 ```
 
 <a id="theme-development"></a>
@@ -54,6 +196,145 @@ if( $new_stylesheet_name ) {
     switch_theme( $new_stylesheet_name );
 }
 ```
+
+<a id="site-settings"></a>
+### Site Settings
+
+Static vs Blog homepage, via PHP
+
+```php
+// Use a static front page
+$about = get_page_by_title( 'About' );
+update_option( 'page_on_front', $about->ID );
+update_option( 'show_on_front', 'page' );
+
+// Set the blog page
+$blog   = get_page_by_title( 'Blog' );
+update_option( 'page_for_posts', $blog->ID );
+
+// Switch to our theme
+switch_theme( 'Template', 'stylesheet' );
+```
+
+<a id="plugin-development"></a>
+## Plugin Development
+
+<a id="conditional-display-of-widgets"></a>
+### Conditional Display of Widgets
+
+```php
+/* Note: these require some sorting and evaluation */
+
+// not quite working: https://www.isitwp.com/show-hide-widgets-specific-pages/
+add_filter( 'widget_display_callback', 'hide_widget_pages', 10, 3 );
+function hide_widget_pages( $instance, $widget, $args ) {
+  if ( $widget->id_base == 'pages' ) { // change 'pages' to widget name
+     if ( !is_page( 'contact' ) ) {    // change page name
+         return false;
+     }
+  }
+}
+
+
+https://inthedigital.co.uk/simple-filter-to-hide-specific-widgets-on-specific-pages/
+/**
+ * Hide portfolio teaser widget on any portfolio page
+ */
+add_filter( 'widget_display_callback', function ( $instance, $widget, $args ) {
+    return ( 'portfolio' === get_post_type() and 'portfolio_recent_installs' === $widget->id_base) ? false : $instance;
+}, 10, 3 );
+
+
+/**
+ * Hide portfolio teaser widget on any portfolio page
+ */
+add_filter( 'widget_display_callback', function ( $instance, $widget, $args ) {
+    // the post type and widget ID to compare
+    $post_type_to_compare = 'portfolio';
+    $widget_id_to_compare = 'portfolio_recent_installs';
+
+    // the current page's post type and current widget's base ID
+    $post_type = get_post_type();
+    $widget_id = $widget->id_base;
+
+    // the Boolean results from each comparison
+    $is_widget_match = $widget_id_to_compare === $widget_id;
+    $is_post_type_match = $post_type_to_compare === $post_type;
+
+    // the expression to determine which value will be returned
+    if ( $is_post_type_match &amp;&amp; $is_widget_match ) {
+        return false;
+    } else {
+        return $instance;
+    }
+}, 10, 3 );
+
+// Jetpack's implementation
+// http://hookr.io/filters/widget_display_callback/
+
+
+```
+
+<a id="custom-dashboard-widgets"></a>
+### Custom Dashboard Widgets
+
+```php
+// From: https://www.wpbeginner.com/wp-themes/how-to-add-custom-dashboard-widgets-in-wordpress/
+add_action('wp_dashboard_setup', 'my_custom_dashboard_widgets');
+
+function my_custom_dashboard_widgets() {
+global $wp_meta_boxes;
+
+wp_add_dashboard_widget('custom_help_widget', 'Theme Support', 'custom_dashboard_help');
+}
+
+function custom_dashboard_help() {
+echo '<p>Welcome to Custom Blog Theme! Need help? Contact the developer <a href="mailto:yourusername@gmail.com">here</a>. For WordPress Tutorials visit: <a href="https://www.wpbeginner.com" target="_blank">WPBeginner</a></p>';
+}
+```
+
+<a id="wordpress-coding-standards---linting"></a>
+## WordPress Coding Standards - Linting
+
+1. [Create & Code - How to setup linting and coding standards compliance for WordPress](https://createandcode.com/linting-wordpress-coding-standards/)
+
+2. [webdev studios - Lint Code Like a Boss](https://webdevstudios.com/2017/04/06/lint-code-like-boss/)
+
+<a id="images"></a>
+## Images
+
+<a id="replace-uploaded-images"></a>
+### Replace Uploaded Images
+
+```php
+/* Note: have not tested */
+
+function replace_uploaded_image($image_data) {
+// if there is no large image : return
+if (!isset($image_data['sizes']['large'])) return $image_data;
+
+// paths to the uploaded image and the large image
+$upload_dir = wp_upload_dir();
+$uploaded_image_location = $upload_dir['basedir'] . '/' .$image_data['file'];
+$large_image_location = $upload_dir['path'] . '/'.$image_data['sizes']['large']['file'];
+
+// delete the uploaded image
+unlink($uploaded_image_location);
+
+// rename the large image
+rename($large_image_location,$uploaded_image_location);
+
+// update image metadata and return them
+$image_data['width'] = $image_data['sizes']['large']['width'];
+$image_data['height'] = $image_data['sizes']['large']['height'];
+unset($image_data['sizes']['large']);
+
+return $image_data;
+}
+
+add_filter('wp_generate_attachment_metadata','replace_uploaded_image');
+```
+
 
 <a id="action-hooks"></a>
 ## Action Hooks
@@ -126,7 +407,7 @@ bloginfo('atom_url');
 bloginfo('rss2_url');
 
 <a id="the-loop"></a>
-### The Loop
+## The Loop
 
 The Loop is PHP code used by WordPress to return posts. It processes individual posts and displays them on the current page. It also formats the post according to how it matches specified parameters.
 
@@ -139,10 +420,9 @@ The Loop is PHP code used by WordPress to return posts. It processes individual 
 ```
 
 <a id="customizing-excerpts"></a>
-#### Customizing Excerpts
+### Customizing Excerpts
 
 ```php
-<?php
 /**
  * Append ellipses to excerpts and then show "Read More"  button for manual & automatic excerpts.
  *
@@ -163,26 +443,32 @@ function new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 ```
+
 <a id="navigation"></a>
-### Navigation
+## Navigation
+
 <a id="default-navigation-menu"></a>
-#### Default Navigation Menu
+### Default Navigation Menu
 * <?php wp_nav_menu(); ?>
 
 <a id="specific-navigation-menu"></a>
 #### Specific Navigation Menu
-```
-<?php wp_nav_menu( array('menu' => My Navigation' )); ?>
+
+```php
+wp_nav_menu( array('menu' => 'My Navigation' )); ?>
 Category Based Navigation
+
 <ul id="menu">
-<li <?php if(is_home()) { ?> class="current-cat" <?php } ?>>
-<a href="<?php bloginfo('home'); ?>">Home</a></li>
-<?php wp_list_categories('title_li=&orderby=id');?>
+    <li <?php if(is_home()) { ?> class="current-cat" <?php } ?>>
+    <a href="<?php bloginfo('home'); ?>">Home</a></li>
+
+    <?php wp_list_categories('title_li=&orderby=id');?>
 </ul>
 ```
 
 <a id="page-based-navigation"></a>
-#### Page Based Navigation
+### Page Based Navigation
+
 ```php
 <ul id="menu">
 <li <?php if(is_home()) { ?> class="current-page-item" <?php } ?>>

@@ -1,42 +1,77 @@
 <!-- MarkdownTOC -->
 
 * [WP-CLI Snippets](#wp-cli-snippets)
-    * [Cache](#cache)
-    * [Cap](#cap)
-    * [Cli](#cli)
-    * [Comment](#comment)
-    * [Config](#config)
-    * [Core](#core)
-    * [Cron](#cron)
-    * [Db](#db)
-    * [Embed](#embed)
-    * [Language](#language)
-    * [Media](#media)
-    * [Menu](#menu)
-    * [Network](#network)
-    * [Option](#option)
-    * [Package](#package)
-    * [Plugin](#plugin)
-    * [Post-type](#post-type)
-    * [Post](#post)
-    * [Profile](#profile)
-    * [Rewrite](#rewrite)
-    * [Role](#role)
-    * [Scaffold](#scaffold)
-    * [Sidebar](#sidebar)
-    * [Site](#site)
-    * [Super-admin](#super-admin)
-    * [Taxonomy](#taxonomy)
-    * [Term](#term)
-    * [Theme](#theme)
-    * [Transient](#transient)
-    * [User](#user)
-    * [Widget](#widget)
+  * [Bash Completions](#bash-completions)
+  * [Cache](#cache)
+  * [Cap](#cap)
+  * [Cli](#cli)
+  * [Comment](#comment)
+  * [Config](#config)
+  * [Core](#core)
+  * [Cron](#cron)
+  * [Db](#db)
+  * [Embed](#embed)
+  * [Language](#language)
+  * [Media](#media)
+  * [Menu](#menu)
+  * [Network](#network)
+  * [Option](#option)
+  * [Package](#package)
+  * [Plugin](#plugin)
+  * [Post-type](#post-type)
+  * [Post](#post)
+  * [Profile](#profile)
+  * [Rewrite](#rewrite)
+  * [Role](#role)
+  * [Scaffold](#scaffold)
+  * [Sidebar](#sidebar)
+  * [Site](#site)
+  * [Super-admin](#super-admin)
+  * [Taxonomy](#taxonomy)
+  * [Term](#term)
+  * [Theme](#theme)
+  * [Transient](#transient)
+  * [User](#user)
+  * [Widget](#widget)
+  * [W3TC - total-cache](#w3tc---total-cache)
+  * [Global Parameters](#global-parameters)
+  * [Extending WP-CLI Commands](#extending-wp-cli-commands)
 
 <!-- /MarkdownTOC -->
 <a id="wp-cli-snippets"></a>
 # WP-CLI Snippets
 <a id="wp-cli-snippets"></a>
+
+<a id="bash-completions"></a>
+## Bash Completions
+
+Bash Completions for the `wp` command
+
+```sh
+# bash completion for the `wp` command
+
+_wp_complete() {
+  local OLD_IFS="$IFS"
+  local cur=${COMP_WORDS[COMP_CWORD]}
+
+  IFS=$'\n';  # want to preserve spaces at the end
+  local opts="$(wp cli completions --line="$COMP_LINE" --point="$COMP_POINT")"
+
+  if [[ "$opts" =~ \<file\>\s* ]]
+  then
+    COMPREPLY=( $(compgen -f -- $cur) )
+  elif [[ $opts = "" ]]
+  then
+    COMPREPLY=( $(compgen -f -- $cur) )
+  else
+    COMPREPLY=( ${opts[*]} )
+  fi
+
+  IFS="$OLD_IFS"
+  return 0
+}
+complete -o nospace -F _wp_complete wp
+```
 
 <a id="cache"></a>
 ## Cache
@@ -426,3 +461,97 @@
 * wp widget move
 * wp widget reset
 * wp widget update
+
+<a id="w3tc---total-cache"></a>
+## W3TC - total-cache
+
+cdn_purge               Purges URL's from cdn and varnish if enabled
+fix_environment         Creates missing files, writes apache/nginx rules.
+flush                   Clear something from the cache.
+import                  Imports configuration file
+opcache_flush           SNS/local file.php Tells opcache to compile files
+opcache_flush_file      Tell opcache to reload PHP files
+option                  Get or set option.
+pgcache_cleanup         Generally triggered from a cronjob, performs manual page cache Garbage collection
+pgcache_prime           Generally triggered from a cronjob, performs manual page cache priming
+querystring             Update query string for all static files
+
+
+<a id="global-parameters"></a>
+## Global Parameters
+
+GLOBAL PARAMETERS
+
+```php
+--path=<path>
+  Path to the WordPress files.
+
+--url=<url>
+  Pretend request came from given URL. In multisite, this argument is how the target site is specified.
+
+--ssh=[<scheme>:][<user>@]<host|container>[:<port>][<path>]
+  Perform operation against a remote server over SSH (or a container using scheme of "docker", "docker-compose",
+  "vagrant").
+
+--http=<http>
+  Perform operation against a remote WordPress install over HTTP.
+
+--user=<id|login|email>
+  Set the WordPress user.
+
+  --skip-themes[=<themes>]
+      Skip loading all themes, or a comma-separated list of themes.
+
+  --skip-packages
+      Skip loading all installed packages.
+
+  --require=<path>
+      Load PHP file before running the command (may be used more than once).
+
+  --[no-]color
+      Whether to colorize the output.
+
+  --debug[=<group>]
+      Show all PHP errors and add verbosity to WP-CLI output. Built-in groups include: bootstrap, commandfactory, and
+      help.
+
+  --prompt[=<assoc>]
+      Prompt the user to enter values for all command arguments, or a subset specified as comma-separated values.
+
+  --quiet
+      Suppress informational messages.
+
+```
+
+<a id="extending-wp-cli-commands"></a>
+## Extending WP-CLI Commands
+
+WP-CLI supports registering any callable class, function, or closure as a command. It reads usage details from the callback's PHPdoc. WP_CLI::add_command() (doc) is used for both internal and third-party command registration.
+
+```php
+/**
+ * Delete an option from the database.
+ *
+ * Returns an error if the option didn't exist.
+ *
+ * ## OPTIONS
+ *
+ * <key>
+ * : Key for the option.
+ *
+ * ## EXAMPLES
+ *
+ *     $ wp option delete my_option
+ *     Success: Deleted 'my_option' option.
+ */
+$delete_option_cmd = function( $args ) {
+  list( $key ) = $args;
+
+  if ( ! delete_option( $key ) ) {
+    WP_CLI::error( "Could not delete '$key' option. Does it exist?" );
+  } else {
+    WP_CLI::success( "Deleted '$key' option." );
+  }
+};
+WP_CLI::add_command( 'option delete', $delete_option_cmd );
+```

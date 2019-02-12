@@ -2,21 +2,54 @@
 
 <!-- MarkdownTOC -->
 
+* [General](#general)
 * [Mechanical](#mechanical)
 * [Websites & User Interaction](#websites--user-interaction)
 * [Positioning](#positioning)
 * [Networking](#networking)
+  * [Fetch](#fetch)
 * [Geolocation](#geolocation)
-* [General](#general)
+* [Time & Dates](#time--dates)
 
 <!-- /MarkdownTOC -->
+
+<a id="general"></a>
+## General
+1. Optional Parameters:
+
+```js
+// With ES6:
+function myFunc(a, b = 0) {
+   // function body
+}
+```
+
+Please keep in mind that ES6 checks the values against undefined and not against truthy-ness (so only real undefined values get the default value - falsy values like null will not default).
+
+```js
+With ES5:
+
+function myFunc(a,b) {
+  b = b || 0;
+
+  // b will be set either to b or to 0.
+}
+```
+
+This works as long as all values you explicitly pass in are truthy. Values that are not truthy as per MiniGod's comment: null, undefined, 0, false, ''
+
+It's pretty common to see JavaScript libraries to do a bunch of checks on optional inputs before the function actually starts.
+
+`null, undefined, 0, false, '', NaN` will all get the default value.
+
+If you only want the default value if b is omitted, use `if (typeof b === 'undefined') b = 0;`
 
 <a id="mechanical"></a>
 ## Mechanical
 
-1. Spread Operator: list all items in array w/o for loop: 
+1. Spread Operator: list all items in array w/o for loop:
 
-```js 
+```js
 // from: https://medium.freecodecamp.org/7-javascript-methods-that-will-boost-your-skills-in-less-than-8-minutes-4cc4c3dca03f
 const favoriteFood = ['Pizza', 'Fries', 'Swedish-meatballs']
 
@@ -61,7 +94,7 @@ function addLink() {
         * &copy; and &#169; both produce the standard copyright symbol ©
         * &#9400; produce a circled capital letter C Ⓒ
         * &#9426; produce a circled small letter c ⓒ
-     */ 
+     */
 
     // Create a new div to hold the prepared text
     newdiv = document.createElement('div');
@@ -88,7 +121,7 @@ document.addEventListener('copy', addLink);
 jQuery(document).on('copy', function(e)
 {
   var sel = window.getSelection();
-  var copyFooter = 
+  var copyFooter =
         "<br /><br /> Source: <a href='" + document.location.href + "'>" + document.location.href + "</a><br />© YourSite";
   var copyHolder = $('<div>', {html: sel+copyFooter, style: {position: 'absolute', left: '-99999px'}});
   $('body').append(copyHolder);
@@ -104,7 +137,7 @@ jQuery(document).on('copy', function(e)
 <a id="positioning"></a>
 ## Positioning
 
-1. Get Browser Width and Height: 
+1. Get Browser Width and Height:
 
 ```js
 function getBrowserWidth() {
@@ -129,7 +162,39 @@ function getBrowserHeight() {
 ```
 
 <a id="networking"></a>
-# Networking
+## Networking
+
+<a id="fetch"></a>
+### Fetch
+
+1. Fetch API Example
+
+```js
+// Basic Fetch Request
+let urlStr = 'https://api.db-ip.com/v2/free/self';
+fetch(urlStr)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(myJson);
+  });
+```
+
+2. Get visitor's IP Address
+
+```js
+async function getIP(sub) {
+  const URL = 'https://api.ipify.org?format=json';
+  const fetchResult = fetch(URL);
+  const response = await fetchResult;
+  const jsonData = await response.json();
+  let ip = jsonData["ip"];
+  // const res = new Array(jsonData);
+  getGeoDetailsByIp(ip);
+}
+getIP('javascript');
+```
 
 <a id="geolocation"></a>
 ## Geolocation
@@ -161,34 +226,36 @@ function showPosition(position) {
 
 
 ```
-<a id="general"></a>
-## General
 
-1. Fetch API Example
+2. GetUser Latitude and Longitude via JSON API
+  * https://ipapi.co/json/
+  * https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
+
+<a id="time--dates"></a>
+## Time & Dates
+
+1. Convert from `YYYY-MM-DD` to `Month, DD, YYYY`
 
 ```js
-// Basic Fetch Request
-let urlStr = 'https://api.db-ip.com/v2/free/self';
-fetch(urlStr)
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(myJson) {
-    console.log(myJson);
-  });
+var date3 = new Date(2009, 10, 10);  // 2009-11-10
+var localizedDate = date3.toLocaleString('en-us', { month: 'long', day: 'numeric', year: 'numeric' });
+console.log(localizedDate);
 ```
 
-2. Get visitor's IP Address
+2. Convert `ISO 8601` to `UTC Seconds`
 
 ```js
-async function getIP(sub) {
-  const URL = 'https://api.ipify.org?format=json';
-  const fetchResult = fetch(URL);
-  const response = await fetchResult;
-  const jsonData = await response.json();
-  let ip = jsonData["ip"];
-  // const res = new Array(jsonData);
-  getGeoDetailsByIp(ip);
+let right_now = new Date();
+convToUTC(right_now);
+
+function convToUTC(dateObj) {
+    let time = dateObj;
+    time = time.toISOString();
+    time = Date.parse(time);
+    time = time.toString();
+    time = time.slice(0,10);
+
+    return time;
 }
-getIP('javascript');
 ```
+
