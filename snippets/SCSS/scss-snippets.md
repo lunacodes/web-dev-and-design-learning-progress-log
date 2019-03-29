@@ -13,6 +13,9 @@
 * [Truncate](#truncate)
 * [Sources](#sources)
 * [Resources](#resources)
+* [Needs Sorting](#needs-sorting)
+  * [Part 1](#part-1)
+  * [Part 2](#part-2)
 
 <!-- /MarkdownTOC -->
 
@@ -233,3 +236,219 @@ Trigger hardware acceleration for some animation.
 ## Resources
 * [GitHub - Engage Interactive: _mixins.scss](https://github.com/engageinteractive/front-end-baseplate/blob/master/src/scss/utility/_mixins.scss) - Giant list of Mixins
     * Part of the [Front End Baseplate](https://github.com/engageinteractive/front-end-baseplate) Project
+* https://css-tricks.com/the-sass-ampersand/
+* https://github.com/sasstools/sass-lint
+* https://github.com/brigade/scss-lint/blob/master/config/default.yml
+* https://github.com/RadValentin/postcss-prefix-selector
+
+
+<a id="needs-sorting"></a>
+## Needs Sorting
+
+<a id="part-1"></a>
+### Part 1
+
+```scss
+/// Power function
+/// @param {Number} $x
+/// @param {Number} $n
+/// @return {Number}
+/// @source https://github.com/adambom/Sass-Math/blob/master/math.scss Sass-Math
+@function pow($x, $n) {
+  $result: 1;
+
+  @if $n >= 0 {
+    @for $i from 1 through $n {
+        $result: $result * $x;
+    }
+  } @else {
+      @for $i from $n to 0 {
+        $result: $result / $x;
+      }
+    }
+  @return $result;
+}
+
+https://github.com/at-import/Sassy-math
+https://unindented.org/articles/trigonometry-in-sass/
+http://thesassway.com/advanced/inverse-trigonometric-functions-with-sass
+
+
+http://sass-guidelin.es/#lightening-and-darkening-colors
+
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}
+
+
+
+Sprite Builders:
+https://github.com/filamentgroup/grunticon
+  Runs on Grunt: http://gruntjs.com/
+    Browser-based app: http://grumpicon.com/
+      Released by: http://www.filamentgroup.com/
+```
+
+<a id="part-2"></a>
+### Part 2
+
+```scss
+When you find yourself writing the same code over and over again, it feels like Sass mixins might help you out.
+
+Sass mixins are CSS functions that you can include whenever you want.
+
+#Syntax
+Remember how we wrote @keyframes when creating CSS animations? The Sass mixin syntax is fairly similar:
+
+@mixin overlay() {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+The name of this mixin is overlay. You can reference this mixin in any CSS rule by using @include:
+
+.modal-background{
+  @include overlay();
+  background: black;
+  opacity: 0.9;
+}
+As usual, this .scss will be compiled into .css:
+
+.modal-background{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: black;
+  opacity: 0.9;
+}
+#Reusability
+The main purpose of a mixin is to make a set of properties reusable.
+
+Like Sass variables (where you define your values on a single location), Sass mixins allow you to define properties on a single location.
+
+The previous mixin can be reused in other rules:
+
+.modal-background{
+  @include overlay();
+}
+
+.product-link{
+  @include overlay();
+}
+
+.image-pattern{
+  @include overlay();
+}
+.modal-background{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.product-link{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.image-pattern{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#Parameters
+Because mixins are functions and because you might want to alter the output, mixins can accept parameters.
+
+For example, this border-radius mixin prevents rewriting vendor prefixes and takes the actual radius value as a parameter:
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box{
+  @include border-radius(3px);
+}
+.box{
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+          border-radius: 3px;
+}
+The mixin circumvents the hassle of having to write all vendor prefixes, and uses the $radius to allow defining the same radius value for every vendor property.
+
+#Optional parameters
+If you want a parameter to have a default value while providing the possibility to set one occasionally, you can create optional paramaters:
+
+@mixin label($text: "Code", $background: $yellow, $color: rgba(black, 0.5)) {
+  position: relative;
+  &:before{
+    background: $background;
+    color: $color;
+    content: $text;
+    display: inline-block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    height: 1rem;
+    left: 0;
+    letter-spacing: 0.1em;
+    line-height: 1rem;
+    padding: 0 0.5em;
+    position: absolute;
+    text-transform: uppercase;
+    top: 0;
+  }
+}
+This mixin is the one used by this website to add labels in the top left corner of code snippets. It has 3 optional parameters, each of them with their own default value set with a colon :.
+
+This mixin is used several times throughout the code:
+
+div.highlighter-rouge{
+  @include label();
+  &.css{
+    @include label("CSS", $blue, white);
+  }
+  &.scss{
+    @include label("SCSS", #c69, white);
+  }
+}
+The div.highlighter-rouge will use the mixin’s default values:
+
+text "Code"
+background: $yellow
+color: rgba(black, 0.5)
+The .css and .scss versions, because their parameters are set, will use different labels and colors.
+
+#Mixin libraries
+If you don’t want to spend time writing your own Sass mixins, you can use any of the following mixin libraries:
+
+Bourbon: bourbon.io
+Compass: compass-style.org
+Susy: susy.oddbird.net
+```

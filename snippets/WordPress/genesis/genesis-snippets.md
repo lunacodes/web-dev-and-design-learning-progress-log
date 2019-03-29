@@ -8,7 +8,10 @@
 * [Archive and Category Pages](#archive-and-category-pages)
     * [Remove Archive Page Titles](#remove-archive-page-titles)
     * [Remove Category Page Titles](#remove-category-page-titles)
-* [Other](#other)
+* [Author Box](#author-box)
+* [AdSense](#adsense)
+* [Full-Width Header Image](#full-width-header-image)
+* [General Settings](#general-settings)
 * [CSS](#css)
 * [Unsorted](#unsorted)
 * [Mobile Menu](#mobile-menu)
@@ -24,7 +27,6 @@ For a list of all the Genesis Action Hooks, see the [Genesis Action Hooks](genes
 <a id="needs-sorting"></a>
 ## Needs Sorting
 ```php
-<?php
 acf_form_head();
 get_header();
 $author_id = get_the_author_meta('ID');
@@ -150,53 +152,52 @@ remove_action( 'genesis_archive_title_descriptions', 'genesis_do_archive_heading
 
 // These did not work for category page - but may be useful for anything else
 
-// remove_action( 'genesis_archive_title_descriptions', 'genesis_do_archive_headings_open', 5, 3 );
+remove_action( 'genesis_archive_title_descriptions', 'genesis_do_archive_headings_open', 5, 3 );
 
-// remove_action( 'genesis_archive_title_descriptions', 'taxonomy-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'taxonomy-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'author-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'author-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'taxonomy-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'taxonomy-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'author-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'author-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'cpt-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'cpt-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'date-archive-description' );
+remove_action( 'genesis_archive_title_descriptions', 'date-archive-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'posts-page-description' );
+remove_action( 'genesis_archive_title_descriptions', 'posts-page-description' );
 
-// remove_action( 'genesis_archive_title_descriptions', 'genesis_do_archive_headings_intro_text', 12, 3 );
+remove_action( 'genesis_archive_title_descriptions', 'genesis_do_archive_headings_intro_text', 12, 3 );
 
-// //* Remove custom headline and / or description to category / tag / taxonomy archive pages.
+//* Remove custom headline and / or description to category / tag / taxonomy archive pages.
 
-// remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
+remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
 
-// //* Remove custom headline and description to blog template pages.
+//* Remove custom headline and description to blog template pages.
 
-// remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
+remove_action( 'genesis_before_loop', 'genesis_do_blog_template_heading' );
 
-// //* Remove custom headline and description to date archive pages.
+//* Remove custom headline and description to date archive pages.
 
-// remove_action( 'genesis_before_loop', 'genesis_do_date_archive_title' );
+remove_action( 'genesis_before_loop', 'genesis_do_date_archive_title' );
 
-//* Remove custom headline and description to author archive pages.
+// * Remove custom headline and description to author archive pages.
 
-// remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
+remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
 
-//* Remove custom headline and description to relevant custom post type archive pages.
+// * Remove custom headline and description to relevant custom post type archive pages.
 
-// remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
-// remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 8 );
-// remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 15 );
+remove_action( 'genesis_before_loop', 'genesis_do_cpt_archive_title_description' );
+remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 8 );
+remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 15 );
 ```
 
 
-<a id="other"></a>
-## Other
+<a id="author-box"></a>
+## Author Box
 
 ```php
-<?php
 
 //* Display author box on single posts
 add_filter( 'get_the_author_genesis_author_box_single', '__return_true' );
@@ -215,7 +216,11 @@ add_filter( 'genesis_author_box_gravatar_size', 'author_box_gravatar_size' );
 function author_box_gravatar_size( $size ) {
     return 80;
 }
+```
 
+<a id="adsense"></a>
+## AdSense
+```php
 // Set AdSense ID to always be an empty string - stops meta box from appearing on Post screens.
 add_filter( 'genesis_pre_get_option_adsense_id', '__return_empty_string' );
 
@@ -231,7 +236,39 @@ function child_remove_adsense_customizer( $config ) {
 
     return $config;
 }
+```
 
+<a id="full-width-header-image"></a>
+## Full-Width Header Image
+
+```php
+// Add support for custom header.
+add_theme_support( 'custom-header', array(
+'width' => 1140,
+'height' => 244,
+'header-selector' => '.site-header .title-area',
+'header-text' => false,
+) );
+```
+
+```css
+.header-image .site-title a {
+background-repeat: no-repeat;
+background-size: contain !important;
+background: url(‘your-image-url’);
+float: left;
+margin: 0;
+max-width: ####px;
+min-height: ###px;
+padding: 0;
+width: 100%;
+}
+```
+
+
+<a id="general-settings"></a>
+## General Settings
+```php
 //* Show page content above posts
 add_action( 'genesis_loop', 'genesis_standard_loop', 5 );
 genesis();
@@ -320,7 +357,9 @@ function sp_custom_footer() {
     <p>&copy; Copyright 2012 <a href="http://mydomain.com/">My Domain</a> &middot; All Rights Reserved &middot; Powered by <a href="http://wordpress.org/">WordPress</a> &middot; <a href="http://mydomain.com/wp-admin">Admin</a></p>
     <?php
 }
+```
 
+```php
 //* Customize the return to top of page text
 add_filter( 'genesis_footer_backtotop_text', 'sp_footer_backtotop_text' );
 function sp_footer_backtotop_text($backtotop) {
@@ -534,12 +573,11 @@ if ( !is_page() ) {
 //* Add Viewport meta tag for mobile browsers (requires HTML5 theme support)
 add_theme_support( 'genesis-responsive-viewport' );
 
-
 //* Modify the Genesis content limit read more link
 add_filter( 'get_the_content_more_link', 'sp_read_more_link' );
 function sp_read_more_link() {
     return '... <a class="more-link" href="' . get_permalink() . '">[Continue Reading]</a>';
-
+}
 //* Modify the length of post excerpts
 add_filter( 'excerpt_length', 'sp_excerpt_length' );
 function sp_excerpt_length( $length ) {
@@ -598,6 +636,8 @@ function sp_disable_superfish() {
     wp_deregister_script( 'superfish' );
     wp_deregister_script( 'superfish-args' );
 }
+
+
 ```
 
 

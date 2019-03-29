@@ -16,6 +16,7 @@ alias grmc='git rm --cached'
 alias gap='git add -p'
 alias gall='git add -A'
 alias gf='git fetch --all --prune'
+alias gfo='git fetch origin master'
 alias gft='git fetch --all --prune --tags'
 alias gfv='git fetch --all --prune --verbose'
 alias gftv='git fetch --all --prune --tags --verbose'
@@ -76,6 +77,10 @@ alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset
 alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
 alias gwc="git whatchanged"
+# List files being tracked under master
+alias glst='git ls-tree -r master --name-only'
+# List all files that ever existed (including deleted)
+alias glsa='git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d''
 alias gt="git tag"
 alias gta="git tag -a"
 alias gtd="git tag -d"

@@ -1,8 +1,95 @@
 # Bash Snippets
 
-```sh 
+<!-- MarkdownTOC -->
+
+* [Colors](#colors)
+* [Cheat Sheet](#cheat-sheet)
+  * [Shortcuts](#shortcuts)
+  * [Bash Basics](#bash-basics)
+  * [File Commands](#file-commands)
+  * [Directory Commands](#directory-commands)
+  * [SSH, System Info & Network Commands](#ssh-system-info--network-commands)
+  * [Variables](#variables)
+  * [Functions](#functions)
+  * [Flow Controls](#flow-controls)
+  * [Command-Line Processing Cycle](#command-line-processing-cycle)
+  * [Input/Output Redirectors](#inputoutput-redirectors)
+  * [Process Handling](#process-handling)
+  * [Tips & Tricks](#tips--tricks)
+  * [Debugging Shell Programs](#debugging-shell-programs)
+
+<!-- /MarkdownTOC -->
+
+<a id="colors"></a>
+## Colors
+
+```sh
+#!
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+# Note: the \'s below is b/c Markdown Extended was being a pain. May have to remove the \ for actual usage
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # We have color support; assume it\'s compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+```
+
+<a id="cheat-sheet"></a>
+## Cheat Sheet
+
+From: [LeCoupa - awesome-cheatsheets: bash.sh](https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh)
+
+<a id="shortcuts"></a>
+### Shortcuts
+
+```sh
 #!/bin/bash
 # From: https://github.com/LeCoupa/awesome-cheatsheets/blob/master/languages/bash.sh
+
 ##############################################################################
 # SHORTCUTS
 ##############################################################################
@@ -39,7 +126,13 @@ ALT+F   # moves forward one word
 DELETE  # deletes one character backward
 !!      # repeats the last command
 exit    # logs out of current session
+```
 
+<a id="bash-basics"></a>
+### Bash Basics
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # BASH BASICS
@@ -55,7 +148,13 @@ whereis bash        # finds out where bash is on your system
 which bash          # finds out which program is executed as 'bash' (default: /bin/bash, can change across environments)
 
 clear               # clears content on window (hide displayed lines)
+```
 
+<a id="file-commands"></a>
+### File Commands
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # FILE COMMANDS
@@ -89,7 +188,13 @@ genscript                     # converts plain text files into postscript for pr
 dvips <filename>              # prints .dvi files (i.e. files produced by LaTeX)
 grep <pattern> <filenames>    # looks for the string in the files
 grep -r <pattern> <dir>       # search recursively for pattern in directory
+```
 
+<a id="directory-commands"></a>
+### Directory Commands
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # DIRECTORY COMMANDS
@@ -100,7 +205,13 @@ mkdir <dirname>  # makes a new directory
 cd               # changes to home
 cd <dirname>     # changes directory
 pwd              # tells you where you currently are
+```
 
+<a id="ssh-system-info--network-commands"></a>
+### SSH, System Info & Network Commands
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # SSH, SYSTEM INFO & NETWORK COMMANDS
@@ -137,7 +248,13 @@ whois <domain>           # gets whois information for domain
 dig <domain>             # gets DNS information for domain
 dig -x <host>            # reverses lookup host
 wget <file>              # downloads file
+```
 
+<a id="variables"></a>
+### Variables
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # VARIABLES
@@ -191,7 +308,13 @@ ${#varname}                  # returns the length of the value of the variable a
 !(patternlist)               # matches anything except one of the given patterns
 
 $(UNIX command)              # command substitution: runs the command and returns standard output
+```
 
+<a id="functions"></a>
+### Functions
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # FUNCTIONS
@@ -208,7 +331,13 @@ function functname() {
 
 unset -f functname  # deletes a function definition
 declare -f          # displays all defined functions in your login session
+```
 
+<a id="flow-controls"></a>
+### Flow Controls
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # FLOW CONTROLS
@@ -298,6 +427,13 @@ done
 until condition; do
   statements
 done
+```
+
+<a id="command-line-processing-cycle"></a>
+### Command-Line Processing Cycle
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # COMMAND-LINE PROCESSING CYCLE
@@ -312,7 +448,13 @@ builtin  # looks up only built-in commands, ignoring functions and commands foun
 enable   # enables and disables shell built-ins
 
 eval     # takes arguments and run them through the command-line processing steps all over again
+```
 
+<a id="inputoutput-redirectors"></a>
+### Input/Output Redirectors
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # INPUT/OUTPUT REDIRECTORS
@@ -339,7 +481,13 @@ n<&m       # file descriptor n is made to be a copy of the input file descriptor
 >&-        # closes the standard output
 n>&-       # closes the ouput from file descriptor n
 n<&-       # closes the input from file descripor n
+```
 
+<a id="process-handling"></a>
+### Process Handling
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # PROCESS HANDLING
@@ -374,7 +522,13 @@ trap - sig1 sig2    # resets the action taken when the signal is received to the
 disown <PID|JID>    # removes the process from the list of jobs
 
 wait                # waits until all background jobs have finished
+```
 
+<a id="tips--tricks"></a>
+### Tips & Tricks
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # TIPS & TRICKS
@@ -392,7 +546,13 @@ cd; nano .bashrc
 
 source .bashrc
 cd $websites
+```
 
+<a id="debugging-shell-programs"></a>
+### Debugging Shell Programs
+
+```sh
+#!/bin/bash
 
 ##############################################################################
 # DEBUGGING SHELL PROGRAMS
@@ -415,7 +575,7 @@ function errtrap {
   echo "ERROR line $1: Command exited with status $es."
 }
 
-trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exits with non-zero status 
+trap 'errtrap $LINENO' ERR  # is run whenever a command in the surrounding script or function exits with non-zero status
 
 function dbgtrap {
   echo "badvar is $badvar"

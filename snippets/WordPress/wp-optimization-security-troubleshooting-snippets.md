@@ -1,0 +1,155 @@
+# WordPress - Optimization & Security Snippets
+
+<!-- MarkdownTOC -->
+
+* [Site Optimization](#site-optimization)
+  * [Remove Plugin Stylesheets and Scripts](#remove-plugin-stylesheets-and-scripts)
+* [Security](#security)
+  * [Scripts & Actions to Remove](#scripts--actions-to-remove)
+  * [Google Fonts](#google-fonts)
+* [Debugging](#debugging)
+  * [Find Out All Plugin \(Script?\) Handles](#find-out-all-plugin-script-handles)
+
+<!-- /MarkdownTOC -->
+
+<a id="site-optimization"></a>
+## Site Optimization
+
+<a id="remove-plugin-stylesheets-and-scripts"></a>
+### Remove Plugin Stylesheets and Scripts
+
+1. Deregister Stylesheet Handle:
+
+```php
+// For a script w/ id="gdwpm_styles-css":
+add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
+function my_deregister_styles() {
+wp_deregister_style( 'gdwpm_styles-css' );
+}
+
+// For multiple files:
+add_action( 'wp_print_styles', 'my_deregister_styles', 100 );
+function my_deregister_styles() {
+wp_deregister_style( 'gdwpm_styles-css' );
+wp_deregister_style( 'bfa-font-awesome-css' );
+wp_deregister_style( 'some-other-stylesheet-handle' );
+}
+```
+
+2. Find plugin handles and then deregister
+
+```php
+function wpb_display_pluginhandles() {
+$wp_scripts = wp_scripts();
+$handlename .= "<ul>";
+    foreach( $wp_scripts->queue as $handle ) :
+      $handlename .=  '<li>' . $handle .'</li>';
+    endforeach;
+$handlename .= "</ul>";
+return $handlename;
+}
+add_shortcode( 'pluginhandles', 'wpb_display_pluginhandles');
+```
+
+```php
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+function my_deregister_javascript() {
+wp_deregister_script( 'contact-form-7' );
+}
+
+// Multiple Scripts
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+function my_deregister_javascript() {
+wp_deregister_script( 'contact-form-7' );
+wp_deregister_script( 'gdwpm_lightbox-script' );
+wp_deregister_script( 'another-plugin-script' );
+}
+```
+
+3. Load Scripts on specific pages:
+
+```php
+// Load Scripts only on Specific Pages
+
+add_action( 'wp_print_scripts', 'my_deregister_javascript', 100 );
+
+function my_deregister_javascript() {
+    if ( !is_page('Contact') ) {
+    wp_deregister_script( 'contact-form-7' );
+    }
+}
+```
+
+4. Deregister in specific location
+
+```php
+function remove_scripts_styles_footer() {
+    //----- CSS
+    wp_deregister_style('jetpack_css'); // Jetpack
+
+    //----- JS
+    wp_deregister_script('devicepx'); // Jetpack
+}
+
+add_action('wp_footer', 'remove_scripts_styles_footer');
+```
+
+5. Remove the Action
+
+```php
+remove_action('wp_head', 'devicepx');
+```
+
+6. Remove From Header and Add to Footer
+
+From: [Stack Exchange - WordPress Development - Move scripts to footer, but exclude one script?](https://wordpress.stackexchange.com/questions/205938/move-scripts-to-footer-but-exclude-one-script)
+
+```php
+function dequeue_my_scripts() {
+   wp_dequeue_script('script-handle-here');
+}
+add_action( 'wp_print_scripts', 'dequeue_my_scripts', 11 );
+```
+
+```php
+function enqueue_scripts_to_footer() {
+   wp_enqueue_script('script-handle-here');
+}
+add_action( 'wp_footer', 'enqueue_scripts_to_footer' );
+```
+
+<a id="security"></a>
+## Security
+
+<a id="scripts--actions-to-remove"></a>
+### Scripts & Actions to Remove
+
+1. Windows Live Write
+```php
+remove_action('wp_head', 'wlwmanifest_link');
+```
+
+<a id="google-fonts"></a>
+### Google Fonts
+
+* https://speckyboy.com/speed-google-fonts-wordpress/
+* https://google-webfonts-helper.herokuapp.com/fonts/source-sans-pro?subsets=latin,vietnamese,cyrillic-ext,greek,latin-ext,greek-ext,cyrillic
+
+<a id="debugging"></a>
+## Debugging
+
+<a id="find-out-all-plugin-script-handles"></a>
+### Find Out All Plugin (Script?) Handles
+
+```php
+function wpb_display_pluginhandles() {
+$wp_scripts = wp_scripts();
+$handlename .= "<ul>";
+    foreach( $wp_scripts->queue as $handle ) :
+      $handlename .=  '<li>' . $handle .'</li>';
+    endforeach;
+$handlename .= "</ul>";
+return $handlename;
+}
+add_shortcode( 'pluginhandles', 'wpb_display_pluginhandles');
+```

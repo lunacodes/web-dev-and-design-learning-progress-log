@@ -4,6 +4,7 @@
 
 With our thoughts on icon accessibility in mind, If an icon only adds some extra decoration or branding, it does not need to be announced to users as they are navigating your site or app aurally. Alternatively, if an icon conveys meaning in your content or interface, ensure that this meaning is also conveyed to assistive technologies through alternative displays or text.
 
+```html
 <a class="btn btn-default" href="path/to/settings" aria-label="Settings">
   <i class="fa fa-cog" aria-hidden="true"></i>
 </a>
@@ -33,3 +34,4 @@ With our thoughts on icon accessibility in mind, If an icon only adds some extra
 </a>
 <i class="fa fa-battery-half" aria-hidden="true"></i>
 <span class="sr-only">Battery level: 50%</span>
+```
