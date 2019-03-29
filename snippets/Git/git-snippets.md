@@ -91,6 +91,7 @@ List Merge conflicts:
 #### Fixing Merge Conflicts
 
 From: https://stackoverflow.com/a/163659/4528637
+Pretty version: https://www.rosipov.com/blog/use-vimdiff-as-git-mergetool/
 
 `git mergetool`
 
