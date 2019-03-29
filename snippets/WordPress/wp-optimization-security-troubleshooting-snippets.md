@@ -4,6 +4,7 @@
 
 * [Site Optimization](#site-optimization)
   * [Remove Plugin Stylesheets and Scripts](#remove-plugin-stylesheets-and-scripts)
+  * [Trackbacks & Pingbacks](#trackbacks--pingbacks)
 * [Security](#security)
   * [Scripts & Actions to Remove](#scripts--actions-to-remove)
   * [Google Fonts](#google-fonts)
@@ -117,6 +118,34 @@ function enqueue_scripts_to_footer() {
 }
 add_action( 'wp_footer', 'enqueue_scripts_to_footer' );
 ```
+
+<a id="trackbacks--pingbacks"></a>
+### Trackbacks & Pingbacks
+```php
+
+function remove_trackback_metabox() {
+        remove_meta_box( 'trackbacksdiv','post','normal' );
+}
+   add_action('admin_menu','remove_trackback_metabox');
+
+/**
+ * Disable Pingbacks
+ */
+
+// This still seems to show the link rel="pingback" in the site headers tho - idk if this is a Genesis thing or something else??
+
+add_filter( ‘wp_headers’, function( $headers ) {
+unset( $headers[‘X-Pingback’] );
+return $headers;
+}, 20);
+
+add_filter( ‘xmlrpc_methods’, function( $methods ) {
+unset( $methods[‘pingback.ping’] );
+unset( $methods[‘pingback.extensions.getPingbacks’] );
+return $methods;
+}, 20);
+```
+
 
 <a id="security"></a>
 ## Security
