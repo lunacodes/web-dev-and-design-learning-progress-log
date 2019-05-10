@@ -8,6 +8,7 @@
 * [Archive and Category Pages](#archive-and-category-pages)
     * [Remove Archive Page Titles](#remove-archive-page-titles)
     * [Remove Category Page Titles](#remove-category-page-titles)
+* [Custom Taxonomy](#custom-taxonomy)
 * [Author Box](#author-box)
 * [AdSense](#adsense)
 * [Full-Width Header Image](#full-width-header-image)
@@ -193,6 +194,40 @@ remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 8 
 remove_action( 'genesis_before_loop', 'genesis_do_archive_title_description', 15 );
 ```
 
+<a id="custom-taxonomy"></a>
+## Custom Taxonomy
+
+```php
+/**
+ * https://www.billerickson.net/code/add-taxonomy-to-genesis-breadcrumb/
+ * Add Category to Event Breadcrumb
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/code/add-taxonomy-to-genesis-breadcrumb
+ *
+ * @param string $crumb, current breadcrumb
+ * @param array $args, the breadcrumb arguments
+ * @return string $crumb, modified breadcrumb
+ */
+function be_event_breadcrumb( $crumb, $args ) {
+    // Only modify the breadcrumb if in the 'events' post type
+    if( 'events' !== get_post_type() )
+        return $crumb;
+
+    // Grab terms
+    $terms = get_the_terms( get_the_ID(), 'event-category' );
+    if( empty( $terms ) || is_wp_error( $terms ) )
+        return $crumb;
+
+    // Only use one term
+    $term = array_shift( $terms );
+
+    // Build the breadcrumb
+    $crumb = '<a href="' . get_post_type_archive_link( 'events' ) . '">Events</a>' . $args['sep'] . '<a href="' . get_term_link( $term, 'event-category' ) . '">' . $term->name . '</a>' . $args['sep'] . get_the_title();
+
+    return $crumb;
+}
+add_filter( 'genesis_single_crumb', 'be_event_breadcrumb', 10, 2 );
+```
 
 <a id="author-box"></a>
 ## Author Box

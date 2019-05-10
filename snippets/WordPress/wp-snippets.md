@@ -10,9 +10,13 @@
 * [Other](#other)
     * [Use $ in jQuery Code](#use-%24-in-jquery-code)
     * [Replace Uploaded Images](#replace-uploaded-images)
-    * [WP_User_Query](#wp_user_query)
+    * [WP_User_Query](#wpuserquery)
     * [Passing parameters through add_action](#passing-parameters-through-add_action)
     * [Social Media Sharing Icons](#social-media-sharing-icons)
+    * [Customize Excerpt Read More Text](#customize-excerpt-read-more-text)
+* [Jetpack](#jetpack)
+    * [Known Issues](#known-issues)
+    * [Related Posts](#related-posts)
 * [Needs Sorting](#needs-sorting)
 
 <!-- /MarkdownTOC -->
@@ -123,7 +127,7 @@ return $image_data;
 add_filter('wp_generate_attachment_metadata','replace_uploaded_image');
 ```
 
-<a id="wp_user_query"></a>
+<a id="wpuserquery"></a>
 ### WP_User_Query
 
 ```php
@@ -191,6 +195,43 @@ $whats_app_url = 'whatsapp://send?text=' . $post_title . ' ' . $post_url;
 } else {
     return;
 }
+```
+
+<a id="customize-excerpt-read-more-text"></a>
+### Customize Excerpt Read More Text
+```php
+function new_excerpt_more($more) {
+    return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+```
+
+<a id="jetpack"></a>
+## Jetpack
+
+<a id="known-issues"></a>
+### Known Issues
+From: https://jetpack.com/support/getting-started-with-jetpack/known-issues/
+
+* W3TC - Minify
+* reCaptcha & Jetpack Comments
+* [Delete Duplicate Posts Plugin](https://wordpress.org/plugins/delete-duplicate-posts/)
+
+
+<a id="related-posts"></a>
+### Related Posts
+
+Remove Related Posts:
+```php
+function jetpackme_remove_rp() {
+    if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
+        $jprp = Jetpack_RelatedPosts::init();
+        $callback = array( $jprp, 'filter_add_target_to_dom' );
+        remove_filter( 'the_content', $callback, 40 );
+    }
+}
+
+add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 ```
 
 
