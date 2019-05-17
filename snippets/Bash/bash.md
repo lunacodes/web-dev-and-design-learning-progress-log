@@ -1,4 +1,4 @@
-# Bash Snippets
+# Bash Cheat Sheet
 
 <!-- MarkdownTOC -->
 
