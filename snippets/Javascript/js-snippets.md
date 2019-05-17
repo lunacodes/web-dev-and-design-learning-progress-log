@@ -10,6 +10,8 @@
   * [Fetch](#fetch)
 * [Geolocation](#geolocation)
 * [Time & Dates](#time--dates)
+  * [Getters](#getters)
+  * [Conversions](#conversions)
 
 <!-- /MarkdownTOC -->
 
@@ -234,6 +236,29 @@ function showPosition(position) {
 <a id="time--dates"></a>
 ## Time & Dates
 
+<a id="getters"></a>
+### Getters
+
+```js
+function getDaysInMonth(month, year) {
+  return new Date(year, month, 0).getDate();
+}
+
+var now = new Date();
+var month = now.getMonth() + 1;
+var year = now.getYear();
+console.log("now, month, year", now, month, year);
+var daysInMonth = getDaysInMonth(month, year);
+var tmpDayNum = now.getDate();
+if ( daysInMonth === tmpDayNum ) {
+    month = month + 1;
+}
+
+console.log("diM, dayNum, Month", daysInMonth, tmpDayNum, month);
+```
+
+<a id="conversions"></a>
+### Conversions
 1. Convert from `YYYY-MM-DD` to `Month, DD, YYYY`
 
 ```js
