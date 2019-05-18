@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC -->
 
+* [Setup](#setup)
 * [Basic Commands](#basic-commands)
   * [Powershell Profile](#powershell-profile)
 * [Run Multiple Commands](#run-multiple-commands)
@@ -16,6 +17,10 @@
 
 <!-- /MarkdownTOC -->
 
+<a id="setup"></a>
+## Setup
+
+[Mike MacCana - Powershell Profile - How To Set Up Windows Console If You've Been Using \*nix For 20 Years](https://github.com/mikemaccana/powershell-profile)
 <a id="basic-commands"></a>
 ## Basic Commands
 
@@ -24,6 +29,7 @@
 
 * Find Profile path by typing `$PROFILE`
 * Edit with `subl $PROFILE`
+* Find Powershell version `$PSVersionTable.PSVersion`
 
 <a id="run-multiple-commands"></a>
 ## Run Multiple Commands
@@ -98,6 +104,9 @@ Copy-Item -Path C:\fso -Filter *.jpg -Destination c:\fsox –Recurse
 
 <a id="colors"></a>
 ## Colors
+
+Just Use Concfg instead:
+[Concfg - Presets](https://github.com/lukesampson/concfg/blob/master/preset_examples/README.md)
 
 Fancy Snippet:
 
