@@ -9,6 +9,7 @@
 * [Diff](#diff)
   * [Diff multiple commits ago](#diff-multiple-commits-ago)
   * [Diff with remote](#diff-with-remote)
+  * [Diff Filter](#diff-filter)
 * [Logging](#logging)
   * [Graphing](#graphing)
 * [Merge](#merge)
@@ -77,6 +78,28 @@ $ git diff HEAD~2 HEAD -- main.c
 git diff branch remote/name/branch
 ```
 
+<a id="diff-filter"></a>
+### Diff Filter
+
+Note: This applies to logging, diff, etc
+
+```sh
+# Git Diff-Filter Example usage
+git diff --diff-filter=ADM
+
+# Include files that are:
+# A  Added (A)
+# C  Copied (C)
+# D  Deleted (D)
+# M  Modified (M)
+# R  Renamed (R)
+# T  Type (i.e. regular file, symlink, submodule, …​) changed (T)
+# U  Unmerged (U)
+# X  Unknown (X)
+# B  Pairing Broken (B)
+#
+# Exclude via lowercase
+```
 <a id="logging"></a>
 ## Logging
 
@@ -187,7 +210,9 @@ If you want to get changes from LOCAL
 ## Colors
 
 ```sh
+<a id="git-pretty-colors"></a>
 # Git Pretty Colors
+<a id="the-placeholders-are"></a>
 # The placeholders are:
 
 '%H': commit hash

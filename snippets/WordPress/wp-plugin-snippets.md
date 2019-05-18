@@ -2,6 +2,7 @@
 
 * [WordPress Plugin Snippets](#wordpress-plugin-snippets)
   * [Extending Plugins](#extending-plugins)
+  * [Filter Plugin Updates](#filter-plugin-updates)
   * [Conditional Display of Widgets](#conditional-display-of-widgets)
   * [Custom Dashboard Widgets](#custom-dashboard-widgets)
   * [Authors Box Widget](#authors-box-widget)
@@ -40,6 +41,17 @@ if ( function_exists( ‘SOME FUNCTION NAME’ ) ) { YOUR CODE HERE }
 2. Action and Filter Hooks
 
 One way you could try is checking if the plugin provides any actions or filters you can hook into. These allow you to transform data that will be passed around the plugin at various stages of its execution, and also allow you to perform extra actions when something happens. See: [WordPress Codex - Plugin API](https://codex.wordpress.org/Plugin_API)
+
+<a id="filter-plugin-updates"></a>
+## Filter Plugin Updates
+
+```php
+function filter_plugin_updates( $value ) {
+    unset( $value->response['akismet/akismet.php'] );
+    return $value;
+}
+add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
+```
 
 <a id="conditional-display-of-widgets"></a>
 ## Conditional Display of Widgets

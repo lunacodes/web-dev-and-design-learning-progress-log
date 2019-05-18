@@ -1,6 +1,6 @@
 # Git Aliases
 
-## Git Aliases - Bash Cheatsheet 1
+## Git Aliases - Bash Cheatsheet
 
 ```sh
 # Note: cool way to integrate this here: https://gist.github.com/mwhite/6887990
@@ -49,6 +49,15 @@ alias grao='git remote add origin'
 alias grau='git remote add upstream'
 alias grmv='git remote remove'
 alias gd='git diff'
+# Diff Filter Added
+alias gda='git diff --diff-filter=A --name-only'
+alias gdav='git diff --diff-filter=A'
+# Diff filter deleted
+alias gdd='git diff --diff-filter=D --name-only'
+alias gddv='git diff --diff-filter=D'
+# Diff Filter Modified
+alias gdm='git diff --diff-filter=M --name-only'
+alias gdmv='git diff --diff-filter=M'
 alias gdmom='git diff master origin/master'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'

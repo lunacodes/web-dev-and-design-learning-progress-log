@@ -3,20 +3,22 @@
 <!-- MarkdownTOC -->
 
 * [Header Functions](#header-functions)
+* [WP Admin Bar Wrap Fix](#wp-admin-bar-wrap-fix)
 * [Navigation](#navigation)
-    * [Default Navigation Menu](#default-navigation-menu)
-    * [Specific Navigation Menu](#specific-navigation-menu)
-    * [Page Based Navigation](#page-based-navigation)
+  * [Default Navigation Menu](#default-navigation-menu)
+  * [Specific Navigation Menu](#specific-navigation-menu)
+  * [Page Based Navigation](#page-based-navigation)
+* [Breadcrumbs](#breadcrumbs)
 * [Other](#other)
-    * [Use $ in jQuery Code](#use-%24-in-jquery-code)
-    * [Replace Uploaded Images](#replace-uploaded-images)
-    * [WP_User_Query](#wpuserquery)
-    * [Passing parameters through add_action](#passing-parameters-through-add_action)
-    * [Social Media Sharing Icons](#social-media-sharing-icons)
-    * [Customize Excerpt Read More Text](#customize-excerpt-read-more-text)
+  * [Use $ in jQuery Code](#use-%24-in-jquery-code)
+  * [Replace Uploaded Images](#replace-uploaded-images)
+  * [WP_User_Query](#wpuserquery)
+  * [Passing parameters through add_action](#passing-parameters-through-add_action)
+  * [Social Media Sharing Icons](#social-media-sharing-icons)
+  * [Customize Excerpt Read More Text](#customize-excerpt-read-more-text)
 * [Jetpack](#jetpack)
-    * [Known Issues](#known-issues)
-    * [Related Posts](#related-posts)
+  * [Known Issues](#known-issues)
+  * [Related Posts](#related-posts)
 * [Needs Sorting](#needs-sorting)
 
 <!-- /MarkdownTOC -->
@@ -32,6 +34,66 @@
 * bloginfo('atom_url');
 * bloginfo('rss2_url');
 
+<a id="wp-admin-bar-wrap-fix"></a>
+## WP Admin Bar Wrap Fix
+
+```css
+/* Media Query - Min-Width: 782px */
+@media screen and (min-width: 48.875em) {
+   // Prevent wrapping of admin bar that has more items than admin bar area
+  #wpadminbar .quicklinks {
+    justify-content: space-between;
+  }
+
+  #wpadminbar .quicklinks,
+  #wpadminbar .quicklinks > ul {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    min-width: 0 !important;
+  }
+
+  #wpadminbar #wp-admin-bar-top-secondary {
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }
+
+  #wpadminbar .quicklinks > ul > li {
+    float: none !important;
+  }
+
+  #wpadminbar .quicklinks > ul > li,
+  #wpadminbar .quicklinks .ab-item {
+    max-width: 100px;
+    min-width: 0 !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #wpadminbar .quicklinks .ab-item {
+    overflow: hidden;
+  }
+
+  #wpadminbar .quicklinks .ab-item .ab-label,
+  #wpadminbar .quicklinks .ab-item .display-name {
+    display: inline;
+    float: none;
+  }
+}
+
+/* Media Query - Min-Width: 1061px */
+@media only screen and (min-width: 66.3125em) {
+  #wpadminbar .quicklinks > ul > li,
+  #wpadminbar .quicklinks .ab-item {
+    max-width: initial;
+    text-overflow: clip;
+  }
+}
+```
 <a id="navigation"></a>
 ## Navigation
 
@@ -81,6 +143,63 @@ function theme_slug_widgets_init() {
  'after_title' => '</h2>',
  ) );
 }
+```
+
+<a id="breadcrumbs"></a>
+## Breadcrumbs
+
+```php
+/**
+ * http://genesis.wp-a2z.org/oik_api/genesis_breadcrumbget_cpt_crumb/
+ *
+ * Description
+ * Get breadcrumb for single custom post type entry, including any parent (CPT name) crumbs.
+ *
+ * Usage
+ * $string = Genesis_Breadcrumb::get_cpt_crumb();
+ * Parameters
+ * Returns
+ * string HTML markup for a single custom post type entry breadcrumb, including any parent (CPT name) breadcrumbs.
+ *
+ * Source
+ * File name: genesis/lib/classes/class-genesis-breadcrumb.php
+ * Lines: 1 to 33 of 33
+ */
+
+  protected function get_cpt_crumb() {
+
+    $post_type        = get_query_var( 'post_type' );
+    $post_type_object = get_post_type_object( $post_type );
+
+    if ( null === $post_type_object ) {
+      return '';
+    }
+
+    $cpt_archive_link = get_post_type_archive_link( $post_type );
+    if ( $cpt_archive_link ) {
+      $crumb = $this->get_breadcrumb_link(
+        $cpt_archive_link,
+        '',
+        $post_type_object->labels->name
+      );
+    } else {
+      $crumb = $post_type_object->labels->name;
+    }
+
+    $crumb .= $this->args['sep'] . single_post_title( '', false );
+
+
+/**
+ * Filter the Genesis CPT breadcrumb.
+ *
+ * @since 2.5.0
+ *
+ * @param string $crumb HTML markup for the CPT breadcrumb.
+ * @param array  $args  Arguments used to generate the breadcrumbs. Documented in Genesis_Breadcrumbs::get_output().
+ */
+    return apply_filters( 'genesis_cpt_crumb', $crumb, $this->args );
+
+  }
 ```
 
 <a id="other"></a>

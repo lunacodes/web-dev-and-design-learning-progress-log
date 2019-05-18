@@ -1,5 +1,20 @@
 # WordPress Core Functions and Concepts Snippets
 
+<!-- MarkdownTOC -->
+
+* [Action Hooks](#action-hooks)
+	* [do_action](#do_action)
+	* [Parameters](#parameters)
+* [Tags](#tags)
+	* [Template Tags](#template-tags)
+	* [Include Tags](#include-tags)
+* [The Loop](#the-loop)
+	* [Customizing Excerpts](#customizing-excerpts)
+* [Theme Development](#theme-development)
+	* [Change Name & Path of Theme](#change-name--path-of-theme)
+
+<!-- /MarkdownTOC -->
+
 <a id="action-hooks"></a>
 ## Action Hooks
 
