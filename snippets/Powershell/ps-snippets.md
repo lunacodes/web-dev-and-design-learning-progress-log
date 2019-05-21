@@ -5,6 +5,7 @@
 * [Setup](#setup)
 * [Basic Commands](#basic-commands)
   * [Powershell Profile](#powershell-profile)
+  * [Aliases](#aliases)
 * [Run Multiple Commands](#run-multiple-commands)
 * [Chords](#chords)
 * [Restart Powershell as Admin](#restart-powershell-as-admin)
@@ -21,6 +22,7 @@
 ## Setup
 
 [Mike MacCana - Powershell Profile - How To Set Up Windows Console If You've Been Using \*nix For 20 Years](https://github.com/mikemaccana/powershell-profile)
+
 <a id="basic-commands"></a>
 ## Basic Commands
 
@@ -31,8 +33,24 @@
 * Edit with `subl $PROFILE`
 * Find Powershell version `$PSVersionTable.PSVersion`
 
+<a id="aliases"></a>
+### Aliases
+
+Check if Alias Exists: `Test-Path alias:ls`
+
+Set-Alias example:
+
+```powershell
+function Get-PS-Module {
+  # Function code here
+}
+Set-Alias getmodule Get-PS-Module
+```
+
 <a id="run-multiple-commands"></a>
 ## Run Multiple Commands
+
+Running multiple commands in terminal:
 
 ```powershell
 # Note: see https://superuser.com/questions/612409/how-do-i-run-multiple-commands-on-one-line-in-powershell for more discussion
@@ -55,6 +73,7 @@ Set-PSReadlineKeyHandler -Chord Ctrl+G -ScriptBlock {
         /usr/bin/git push origin $branch | Write-Host
 }
 ```
+
 <a id="restart-powershell-as-admin"></a>
 ## Restart Powershell as Admin
 

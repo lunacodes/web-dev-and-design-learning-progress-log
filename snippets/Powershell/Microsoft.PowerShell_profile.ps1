@@ -16,7 +16,7 @@ $modules = "$(split-path $profile)\Modules"
 $docs    =  $(resolve-path "$Env:userprofile\documents")
 $desktop =  $(resolve-path "$Env:userprofile\desktop")
 
-Set-Alias -Name idlepy -Value "C:\Users\Luna\AppData\Local\Programs\Python\Python36-32\Lib\idlelib\idle.bat"
+Set-Alias idlepy "C:\Users\Luna\AppData\Local\Programs\Python\Python36-32\Lib\idlelib\idle.bat"
 
 Import-Module $modules\defaults
 Import-Module $modules\unix
@@ -61,17 +61,17 @@ function Restart-PowerShell {
   Start-Process pwsh #Launch Powershell host in new window
   exit #Exit existing Powershell Host window
 }
-Set-Alias -Name rps -Value Restart-PowerShell
+Set-Alias rps Restart-PowerShell
 
 # Start a new Powershell window, while keeping current one open
 function Start-Powershell {
   Start-Process pwsh
 }
-Set-Alias -Name nps -Value Start-Powershell
+Set-Alias nps Start-Powershell
 
 function profile-quick-edit { subl $PROFILE }
-Set-Alias -Name sblpr -Value profile-quick-edit
-Set-Alias -Name sblrc -Value profile-quick-edit
+Set-Alias sblpr profile-quick-edit
+Set-Alias sblrc profile-quick-edit
 
 function update-powershell-profile {
   & $profile
@@ -81,11 +81,11 @@ Set-Alias sbrc update-powershell-profile
 ## PS READLINE ##
 # Emacs style tab completions
 function Set-Emacs-Tab-Completions {Set-PSReadlineOption -EditMode Emacs }
-Set-Alias -Name emacs -Value Set-Emacs-Tab-Completions
+Set-Alias emacs Set-Emacs-Tab-Completions
 
 # Get List of PS Readline Settings
 function Get-PS-Readline-Options { Get-PSReadlineOption }
-Set-Alias -Name gpsro -Value Get-PS-Readline-Options
+Set-Alias gpsro Get-PS-Readline-Options
 ## END PS READLINE ##
 
 
@@ -133,7 +133,7 @@ function prompt {
 # $colorScheme.Keys | % { Set-PSReadlineOption -TokenKind $_ -ForegroundColor $colorScheme[$_] }
 
 function show-colors { Show-TMOutputColor }
-Set-Alias -Name colors -Value show-colors
+Set-Alias colors show-colors
 
 ## END COLORS ##
 
@@ -141,41 +141,41 @@ Set-Alias -Name colors -Value show-colors
 function list-dirs {
   (gci -Path .\ *.*|Resolve-Path -Relative) -replace "\.",""
 }
-Set-Alias -Name lsd -Value list-dirs
+Set-Alias lsd list-dirs
 
 function list-dirs-pipe-output-to-file {
   (gci -Path .\ *.*|Resolve-Path -Relative) -replace "\.","" | Out-File -FilePath output.txt -Encoding ascii}
-Set-Alias -Name lsdp -Value list-dirs-pipe-output-to-file
+Set-Alias lsdp list-dirs-pipe-output-to-file
 
 function list-dirs-recurse-depth-2 {
   (gci -Path .\ -Recurse -Depth 2 *.*|Resolve-Path -Relative) -replace "\.",""
 }
-Set-Alias -Name lsdr -Value list-dirs-recurse-depth-2
+Set-Alias lsdr list-dirs-recurse-depth-2
 
 function list-dirs-pipe-depth-2 {
   (gci -Path .\ -Recurse -Depth 2 *.*|Resolve-Path -Relative) -replace "\.","" | Out-File -FilePath output.txt -Encoding ascii
 }
-Set-Alias -Name lsdrp -Value list-dirs-pipe-depth-2
+Set-Alias lsdrp list-dirs-pipe-depth-2
 
 ## END UNIX ALIASES ##
 
 ## CD ALIASES ##
 function cd-glennys { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\glennys\public_html\wp-content\themes\riverhouse }
-Set-Alias -Name glennys -Value cd-glennys
+Set-Alias glennys cd-glennys
 function cd-haseph { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\wp-content\themes\haSepharadi }
-Set-Alias -Name haseph -Value cd-haseph
+Set-Alias haseph cd-haseph
 function cd-haseph-public-html { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\ }
-Set-Alias -Name hspub -Value cd-haseph-public-html
+Set-Alias hspub cd-haseph-public-html
 function cd-rakov { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\rakov\public_html\wp-content\themes\rakov }
-Set-Alias -Name rakov -Value cd-rakov
+Set-Alias rakov cd-rakov
 function cd-vvv { cd C:\Users\Luna\Documents\vagrant-sites\VVV\ }
-Set-Alias -Name vvv -Value cd-vvv
+Set-Alias vvv cd-vvv
 function cd-vvw { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www }
-Set-Alias -Name vvw -Value cd-vvw
+Set-Alias vvw cd-vvw
 function cd-webdv { cd 'C:\Users\Luna\Google Drive\Current Freelancing\GitHub - Lunacodes\web-dev-and-design-learning-progress-log\' }
-Set-Alias -Name webdv -Value cd-webdv
+Set-Alias webdv cd-webdv
 function cd-zmn { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\wp-content\plugins\luna-zemanim-widget }
-Set-Alias -Name zmn -Value cd-zmn
+Set-Alias zmn cd-zmn
 
 ## END CD ALIASES ##
 
@@ -197,115 +197,115 @@ foreach ( $name in ("gcm", "gc", "gl") ) {
 # Git
 # Add
 function git-add { git add $args }
-Set-Alias -Name ga -Value git-add
+Set-Alias ga git-add
 
 function git-add-all { git add -A }
-Set-Alias -Name gaa -Value git-add-all
+Set-Alias gaa git-add-all
 
 # Branch
 function git-branch { git branch $args }
-Set-Alias -Name gb -Value git-branch
+Set-Alias gb git-branch
 
 function git-branch-checkout { git checkout $args }
-Set-Alias -Name gco -Value git-branch-checkout
+Set-Alias gco git-branch-checkout
 
 function git-branch-delete { git branch -d $args }
-Set-Alias -Name gbd -Value git-branch-delete
+Set-Alias gbd git-branch-delete
 
 # Clone
 function git-clone { git clone $args }
-Set-Alias -Name gcl -Value git-clone
+Set-Alias gcl git-clone
 
 # Commit
 function git-commit { git commit -v $args }
-Set-Alias -Name gc -Value git-commit
+Set-Alias gc git-commit
 
 function git-commit-all { git commit -v -a }
-Set-Alias -Name gca -Value git-commit-all
+Set-Alias gca git-commit-all
 
 function git-commit-all-message { git commit -v -am $args }
-Set-Alias -Name gcam -Value git-commit-all-message
+Set-Alias gcam git-commit-all-message
 
 function git-commit-amend { git commit -a --amend -C HEAD }
-Set-Alias -Name gcama -Value git-commit-amend
+Set-Alias gcama git-commit-amend
 
 # Diff
 function git-diff { git diff $args }
-Set-Alias -Name gd -Value git-diff
+Set-Alias gd git-diff
 
 function gd-origin-master { git diff master origin/master }
-Set-Alias -Name gdom -Value gd-origin-master
+Set-Alias gdom gd-origin-master
 
 # Fetch
 function git-fetch { git fetch }
-Set-Alias -Name gf -Value git-fetch
+Set-Alias gf git-fetch
 
 function gf-origin-master { git fetch origin master }
-Set-Alias -Name gfo -Value gf-origin-master
+Set-Alias gfo gf-origin-master
 
 # Log
 function git-log { git log $args }
-Set-Alias -Name gl -Value git-log
+Set-Alias gl git-log
 
 function git-log-changes-only { git log -p }
-Set-Alias -Name glp -Value git-log-changes-only
+Set-Alias glp git-log-changes-only
 
 function git-log-graph-pretty-old { git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative }
-Set-Alias -Name ggo -Value git-log-graph-pretty-old
+Set-Alias ggo git-log-graph-pretty-old
 
 function git-log-graph-pretty { git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=relative }
-Set-Alias -Name gg -Value git-log-graph-pretty
+Set-Alias gg git-log-graph-pretty
 
 # Not Working - Git Issue
 # function git-log-since-last-pull { git log HEAD@{1}..HEAD@{0} }
-# Set-Alias -Name gnew -Value git-log-since-last-pull
+# Set-Alias gnew git-log-since-last-pull
 
 # Merge
 function git-merge { git merge $args }
-Set-Alias -Name gmg -Value git-merge
+Set-Alias gmg git-merge
 
 # Push
 function git-push-origin-master { git push origin master $args }
-Set-Alias -Name gpom -Value git-push-origin-master
+Set-Alias gpom git-push-origin-master
 
 # Remote
 function git-remote { git remote $args }
-Set-Alias -Name gr -Value git-remote
+Set-Alias gr git-remote
 
 function git-remote-view { git remote -v }
-Set-Alias -Name grv -Value git-remote-view
+Set-Alias grv git-remote-view
 
 function git-remote-add { git remote add $args }
-Set-Alias -Name gra -Value git-remote-add
+Set-Alias gra git-remote-add
 
 function git-remote-add-origin { git remote add origin $args }
-Set-Alias -Name grao -Value git-remote-add-origin
+Set-Alias grao git-remote-add-origin
 
 function git-remote-remove { git remote remove $args }
-Set-Alias -Name grrmv -Value git-remote-remove
+Set-Alias grrmv git-remote-remove
 
 # Remove
 function git-remove { git rm $args }
-Set-Alias -Name grm -Value git-remove
+Set-Alias grm git-remove
 
 function git-remove-cached { git rm --cached $args }
-Set-Alias -Name grmc -Value git-remove-cached
+Set-Alias grmc git-remove-cached
 
 function git-remove-cached-recurse { git rm --cached -r $args }
-Set-Alias -Name grmcr -Value git-remove-cached-recurse
+Set-Alias grmcr git-remove-cached-recurse
 
 # Status
 function git-status { git status }
-Set-Alias -Name gst -Value git-status
-Set-Alias -Name gs -Value git-status
+Set-Alias gst git-status
+Set-Alias gs git-status
 
 # Tree
 function git-tree-list-files { git ls-tree -r master --name-only }
-Set-Alias -Name gtree -Value git-tree-list-files
+Set-Alias gtree git-tree-list-files
 
 # What Changed
 function git-what-changed { git whatchanged }
-Set-Alias -Name gwc -Value git-what-changed
+Set-Alias gwc git-what-changed
 
 ## END GIT ALIASES ##
 
@@ -318,25 +318,26 @@ Set-Alias -Name gwc -Value git-what-changed
 function 7Zip-Compress($path, $filename) {
   Compress-7Zip -Path $path -ArchiveFileName $filename
 }
-Set-Alias -Name 7zc -Value 7Zip-Compress
+Set-Alias 7zc 7Zip-Compress
+
 function 7Zip-Expand { Expand-7Zip $args }
-Set-Alias -Name 7ze -Value 7Zip-Expand
+Set-Alias 7ze 7Zip-Expand
 ### END 7ZIP ALIASES ###
 
 ### ZIP ALIASES ###
 function zip-file($path, $filename) {
   Compress-Archive -Path $path -DestinationPath $filename
 }
-Set-Alias -Name zip -Value zip-file
+Set-Alias zip zip-file
 function unzip-zip-file($path, $filename) {
   Expand-Archive -Path $path -DestinationPath $filename
 }
-Set-Alias -Name unzip -Value unzip-zip-file
+Set-Alias unzip unzip-zip-file
 ### END ZIP ALIASES ###
 
 ## SCSS ##
 function sass-compile-style-css { sass style.scss "../style.css"}
-Set-Alias -Name scssy -Value sass-compile-style-css
+Set-Alias scssy sass-compile-style-css
 ## END SCSS ##
 
 # cd 'C:\Users\Luna\Documents\vagrant-sites\VVV\www'
