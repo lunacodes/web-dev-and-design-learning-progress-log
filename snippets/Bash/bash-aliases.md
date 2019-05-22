@@ -1,8 +1,36 @@
 # Bash Aliases
 
+## My Aliases
+```sh
+alias subl="/c/Program\ Files/Sublime\ Text\ 3/subl.exe"
+
+alias ls='ls -a --color=auto'
+alias lsa='ls -a --color=auto'
+alias lsd='ls -d */ --color=auto'
+alias sblrc='subl $( echo ~/.bashrc)'
+alias sbrc='source ~/.bashrc'
+alias rmr='rm -r'
+alias rmrf='rm -rf'
+alias rmrfr='rm -rf -r'
+alias vbrc='vi ~/.bashrc'
+alias vibrc='vi ~/.bashrc'
+
+alias gclv='git clone https://github.com/Varying-Vagrant-Vagrants/VVV.git'
+alias vgup='vagrant up';
+alias vgupr='vagrant up --provision';
+alias vgrl='vagrant reload';
+alias vgrs='vagrant reload';
+alias vgrsp='vagrant reload --provision';
+
+alias scssy='sass style.scss ../style.css';
+
+```
+
+## Other Aliases
+
 ```sh
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion                                                                                                                                                                
+    . /etc/bash_completion
 fi
 
 
@@ -13,7 +41,7 @@ function_exists() {
 
 for al in `__git_aliases`; do
     alias g$al="git $al"
-    
+
     complete_func=_git_$(__git_aliased_command $al)
     function_exists $complete_fnc && __git_complete g$al $complete_func
 done
@@ -30,7 +58,7 @@ done
     cm = commit -m
     cam = commit -a -m
     m = commit --amend --verbose
-    
+
     d = diff
     ds = diff --stat
     dc = diff --cached

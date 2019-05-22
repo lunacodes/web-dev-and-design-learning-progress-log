@@ -1,6 +1,7 @@
 <!-- MarkdownTOC -->
 
 * [WP-CLI Snippets](#wp-cli-snippets)
+  * [My Snippets](#my-snippets)
   * [Bash Completions](#bash-completions)
   * [Cache](#cache)
   * [Cap](#cap)
@@ -41,6 +42,43 @@
 <a id="wp-cli-snippets"></a>
 # WP-CLI Snippets
 <a id="wp-cli-snippets"></a>
+
+<a id="my-snippets"></a>
+## My Snippets
+```sh
+# WPCLI Aliases
+# Plugins
+alias wpla='wp plugin activate'
+alias wpld='wp plugin deactivate'
+alias wplg='wp plugin get'
+alias wplrm='wp plugin delete'
+alias wpls='wp plugin list'
+alias wplsa='wp plugin list --status=active'
+alias wplsi='wp plugin list --status=inactive'
+alias wplsr='wp plugin search'
+alias wplu='wp plugin update'
+alias wplua='wp plugin update --all'
+alias wpflsh='wp cache flush'
+
+# Debugging and Config
+wp_debug_on () {
+    wp config set WP_DEBUG true
+    wp config set WP_DEBUG_LOG true
+    wp config set WP_DEBUG_DISPLAY true
+    wp config set SCRIPT_DEBUG true
+}
+alias wpdbgon='wp_debug_on'
+
+wp_debug_off () {
+    wp config set WP_DEBUG false
+    wp config set WP_DEBUG_LOG false
+    wp config set WP_DEBUG_DISPLAY false
+    wp config set SCRIPT_DEBUG false
+}
+alias wpdbgoff='wp_debug_off'
+alias wpcfgls='wp config get'
+alias wpcfset='wp config set'
+```
 
 <a id="bash-completions"></a>
 ## Bash Completions

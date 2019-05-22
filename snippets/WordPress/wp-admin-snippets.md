@@ -4,14 +4,18 @@
 
 * [WP Admin](#wp-admin)
     * [General](#general)
+    * [Custom Login Links and Logo](#custom-login-links-and-logo)
     * [Color Schemes](#color-schemes)
     * [Menu Positioning](#menu-positioning)
         * [Adding New Menu Items](#adding-new-menu-items)
         * [Repositioning Menu Items](#repositioning-menu-items)
-            * [buddyPress](#buddypress)
+    * [Getting IDs](#getting-ids)
+    * [buddyPress](#buddypress)
 * [WP Editor Snippets](#wp-editor-snippets)
-    * [Add Buttons to TinyMCE](#add-buttons-to-tinymce)
-    * [Site Settings](#site-settings)
+    * [Add Buttons and Files to TinyMCE](#add-buttons-and-files-to-tinymce)
+    * [Editor Stylesheets](#editor-stylesheets)
+    * [Google Fonts](#google-fonts)
+* [Site Settings](#site-settings)
 * [Cron Jobs](#cron-jobs)
     * [See Also:](#see-also)
 
@@ -28,6 +32,52 @@ function remove_trackback_metabox() {
         remove_meta_box( 'trackbacksdiv','post','normal' );
 }
    add_action('admin_menu','remove_trackback_metabox');
+```
+
+<a id="custom-login-links-and-logo"></a>
+### Custom Login Links and Logo
+```php
+add_action( 'login_enqueue_scripts', 'haSeph_custom_login_logo' );
+function haSeph_custom_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(https://hasepharadi.com/wp-content/themes/haSepharadi/images/logo.png);
+            background-image: none, url(https://hasepharadi.com/wp-content/themes/haSepharadi/images/logo.png);
+            background-position: left top;
+            background-repeat: no-repeat;
+            background-size: 320px;
+            color: #444;
+            display: block;
+            font-size: 20px;
+            font-weight: 400;
+            height: 120px;
+            line-height: 1.3em;
+            margin: 0 auto 25px;
+            outline: 0;
+            overflow: hidden;
+            padding: 0;
+            text-decoration: none;
+            text-indent: -9999px;
+            width: 320px;
+        }
+    </style>
+
+    <?php
+}
+```
+
+To change the link values so the logo links to your WordPress site, use the following WordPress hooks example; edit it and paste it below the previous in the functions.php:
+
+```php
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 ```
 
 <a id="color-schemes"></a>
@@ -219,8 +269,25 @@ function my_new_admin_menu_order( $menu_order ) {
 };
 ```
 
+<a id="getting-ids"></a>
+### Getting IDs
+
+```php
+/* 1.4 - WP Admin - Get Widget ID
+============================*/
+
+add_action( 'in_widget_form', 'luna_get_widget_id' );
+function luna_get_widget_id( $widget_instance ) {
+    if ( $widget_instance->number=="__i__" ) {
+        echo( "<p><strong>Widget ID:</strong> Please save the widget first!</p>");
+    } else {
+        echo( "<p><strong>Widget ID: </strong>" . $widget_instance->id . "</p>");
+    }
+}
+```
+
 <a id="buddypress"></a>
-##### buddyPress
+### buddyPress
 
 From: https://rtmedia.io/docs/developers/add-remove-buddypress-tabs/
 
@@ -245,11 +312,7 @@ add_action( ‘bp_setup_nav’, ‘my_change_profile_tab_order’, 999 );
 <a id="wp-editor-snippets"></a>
 ## WP Editor Snippets
 
-I don't know how useful these will actually be at this point, given the advent of Gutenberg.
-
 ```php
-
-
 /**
  * Remove TinyMCE
  */
@@ -258,8 +321,8 @@ add_filter('user_can_richedit' , create_function('' , 'return false;') , 50);
 
 ```
 
-<a id="add-buttons-to-tinymce"></a>
-### Add Buttons to TinyMCE
+<a id="add-buttons-and-files-to-tinymce"></a>
+### Add Buttons and Files to TinyMCE
 
 ```php
 function add_more_buttons($buttons) {
@@ -275,6 +338,24 @@ function add_more_buttons($buttons) {
 }
 add_filter("mce_buttons_3", "add_more_buttons");
 ```
+
+Add files dynamically:
+
+```php
+add_filter('tiny_mce_before_init','wpdocs_theme_editor_dynamic_styles');
+function wpdocs_theme_editor_dynamic_styles( $mceInit ) {
+    $styles = 'body.mce-content-body { background-color: #' . get_theme_mod( 'background-color', '#FFF' ) . '}';
+    if ( isset( $mceInit['content_style'] ) ) {
+        $mceInit['content_style'] .= ' ' . $styles . ' ';
+    } else {
+        $mceInit['content_style'] = $styles . ' ';
+    }
+    return $mceInit;
+}
+```
+
+<a id="editor-stylesheets"></a>
+### Editor Stylesheets
 
 ```php
 /**
@@ -395,8 +476,23 @@ function filter_function_name( $num, $post ) {
 }
 ```
 
+<a id="google-fonts"></a>
+### Google Fonts
+
+```php
+// Google Fonts in Editor
+/**
+ * Registers an editor stylesheet for the current theme.
+ */
+// function wpdocs_theme_add_editor_styles() {
+//     $font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Lato:300,400,700' );
+//     add_editor_style( $font_url );
+// }
+// add_action( 'after_setup_theme', 'wpdocs_theme_add_editor_styles' );
+```
+
 <a id="site-settings"></a>
-### Site Settings
+## Site Settings
 
 Static vs Blog homepage, via PHP
 

@@ -1,26 +1,36 @@
 ###### POWERSHELL 6 PROFILE ######
 
 ## TABLE OF CONTENTS ##
-# PACKAGES AND IMPORTS
+# ENVIRONMENT SETUP
+##  PACKAGE MANAGEMENT
+##  POWERSHELL TRICKS
 # PS READLINE
 # COLORS
+# BASH ALIASES AND UNIX
+# PROGRAM ALIASES
 # CD ALIASES
 # GIT ALIASES
+# COMPRESSION ALIASES
+##  7ZIP ALIASES
+##  ZIP ALIASES
 # SCSS
-# Unused Snippets
 ## END TABLE OF CONTENTS ##
 
-## PACKAGES AND IMPORTS ##
+## ENVIRONMENT SETUP ##
+Add-PathVariable "${env:ProgramFiles}\PowerShell\6-preview"
+
 $scripts = "$(split-path $profile)\Scripts"
 $modules = "$(split-path $profile)\Modules"
 $docs    =  $(resolve-path "$Env:userprofile\documents")
 $desktop =  $(resolve-path "$Env:userprofile\desktop")
+$PSScriptRoot = $scripts;
+$profileDir = $PSScriptRoot;
 
 Set-Alias idlepy "C:\Users\Luna\AppData\Local\Programs\Python\Python36-32\Lib\idlelib\idle.bat"
 
 Import-Module $modules\defaults
 Import-Module $modules\unix
-Import-Module $modules\sys-admin
+# Import-Module $modules\sys-admin
 Import-Module posh-git
 
 # Chocolatey profile
@@ -29,10 +39,10 @@ if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
 
-# Install items without further prompts:
-# Set-PSRepository -name PSGallery -InstallationPolicy Trusted
+## END ENVIRONMENT SETUP ##
 
-### MODULE ALIASES ###
+
+### PACKAGE MANAGEMENT ###
 function Get-PS-Module {
   Install-Module $args
 }
@@ -52,10 +62,11 @@ function List-PS-Module-By-Name {
   Get-Module -ListAvailable -Name $args
 }
 Set-Alias lsmodsname List-PS-Module-By-Name
-### END MODULE ALIASES ###
 
-## END PACKAGES AND IMPORTS ##
+### END PACKAGE MANAGEMENT ###
 
+
+### POWERSHELL TRICKS ###
 # Close Powershell window, and open new window
 function Restart-PowerShell {
   Start-Process pwsh #Launch Powershell host in new window
@@ -78,6 +89,9 @@ function update-powershell-profile {
 }
 Set-Alias sbrc update-powershell-profile
 
+### END POWERSHELL TRICKS ###
+
+
 ## PS READLINE ##
 # Emacs style tab completions
 function Set-Emacs-Tab-Completions {Set-PSReadlineOption -EditMode Emacs }
@@ -89,7 +103,9 @@ Set-Alias gpsro Get-PS-Readline-Options
 ## END PS READLINE ##
 
 
+## COLORS ##
 function prompt {
+  # Write-Host $(limit-HomeDirectory("$pwd")) -ForegroundColor Yellow -NoNewline
   $ESC = [char]27
   $time = Get-Date -UFormat %I:%M%p
   $tmp = $(get-Location).Path.Split("\")
@@ -105,41 +121,27 @@ function prompt {
   if ($prompt) { "$prompt " } else { " " }
 }
 
-## COLORS ##
-# Blue      # DarkBlue
-# Green     # DarkGreen
-# Cyan      # DarkCyan
-# Red       # DarkRed
-# Magenta   # DarkMagenta
-# Yellow    # DarkYellow
-# Gray      # DarkGray
-# White     # Black
-
-# $colorScheme = @{
-#   None      = "Green";
-#   Command   = "Red";
-#   Comment   = "Magenta";
-#   Keyword   = "Green";
-#   String    = "Magenta";
-#   Operator  = "DarkRed";
-#   Variable  = "Green";
-#   # Command   = "Cyan";
-#   Parameter = "Green";
-#   Type      = "Red";
-#   Number    = "Green";
-#   Member    = "Red";
-# }
-
-# $colorScheme.Keys | % { Set-PSReadlineOption -TokenKind $_ -ForegroundColor $colorScheme[$_] }
-
 function show-colors { Show-TMOutputColor }
 Set-Alias colors show-colors
 
 ## END COLORS ##
 
-## UNIX ALIASES ##
+
+## BASH ALIASES AND UNIX ##
+function list-all {
+  $ls_hidden_dir = Get-ChildItem -Force -Hidden -Directory $args
+  $ls_all_files = Get-ChildItem $args
+  $ls_types = $ls_hidden_dir, $ls_all_files
+
+  foreach($i in $ls_types) {
+    echo $i
+  }
+}
+Set-Alias lsa list-all
+
 function list-dirs {
-  (gci -Path .\ *.*|Resolve-Path -Relative) -replace "\.",""
+  # (gci -Path .\ *.*|Resolve-Path -Relative) -replace "\.",""
+  (ls -Directory | Resolve-Path -Relative) -replace "\.", ""
 }
 Set-Alias lsd list-dirs
 
@@ -157,23 +159,67 @@ function list-dirs-pipe-depth-2 {
 }
 Set-Alias lsdrp list-dirs-pipe-depth-2
 
-## END UNIX ALIASES ##
+function open-git-bash {
+  start 'C:\Program Files\Git\bin\sh.exe' $args
+}
+Set-Alias gbash open-git-bash
+
+function vi ($File){
+    bash -c "vi $File"
+}
+
+function nano ($File){
+    bash -c "nano $File"
+}
+## END BASH ALIASES AND UNIX ##
+
+
+## PROGRAM ALIASES ##
+function short-sublime { subl }
+Set-Alias sbl short-sublime
+
+function pswget($url, $output) {
+  Invoke-WebRequest -Uri $url -OutFile $output
+  Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
+}
+
+## END PROGRAM ALIASES ##
+
 
 ## CD ALIASES ##
 function cd-glennys { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\glennys\public_html\wp-content\themes\riverhouse }
 Set-Alias glennys cd-glennys
+
+function cd-home { cd C:\Users\Luna\ }
+Set-Alias home cd-home
+
 function cd-haseph { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\wp-content\themes\haSepharadi }
 Set-Alias haseph cd-haseph
+
 function cd-haseph-public-html { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\ }
 Set-Alias hspub cd-haseph-public-html
+
+function cd-haseph-wp-content { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\wp-content }
+Set-Alias hswpc cd-haseph-wp-content
+
+function cd-lunacodes { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\lunacodes\public_html\wp-content\themes\lunacodes }
+Set-Alias lunacodes cd-lunacodes
+
+function cd-ps-home { cd C:\Users\Luna\Documents\Powershell }
+Set-Alias ps-home cd-ps-home
+
 function cd-rakov { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\rakov\public_html\wp-content\themes\rakov }
 Set-Alias rakov cd-rakov
+
 function cd-vvv { cd C:\Users\Luna\Documents\vagrant-sites\VVV\ }
 Set-Alias vvv cd-vvv
+
 function cd-vvw { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www }
 Set-Alias vvw cd-vvw
+
 function cd-webdv { cd 'C:\Users\Luna\Google Drive\Current Freelancing\GitHub - Lunacodes\web-dev-and-design-learning-progress-log\' }
 Set-Alias webdv cd-webdv
+
 function cd-zmn { cd C:\Users\Luna\Documents\vagrant-sites\VVV\www\haseph\public_html\wp-content\plugins\luna-zemanim-widget }
 Set-Alias zmn cd-zmn
 
@@ -194,7 +240,6 @@ foreach ( $name in ("gcm", "gc", "gl") ) {
   }
 }
 
-# Git
 # Add
 function git-add { git add $args }
 Set-Alias ga git-add
@@ -236,6 +281,11 @@ Set-Alias gd git-diff
 function gd-origin-master { git diff master origin/master }
 Set-Alias gdom gd-origin-master
 
+function gd-origin-master-name-only {
+  git diff master origin/master --name-only
+}
+Set-Alias gdomn gd-origin-master-name-only
+
 # Fetch
 function git-fetch { git fetch }
 Set-Alias gf git-fetch
@@ -250,19 +300,33 @@ Set-Alias gl git-log
 function git-log-changes-only { git log -p }
 Set-Alias glp git-log-changes-only
 
+## Graph
 function git-log-graph-pretty-old { git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative }
 Set-Alias ggo git-log-graph-pretty-old
+
+function git-log-all-files-ever {
+  git log --graph --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d'
+}
+Set-Alias glsa git-log-all-files-ever
 
 function git-log-graph-pretty { git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=relative }
 Set-Alias gg git-log-graph-pretty
 
-# Not Working - Git Issue
-# function git-log-since-last-pull { git log HEAD@{1}..HEAD@{0} }
-# Set-Alias gnew git-log-since-last-pull
+function git-graph-stat {
+  gg --stat
+}
+Set-Alias ggs git-graph-stat
+
+function git-log-since-last-pull { git log HEAD~1..HEAD~0 }
+Set-Alias gnew git-log-since-last-pull
 
 # Merge
 function git-merge { git merge $args }
 Set-Alias gmg git-merge
+
+# Pull
+function git-pull { git pull $args }
+Set-Alias gpl git-pull
 
 # Push
 function git-push-origin-master { git push origin master $args }
@@ -306,13 +370,12 @@ Set-Alias gtree git-tree-list-files
 # What Changed
 function git-what-changed { git whatchanged }
 Set-Alias gwc git-what-changed
-
 ## END GIT ALIASES ##
+
 
 ## COMPRESSION ALIASES ##
 
 ### 7ZIP ALIASES ###
-
 # Uses 7Zip4Powershell Package
 # function 7Zip-Compress { Compress-7Zip $args }
 function 7Zip-Compress($path, $filename) {
@@ -334,6 +397,9 @@ function unzip-zip-file($path, $filename) {
 }
 Set-Alias unzip unzip-zip-file
 ### END ZIP ALIASES ###
+
+## END COMPRESSION ALIASES ##
+
 
 ## SCSS ##
 function sass-compile-style-css { sass style.scss "../style.css"}

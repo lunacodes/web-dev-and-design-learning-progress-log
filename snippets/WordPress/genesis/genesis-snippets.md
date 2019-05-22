@@ -4,6 +4,7 @@
 
 * [Genesis Action Hooks](#genesis-action-hooks)
 * [Needs Sorting](#needs-sorting)
+* [Custom Footer](#custom-footer)
 * [Genesis Column Classes](#genesis-column-classes)
 * [Archive and Category Pages](#archive-and-category-pages)
     * [Remove Archive Page Titles](#remove-archive-page-titles)
@@ -39,6 +40,17 @@ $twitter_handle= get_field('twitter_handle', 'user_'. $author_id );
 <img src="<?php echo $avatar_image['url']; ?>" alt="<?php echo $avatar_image['alt']; ?>" />
 <a href="<?php echo $linkedin_link; ?>">LinkedIn</a>
 <a href="https://twitter.com/<?php echo $twitter_handle; ?>">Twitter</a>
+```
+
+<a id="custom-footer"></a>
+## Custom Footer
+
+```php
+add_filter('genesis_footer_creds_text', 'sp_footer_creds_filter');
+function sp_footer_creds_filter( $creds ) {
+        $creds = 'Copyright [footer_copyright] <a href="https://hasepharadi.com">haSepharadi</a>. All rights reserved.';
+        return $creds;
+}
 ```
 
 <a id="genesis-column-classes"></a>

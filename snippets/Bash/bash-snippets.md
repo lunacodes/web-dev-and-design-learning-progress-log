@@ -10,6 +10,7 @@
 	* [File Command Examples](#file-command-examples)
 * [User Prompts](#user-prompts)
 * [Piping Tricks](#piping-tricks)
+* [Networking & Sys Admin](#networking--sys-admin)
 
 <!-- /MarkdownTOC -->
 
@@ -37,6 +38,10 @@ ctrl+l                          # clears window content, but allows for scrollba
 Normal Prompt:
 `Luna@DESKTOP-AC4AJ8A MINGW64 ~/Documents/vagrant-sites/vvv/www (develop)`
 
+Prompt From `.bashrc`:
+`PS1='\[\033]0;]\n\[\033[32m\]\u \[\033[33m\]\w\[\033[36m\]`__git_ps1`\[\033[0m\]\n$ '
+PROMPT_DIRTRIM=3
+`
 
 ```sh
 # Normal - User + MINGW 64 + long pwd
@@ -142,6 +147,9 @@ alt-d                           # deletes next word
 
 Install packages in `/usr/bin/`
 
+Apt-Get:
+`sudo apt-get update && sudo apt-get upgrade`
+
 <a id="file-commands"></a>
 ## File Commands
 
@@ -235,4 +243,36 @@ find . -iname '*.psd' -print0 | du -ch --files0-from=-
 find . -name "*.psd" -type f -delete
 find . -iname '*.psd' -print0 | du -ch --files0-from=- -delete
 
+```
+
+<a id="networking--sys-admin"></a>
+## Networking & Sys Admin
+
+```sh
+ifconfig -a = shows all network info
+ifconfig eth0 = public IP address
+
+sudo nano /etc/apache2/apache2.conf
+sudo nano /etc/apache2/ports.conf
+sudo apache2ctl configtest
+
+ifconfig -a = shows all network info
+ifconfig eth0 = public IP address
+
+ip route get 8.8.8.8 | awk '{print $NF; exit}'
+
+# NPM #
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+Alternatively, for Node.js 10:
+
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+ptional: install build tools
+
+To compile and install native addons from npm you may also need to install build tools:
+
+sudo apt-get install -y build-essential
 ```

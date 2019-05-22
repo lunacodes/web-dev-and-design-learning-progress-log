@@ -257,16 +257,13 @@ $author_query = new WP_User_Query();
 $authors = $author_query->get_results();
 
 if( $authors ) {
-
-    foreach( $authors as $author ) {
-
-     if ( count_user_posts( $author->id ) >= 1 ) {
-
-        echo $author->display_name . '</br>';
+  foreach( $authors as $author ) {
+    if ( count_user_posts( $author->id ) >= 1 ) {
+      echo $author->display_name . '</br>';
     }
-}
+  }
 } else {
-    echo "no users found";
+  echo "no users found";
 }
 ```
 

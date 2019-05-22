@@ -1,5 +1,16 @@
 # Git Aliases
 
+<!-- MarkdownTOC -->
+
+* [Git Aliases - Bash Cheatsheet](#git-aliases---bash-cheatsheet)
+	* [Git Aliases - Bash - My List](#git-aliases---bash---my-list)
+* [Git Aliases - Powershell](#git-aliases---powershell)
+	* [Git Aliases - Powershell - My List](#git-aliases---powershell---my-list)
+
+<!-- /MarkdownTOC -->
+
+
+<a id="git-aliases---bash-cheatsheet"></a>
 ## Git Aliases - Bash Cheatsheet
 
 ```sh
@@ -116,6 +127,93 @@ esac
 
 ```
 
+<a id="git-aliases---bash---my-list"></a>
+### Git Aliases - Bash - My List
+
+```sh
+# Git Aliases
+alias g='git'
+alias ga='git add'
+alias gaa='git add -A'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbd='git branch -d'
+# alias gc='git commit -v -m'
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gcam='git commit -v -am'
+# Add uncommitted and unstaged changes to the last commit
+alias gcama="git commit -a --amend -C HEAD"
+alias gcl='git clone'
+alias gco='git checkout'
+alias gcom='git checkout master'
+alias gd='git diff'
+alias gdf='git diff --diff-filter'
+# Diff Filter Added
+alias gda='git diff --diff-filter=A --name-only'
+alias gdav='git diff --diff-filter=A'
+# Diff filter deleted
+alias gdd='git diff --diff-filter=D --name-only'
+alias gddv='git diff --diff-filter=D'
+# Diff Filter Modified
+alias gdm='git diff --diff-filter=M --name-only'
+alias gdmv='git diff --diff-filter=M'
+alias gdom='git diff master origin/master'
+alias gdomn='git diff master origin/master --name-only'
+alias gf='git fetch'
+alias gfo='git fetch origin master'
+alias gg="git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative"
+alias ggs="gg --stat"
+alias gl='git log'
+alias gm='git merge'
+# List files being tracked under master
+alias glst='git ls-tree -r master --name-only'
+# List all files that ever existed (including deleted)
+alias glsa='git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d''
+# Show commits since last pull
+alias gnew="git log HEAD@{1}..HEAD@{0}"
+alias gs='git status'
+alias gp='git push'
+alias gpl='git pull'
+alias gplom='git pull origin master'
+alias gplum='git pull upstream master'
+alias gpo='git push origin'
+alias gpod='git push origin --delete'
+alias gpom='git push origin master'
+alias grm='git rm'
+alias grv='git remote -v'
+alias gra='git remote add'
+alias grao='git remote add origin'
+alias grau='git remote add upstream'
+alias grmc='git rm --cached'
+alias grmcr='git rm --cached -r'
+alias grmt='git remote'
+alias grmv='git remote remove'
+alias gwc="git whatchanged"
+
+# WPCLI Aliases
+alias wpla='wp plugin activate'
+alias wpld='wp plugin deactivate'
+alias wplg='wp plugin get'
+alias wplrm='wp plugin delete'
+alias wpls='wp plugin list'
+alias wplsa='wp plugin list --status=active'
+alias wplsi='wp plugin list --status=inactive'
+alias wplsr='wp plugin search'
+alias wplu='wp plugin update'
+alias wplua='wp plugin update --all'
+alias wpflsh='wp cache flush'
+
+# Vagrant
+alias gclv='git clone https://github.com/Varying-Vagrant-Vagrants/VVV.git'
+alias vgup='vagrant up';
+alias vgupr='vagrant up --provision';
+alias vgrl='vagrant reload';
+alias vgrs='vagrant reload';
+alias vgrsp='vagrant reload --provision';
+```
+
+<a id="git-aliases---powershell"></a>
 ## Git Aliases - Powershell
 
 ```sh
@@ -202,4 +300,146 @@ Set-Alias -Name gmrv -Value git-remote-remove
 # Misc
 function back-dir { cd .. }
 Set-Alias -Name .. -Value back-dir
+```
+
+<a id="git-aliases---powershell---my-list"></a>
+### Git Aliases - Powershell - My List
+
+```sh
+# Remove Powershell Defaults
+foreach ( $name in ("gcm", "gc", "gl") ) {
+  if (Test-Path alias:$name) {
+    if ( $name -eq "gcm") {
+      rename-item alias:\gcm gcmd -force
+    } elseif ( $name -eq "gc") {
+      rename-item alias:\gc gct -force
+    } elseif ( $name -eq "gl" ) {
+      rename-item alias:\gl gll -force
+    }
+  }
+}
+
+# Git
+# Add
+function git-add { git add $args }
+Set-Alias ga git-add
+
+function git-add-all { git add -A }
+Set-Alias gaa git-add-all
+
+# Branch
+function git-branch { git branch $args }
+Set-Alias gb git-branch
+
+function git-branch-checkout { git checkout $args }
+Set-Alias gco git-branch-checkout
+
+function git-branch-delete { git branch -d $args }
+Set-Alias gbd git-branch-delete
+
+# Clone
+function git-clone { git clone $args }
+Set-Alias gcl git-clone
+
+# Commit
+function git-commit { git commit -v $args }
+Set-Alias gc git-commit
+
+function git-commit-all { git commit -v -a }
+Set-Alias gca git-commit-all
+
+function git-commit-all-message { git commit -v -am $args }
+Set-Alias gcam git-commit-all-message
+
+function git-commit-amend { git commit -a --amend -C HEAD }
+Set-Alias gcama git-commit-amend
+
+# Diff
+function git-diff { git diff $args }
+Set-Alias gd git-diff
+
+function gd-origin-master { git diff master origin/master }
+Set-Alias gdom gd-origin-master
+
+function gd-origin-master-name-only {
+  git diff master origin/master --name-only
+}
+Set-Alias gdomn gd-origin-master-name-only
+
+# Fetch
+function git-fetch { git fetch }
+Set-Alias gf git-fetch
+
+function gf-origin-master { git fetch origin master }
+Set-Alias gfo gf-origin-master
+
+# Log
+function git-log { git log $args }
+Set-Alias gl git-log
+
+function git-log-changes-only { git log -p }
+Set-Alias glp git-log-changes-only
+
+function git-log-graph-pretty-old { git log --graph --pretty=format:'%C(bold)%h%Creset%C(magenta)%d%Creset %s %C(yellow)<%an> %C(cyan)(%cr)%Creset' --abbrev-commit --date=relative }
+Set-Alias ggo git-log-graph-pretty-old
+
+function git-log-graph-pretty { git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=relative }
+Set-Alias gg git-log-graph-pretty
+
+# Not Working - Git Issue
+# function git-log-since-last-pull { git log HEAD@{1}..HEAD@{0} }
+# Set-Alias gnew git-log-since-last-pull
+
+# Merge
+function git-merge { git merge $args }
+Set-Alias gmg git-merge
+
+# Pull
+function git-pull { git pull $args }
+Set-Alias gpl git-pull
+
+# Push
+function git-push-origin-master { git push origin master $args }
+Set-Alias gpom git-push-origin-master
+
+# Remote
+function git-remote { git remote $args }
+Set-Alias gr git-remote
+
+function git-remote-view { git remote -v }
+Set-Alias grv git-remote-view
+
+function git-remote-add { git remote add $args }
+Set-Alias gra git-remote-add
+
+function git-remote-add-origin { git remote add origin $args }
+Set-Alias grao git-remote-add-origin
+
+function git-remote-remove { git remote remove $args }
+Set-Alias grrmv git-remote-remove
+
+# Remove
+function git-remove { git rm $args }
+Set-Alias grm git-remove
+
+function git-remove-cached { git rm --cached $args }
+Set-Alias grmc git-remove-cached
+
+function git-remove-cached-recurse { git rm --cached -r $args }
+Set-Alias grmcr git-remove-cached-recurse
+
+# Status
+function git-status { git status }
+Set-Alias gst git-status
+Set-Alias gs git-status
+
+# Tree
+function git-tree-list-files { git ls-tree -r master --name-only }
+Set-Alias gtree git-tree-list-files
+
+# What Changed
+function git-what-changed { git whatchanged }
+Set-Alias gwc git-what-changed
+
+## END GIT ALIASES ##
 ```

@@ -14,6 +14,7 @@
 * [Copying](#copying)
   * [Copy Directories](#copy-directories)
 * [Colors](#colors)
+* [Download Files](#download-files)
 * [Miscellaneous](#miscellaneous)
 
 <!-- /MarkdownTOC -->
@@ -196,6 +197,20 @@ $Host.PrivateData.WarningForegroundColor = <ConsoleColor>
 $Host.PrivateData.DebugForegroundColor = <ConsoleColor>
 $Host.PrivateData.VerboseForegroundColor = <ConsoleColor>
 $Host.PrivateData.ProgressForegroundColor = <ConsoleColor>
+```
+
+<a id="download-files"></a>
+## Download Files
+
+Note: wget and curl are both options in PS6
+
+```powershell
+$url = "https://gist.githubusercontent.com/hallettj/64478/raw/f69f6958533da8c7e0af3288bbca38dd33f77564/global-variables-are-bad.js"
+$output = "global-variables-are-bad.js"
+$start_time = Get-Date
+
+Invoke-WebRequest -Uri $url -OutFile $output
+Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 ```
 
 <a id="miscellaneous"></a>
