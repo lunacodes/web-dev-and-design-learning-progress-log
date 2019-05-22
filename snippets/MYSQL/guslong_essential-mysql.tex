@@ -1,0 +1,483 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage{fancyhdr}           % For header and footer
+\usepackage{multicol}           % Allows multicols in tables
+\usepackage{tabularx}           % Intelligent column widths
+\usepackage{tabulary}           % Used in header and footer
+\usepackage{hhline}             % Border under tables
+\usepackage{graphicx}           % For images
+\usepackage{xcolor}             % For hex colours
+%\usepackage[utf8x]{inputenc}    % For unicode character support
+\usepackage[T1]{fontenc}        % Without this we get weird character replacements
+\usepackage{colortbl}           % For coloured tables
+\usepackage{setspace}           % For line height
+\usepackage{lastpage}           % Needed for total page number
+\usepackage{seqsplit}           % Splits long words.
+%\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
+\usepackage[normalem]{ulem}     % For underlining links
+% Most of the following are not required for the majority
+% of cheat sheets but are needed for some symbol support.
+\usepackage{amsmath}            % Symbols
+\usepackage{MnSymbol}           % Symbols
+\usepackage{wasysym}            % Symbols
+%\usepackage[english,german,french,spanish,italian]{babel}              % Languages
+
+% Document Info
+\author{guslong}
+\pdfinfo{
+  /Title (essential-mysql.pdf)
+  /Creator (Cheatography)
+  /Author (guslong)
+  /Subject (Essential MySQL Cheat Sheet)
+}
+
+% Lengths and widths
+\addtolength{\textwidth}{6cm}
+\addtolength{\textheight}{-1cm}
+\addtolength{\hoffset}{-3cm}
+\addtolength{\voffset}{-2cm}
+\setlength{\tabcolsep}{0.2cm} % Space between columns
+\setlength{\headsep}{-12pt} % Reduce space between header and content
+\setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
+\renewcommand{\footrulewidth}{0pt} % Remove footer line
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
+% This two commands together give roughly
+% the right line height in the tables
+\renewcommand{\arraystretch}{1.3}
+\onehalfspacing
+
+% Commands
+\newcommand{\SetRowColor}[1]{\noalign{\gdef\RowColorName{#1}}\rowcolor{\RowColorName}} % Shortcut for row colour
+\newcommand{\mymulticolumn}[3]{\multicolumn{#1}{>{\columncolor{\RowColorName}}#2}{#3}} % For coloured multi-cols
+\newcolumntype{x}[1]{>{\raggedright}p{#1}} % New column types for ragged-right paragraph columns
+\newcommand{\tn}{\tabularnewline} % Required as custom column type in use
+
+% Font and Colours
+\definecolor{HeadBackground}{HTML}{333333}
+\definecolor{FootBackground}{HTML}{666666}
+\definecolor{TextColor}{HTML}{333333}
+\definecolor{DarkBackground}{HTML}{8A6A2B}
+\definecolor{LightBackground}{HTML}{EBE5DA}
+\renewcommand{\familydefault}{\sfdefault}
+\color{TextColor}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhead{} % Set header to blank
+\fancyfoot{} % Set footer to blank
+\fancyhead[L]{
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{C}
+    \SetRowColor{DarkBackground}
+    \vspace{-7pt}
+    {\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\noindent
+        \hspace*{-6pt}\includegraphics[width=5.8cm]{/web/www.cheatography.com/public/images/cheatography_logo.pdf}}
+    }
+\end{tabulary}
+\columnbreak
+\begin{tabulary}{11cm}{L}
+    \vspace{-2pt}\large{\bf{\textcolor{DarkBackground}{\textrm{Essential MySQL Cheat Sheet}}}} \\
+    \normalsize{by \textcolor{DarkBackground}{guslong} via \textcolor{DarkBackground}{\uline{cheatography.com/1345/cs/520/}}}
+\end{tabulary}
+\end{multicols}}
+
+\fancyfoot[L]{ \footnotesize
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{LL}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{2}{p{5.377cm}}{\bf\textcolor{white}{Cheatographer}}  \\
+  \vspace{-2pt}guslong \\
+  \uline{cheatography.com/guslong} \\
+  \end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Cheat Sheet}}  \\
+   \vspace{-2pt}Published 13th August, 2012.\\
+   Updated 29th June, 2014.\\
+   Page {\thepage} of \pageref{LastPage}.
+\end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Sponsor}}  \\
+  \SetRowColor{white}
+  \vspace{-5pt}
+  %\includegraphics[width=48px,height=48px]{dave.jpeg}
+  Measure your website readability!\\
+  www.readability-score.com
+\end{tabulary}
+\end{multicols}}
+
+
+
+
+\begin{document}
+\raggedright
+\raggedcolumns
+
+% Set font size to small. Switch to any value
+% from this page to resize cheat sheet text:
+% www.emerson.emory.edu/services/latex/latex_169.html
+\footnotesize % Small font.
+
+\begin{multicols*}{3}
+
+\begin{tabularx}{5.377cm}{x{2.4885 cm} x{2.4885 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{MySQL Data Types}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+CHAR & String (0 - 255) \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+VARCHAR & String (0 - 255) \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+TINYTEXT & String (0 - 255) \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+TEXT & String (0 - 65535) \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+BLOB & String (0 - 65535) \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+MEDIUMTEXT & String (0 - 16777215) \tn 
+% Row Count 7 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+MEDIUMBLOB & String (0 - 16777215) \tn 
+% Row Count 9 (+ 2)
+% Row 7
+\SetRowColor{white}
+LONGTEXT & String (0 - 4294967295) \tn 
+% Row Count 11 (+ 2)
+% Row 8
+\SetRowColor{LightBackground}
+LONGBLOB & String (0 - 4294967295) \tn 
+% Row Count 13 (+ 2)
+% Row 9
+\SetRowColor{white}
+TINYINT x & Integer (-128 to 127) \tn 
+% Row Count 15 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+SMALLINT x & Integer (-32768 to 32767) \tn 
+% Row Count 17 (+ 2)
+% Row 11
+\SetRowColor{white}
+MEDIUMINT x & Integer (-8388608 to 8388607) \tn 
+% Row Count 19 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+INT x & Integer (-2147483648 to 2147483647) \tn 
+% Row Count 21 (+ 2)
+% Row 13
+\SetRowColor{white}
+BIGINT x & Integer \seqsplit{(-9223372036854775808} to \seqsplit{9223372036854775807)} \tn 
+% Row Count 24 (+ 3)
+% Row 14
+\SetRowColor{LightBackground}
+FLOAT & Decimal (precise to 23 digits) \tn 
+% Row Count 26 (+ 2)
+% Row 15
+\SetRowColor{white}
+DOUBLE & Decimal (24 to 53 digits) \tn 
+% Row Count 28 (+ 2)
+% Row 16
+\SetRowColor{LightBackground}
+DECIMAL & "DOUBLE" stored as string \tn 
+% Row Count 30 (+ 2)
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\vfill
+\columnbreak
+\begin{tabularx}{5.377cm}{x{2.4885 cm} x{2.4885 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{MySQL Data Types (cont)}}  \tn
+% Row 17
+\SetRowColor{LightBackground}
+DATE & YYYY-MM-DD \tn 
+% Row Count 1 (+ 1)
+% Row 18
+\SetRowColor{white}
+DATETIME & YYYY-MM-DD HH:MM:SS \tn 
+% Row Count 2 (+ 1)
+% Row 19
+\SetRowColor{LightBackground}
+TIMESTAMP & YYYYMMDDHHMMSS \tn 
+% Row Count 3 (+ 1)
+% Row 20
+\SetRowColor{white}
+TIME & HH:MM:SS \tn 
+% Row Count 4 (+ 1)
+% Row 21
+\SetRowColor{LightBackground}
+\{\{noshy\}\}\{\{popup="http://dev.mysql.com/doc/refman/5.0/en/enum.html"\}\}ENUM & One of preset options \tn 
+% Row Count 8 (+ 4)
+% Row 22
+\SetRowColor{white}
+\{\{noshy\}\}\{\{popup="http://dev.mysql.com/doc/refman/5.0/en/set.html"\}\}SET & Selection of preset options \tn 
+% Row Count 12 (+ 4)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Integers (marked x) that are "UNSIGNED" have the same range of values but start from 0 (i.e., an UNSIGNED TINYINT can have any value from 0 to 255).}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Select queries}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{select all columns} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT * FROM tbl;} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{select some columns} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT col1, col2 FROM tbl;} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{select only unique records} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT DISTINCT FROM tbl WHERE condition;} \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{column alias with AS} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT col FROM tbl AS newname;} \tn 
+% Row Count 8 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{order results} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT * FROM tbl ORDER BY col {[}ASC | DESC{]};} \tn 
+% Row Count 10 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{group results} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT col1, SUM(col2) FROM tbl GROUP BY col1;} \tn 
+% Row Count 12 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\columnbreak
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Creating and modifying}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{create a database} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}CREATE DATABASE db\_name;} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{select a database} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}USE db\_name;} \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{list the databases on the server} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SHOW DATABASES;} \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{show a table's fields} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}DESCRIBE tbl;} \tn 
+% Row Count 8 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{create a new table} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}CREATE TABLE tbl (field1, field2);} \tn 
+% Row Count 10 (+ 2)
+% Row 5
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{insert data into a table} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}INSERT INTO tbl VALUES ("val1", "val2");} \tn 
+% Row Count 12 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{delete a row} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}DELETE * FROM tbl WHERE condition;} \tn 
+% Row Count 14 (+ 2)
+% Row 7
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{add a column from a table} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}ALTER TABLE tbl ADD COLUMN col;} \tn 
+% Row Count 16 (+ 2)
+% Row 8
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{remove a column from a table} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}ALTER TABLE tbl DROP COLUMN col;} \tn 
+% Row Count 18 (+ 2)
+% Row 9
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{make a column a primary key} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}ALTER TABLE tbl ADD PRIMARY KEY (col);} \tn 
+% Row Count 20 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{return only 1 row matching query} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}... LIMIT = 1} \tn 
+% Row Count 22 (+ 2)
+% Row 11
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{amend the values of a column} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}UPDATE table SET column1="val1" WHERE ...} \tn 
+% Row Count 24 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{clear all the values, leaving the table structure} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}TRUNCATE TABLE tbl;} \tn 
+% Row Count 26 (+ 2)
+% Row 13
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{delete the table} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}DROP TABLE tbl;} \tn 
+% Row Count 28 (+ 2)
+% Row 14
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{delete the database} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}DROP DATABASE db\_name;} \tn 
+% Row Count 30 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\columnbreak
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Matching data}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\mymulticolumn{1}{x{5.377cm}}{matching data using LIKE} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT * FROM tbl1 WHERE col LIKE '\%value\%'} \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{matching data using REGEX} \tn 
+\mymulticolumn{1}{x{5.377cm}}{\hspace*{6 px}\rule{2px}{6px}\hspace*{6 px}SELECT * FROM tbl1 WHERE col RLIKE 'regular\_expression'} \tn 
+% Row Count 5 (+ 3)
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{0.9954 cm} x{3.9816 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Joins}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+INNER JOIN & returns only where match in both tables \tn 
+% Row Count 2 (+ 2)
+% Row 1
+\SetRowColor{white}
+OUTER JOIN & also returns non-matching records from both tables \tn 
+% Row Count 4 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+LEFT JOIN & also returns non-matching records from left table \tn 
+% Row Count 6 (+ 2)
+% Row 3
+\SetRowColor{white}
+RIGHT JOIN & also returns non-matching records in right table \tn 
+% Row Count 8 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\bf{ JOIN syntax: }} \newline  \newline SELECT * FROM tbl1 INNER JOIN tbl2 ON tbl1.id = tbl2.id;}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.04057 cm} x{2.93643 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{String functions mySQL}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+Compare strings & STRCMP("str1","str2") \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+Convert to lower case & LOWER("str") \tn 
+% Row Count 3 (+ 2)
+% Row 2
+\SetRowColor{LightBackground}
+Convert to upper case & UPPER("str") \tn 
+% Row Count 5 (+ 2)
+% Row 3
+\SetRowColor{white}
+Left trim & LTRIM("str") \tn 
+% Row Count 6 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+Substring of a string & SUBSTRING("str","inx1","inx2") \tn 
+% Row Count 8 (+ 2)
+% Row 5
+\SetRowColor{white}
+Concatenate & CONCAT("str1","str2") \tn 
+% Row Count 9 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.83689 cm} x{2.14011 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{MySQL calculation functions}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+Count rows & COUNT(col) \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+Average & AVG(col) \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+Minimum value & MIN(col) \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+Maximum value & MAX(col) \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+Sum of values & SUM(col) \tn 
+% Row Count 5 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{X}
+\SetRowColor{DarkBackground}
+\mymulticolumn{1}{x{5.377cm}}{\bf\textcolor{white}{Create table with auto-incrementing primary key}}  \tn
+\SetRowColor{white}
+\mymulticolumn{1}{x{5.377cm}}{CREATE TABLE table\_name ( \newline % Row Count 1 (+ 1)
+  id INT AUTO\_INCREMENT, \newline % Row Count 2 (+ 1)
+  column VARCHAR(2), \newline % Row Count 3 (+ 1)
+  column VARCHAR(32), \newline % Row Count 4 (+ 1)
+  PRIMARY KEY (`id`) \newline % Row Count 5 (+ 1)
+);% Row Count 6 (+ 1)
+} \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}-}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+
+% That's all folks
+\end{multicols*}
+
+\end{document}
