@@ -5,8 +5,9 @@
 * [Setup](#setup)
 * [Basic Commands](#basic-commands)
   * [Powershell Profile](#powershell-profile)
+  * [History](#history)
   * [Aliases](#aliases)
-* [Run Multiple Commands](#run-multiple-commands)
+    * [Overriding Powershell Defaults](#overriding-powershell-defaults)
 * [Chords](#chords)
 * [Restart Powershell as Admin](#restart-powershell-as-admin)
   * [Explanation:](#explanation)
@@ -16,6 +17,7 @@
 * [Colors](#colors)
 * [Download Files](#download-files)
 * [Miscellaneous](#miscellaneous)
+* [To Add](#to-add)
 
 <!-- /MarkdownTOC -->
 
@@ -34,18 +36,63 @@
 * Edit with `subl $PROFILE`
 * Find Powershell version `$PSVersionTable.PSVersion`
 
+<a id="history"></a>
+### History
+
+`Invoke-History` is really buggy - don't use!!
+
+`F8`: search the history for a particular command. Example: `p`, `F8` will let you cycle through all the previous `p` commands beginning with p. Hold `Shift` + `F8` to cycle in reverse
+
 <a id="aliases"></a>
 ### Aliases
-
-Check if Alias Exists: `Test-Path alias:ls`
 
 Set-Alias example:
 
 ```powershell
+# Check if module exists
 function Get-PS-Module {
   # Function code here
 }
 Set-Alias getmodule Get-PS-Module
+```
+
+Check if Alias Exists: `Test-Path alias:\ls`.
+  This might work as `Test-Path alias:ls` too?? Uncertain
+
+```ps
+# Check if function exists
+if (Test-Path alias:\cd) {
+    echo "cd exists"
+    rename-item alias:\cd cdo -force
+} else {
+    echo "no cd"
+}
+```
+
+<a id="overriding-powershell-defaults"></a>
+#### Overriding Powershell Defaults
+
+If `rename-item : The AllScope option cannot be removed from the alias 'cdo'`, the specify `-Option AllScope`
+
+Example:
+
+```ps
+Set-Alias -Name dir -Value Set-ChildItemColor -Option AllScope```
+
+Remove Powershell defaults via `foreach`:
+
+```powershell
+foreach ( $name in ("gcm", "gc", "gl") ) {
+  if (Test-Path alias:$name) {
+    if ( $name -eq "gcm") {
+      rename-item alias:\gcm gcmd -force
+    } elseif ( $name -eq "gc") {
+      rename-item alias:\gc gct -force
+    } elseif ( $name -eq "gl" ) {
+      rename-item alias:\gl gll -force
+    }
+  }
+}
 ```
 
 <a id="run-multiple-commands"></a>
@@ -54,15 +101,17 @@ Set-Alias getmodule Get-PS-Module
 Running multiple commands in terminal:
 
 ```powershell
-# Note: see https://superuser.com/questions/612409/how-do-i-run-multiple-commands-on-one-line-in-powershell for more discussion
-# around powershell's idiosyncratic behavior
-command1; command2; command 3;
-```
+<#Note: see https://superuser.com/questions/612409/how-do-i-run-multiple-commands-on-one-line-in-powershell for more discussion
+around powershell's idiosyncratic behavior#>
+command1; command2; command 3;```
+
+<!-- (Note: the ``` above need to stay at the end of the line, otherwish the other headings get left out. No idea why) -->
 
 <a id="chords"></a>
 ## Chords
 
 ```powershell
+<a id="powershell-key-combinations---aka-chords"></a>
 # Powershell Key COmbinations - aka Chords!!
 Set-PSReadlineKeyHandler -Chord Ctrl+F -ScriptBlock { google-chrome https://www.facebook.com }
 
@@ -89,15 +138,15 @@ Start-Process powershell.exe -Credential "TestDomain\Me" -NoNewWindow -ArgumentL
 <a id="explanation"></a>
 ### Explanation:
 
-> The following section starts the PowerShell command-line process with Start-Process prompting for user credentials. You may not need this dependent on UAC settings, as you might already get an over-the-shoulder prompt for creds during elevation.
->
-> Start-Process powershell.exe -Credential "TestDomain\Me"
->
-> The -NoNewWindow parameter re-uses the same PowerShell command window.
->
-> Here I’m using -ArgumentList parameter to pass in the second Start-Process leveraging –Verb runAs to force the elevation prompt.
->
-> I just saved this PowerShell script to a scratch share on the lab machines, and when I need to elevate and run PowerShell as a different user. I’d just double click on the script. It’s not the most elegant code, but it gets the job done and ideally shows some fairly cool optional parameters of Start-Process.  >
+The following section starts the PowerShell command-line process with `Start-Process` prompting for user credentials. You may not need this dependent on UAC settings, as you might already get an over-the-shoulder prompt for creds during elevation.
+
+`Start-Process powershell.exe -Credential "TestDomain\Me"`
+
+The `-NoNewWindow` parameter re-uses the same PowerShell command window.
+
+Here I’m using `-ArgumentList` parameter to pass in the second `Start-Process` leveraging `–Verb runAs` to force the elevation prompt.
+
+I just saved this PowerShell script to a scratch share on the lab machines, and when I need to elevate and run PowerShell as a different user. I’d just double click on the script. It’s not the most elegant code, but it gets the job done and ideally shows some fairly cool optional parameters of Start-Process.
 
 <a id="diff-files"></a>
 ## Diff Files
@@ -154,6 +203,7 @@ Set-Alias -Name colors -Value show-colors
 General:
 
 ```powershell
+<a id="options-retrieved-via-get-ps-readline-options"></a>
 # Options retrieved via Get-PS-Readline-Options
 ContinuationPromptForegroundColor : Gray
 ContinuationPromptBackgroundColor : Black
@@ -184,11 +234,13 @@ EmphasisBackgroundColor           : Black
 ErrorForegroundColor              : Red
 ErrorBackgroundColor              : Black
 
+<a id="parameters"></a>
 # Parameters
 [[-ForegroundColor] <ConsoleColor>]
 Set-PSReadlineOption -TokenKind Command -ForegroundColor White
 Set-PSReadlineOption -TokenKind Command -ForegroundColor White
 
+<a id="command-line-usage-examples"></a>
 #Command Line Usage Examples
 $Host.PrivateData.ErrorForegroundColor = "White"
 $host.ui.rawui.ForegroundColor = <ConsoleColor>
@@ -217,6 +269,37 @@ Write-Output "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)"
 ## Miscellaneous
 
 ```powershell
+<a id="turn-off-bell-for-hitting-backspace-at-beginning-of-prompt"></a>
 # Turn off bell for hitting backspace at beginning of prompt
 Set-PSReadlineOption -BellStyle None
 ```
+
+<a id="to-add"></a>
+## To Add
+
+```powershell
+# Using Get-childitem to get a list of files modified in the last 3 days
+
+(Get-ChildItem -Path c:\pstbak\*.* -Filter *.pst | ? {
+  $_.LastWriteTime -gt (Get-Date).AddDays(-3)
+}).Count
+```
+
+```ps
+# How to get N files in a directory order by last modified date?
+Get-ChildItem -Path 'D:\Temp' |
+    Where-Object { -not $_.PsIsContainer } |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -firs
+```
+
+```ps
+# Powershell script to list folders that have files with date modified in a range
+# Actually this may be iffy. Check further answers here:
+# https://community.spiceworks.com/topic/2143488-powershell-script-to-list-folders-that-have-files-with-date-modified-in-a-range
+Get-ChildItem 'C:\Filepath -File -Recurse' |
+    Where-Object { $_.LastWriteTime -ge '01/01/2015' -and $_.LastWriteTime -le '12/31/2018' } |
+    select-Object FullName, LastWriteTime
+```
+
+Add in something w/ pushd and popd

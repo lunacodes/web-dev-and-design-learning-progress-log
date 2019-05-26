@@ -2,10 +2,21 @@
 # Program Aliases
 alias subl="/c/Program\ Files/Sublime\ Text\ 3/subl.exe"
 
+# Bash Tab Completions
+bind 'set show-all-if-ambiguous off'
+bind 'TAB:menu-complete'
+
 # Bash Aliases
+alias cpf='cp -f'
+# No Clobber - don't overwrite files
+alias cpsafe='cp -n'
+alias cpr='cp -r'
+alias cprn='cp -rn'
 alias ls='ls -a --color=auto'
 alias lsa='ls -a --color=auto'
 alias lsd='ls -d */ --color=auto'
+# scrollable output of ls
+alias lsls='ls | less'
 alias sblrc='subl $( echo ~/.bashrc)'
 alias sbrc='source ~/.bashrc'
 alias rmr='rm -r'
@@ -14,16 +25,16 @@ alias rmrfr='rm -rf -r'
 alias vbrc='vi ~/.bashrc'
 alias vibrc='vi ~/.bashrc'
 
-# Bash Tab Completions
-bind 'set show-all-if-ambiguous off'
-bind 'TAB:menu-complete'
-
 # CD Aliases
 alias glennys='cd ~/Documents/vagrant-sites/vvv/www/glennys/public_html/wp-content/themes/riverhouse'
 alias haseph='cd ~/Documents/vagrant-sites/vvv/www/haseph/public_html/wp-content/themes/haSepharadi'
 alias hspub='cd ~/Documents/vagrant-sites/vvv/www/haseph/public_html/'
 alias hswpc='cd ~/Documents/vagrant-sites/vvv/www/haseph/public_html/wp-content/'
+alias luna='cd ~/Documents/vagrant-sites/vvv/www/luna/public_html/wp-content/themes/lunacodes'
 alias rakov='cd ~/Documents/vagrant-sites/vvv/www/rakov/public_html/wp-content/themes/rakov'
+alias vvv='cd ~/Documents/vagrant-sites/VVV/'
+alias vvw='cd ~/Documents/vagrant-sites/VVV/www'
+alias vvvw='cd ~/Documents/vagrant-sites/VVV/www'
 alias webdv='cd ~/Google\ Drive/Current\ Freelancing/GitHub\ -\ Lunacodes/web-dev-and-design-learning-progress-log/'
 alias zmn='cd ~/Documents/vagrant-sites/vvv/www/haseph/public_html/wp-content/plugins/luna-zemanim-widget'
 
@@ -100,6 +111,7 @@ alias grmv='git remote remove'
 alias gwc="git whatchanged"
 
 # WPCLI Aliases
+# Plugins
 alias wpla='wp plugin activate'
 alias wpld='wp plugin deactivate'
 alias wplg='wp plugin get'
@@ -111,6 +123,25 @@ alias wplsr='wp plugin search'
 alias wplu='wp plugin update'
 alias wplua='wp plugin update --all'
 alias wpflsh='wp cache flush'
+
+# Debugging and Config
+wp_debug_on () {
+    wp config set WP_DEBUG true
+    wp config set WP_DEBUG_LOG true
+    wp config set WP_DEBUG_DISPLAY true
+    wp config set SCRIPT_DEBUG true
+}
+alias wpdbgon='wp_debug_on'
+
+wp_debug_off () {
+    wp config set WP_DEBUG false
+    wp config set WP_DEBUG_LOG false
+    wp config set WP_DEBUG_DISPLAY false
+    wp config set SCRIPT_DEBUG false
+}
+alias wpdbgoff='wp_debug_off'
+alias wpcfgls='wp config get'
+alias wpcfset='wp config set'
 
 # Vagrant
 alias gclv='git clone https://github.com/Varying-Vagrant-Vagrants/VVV.git'

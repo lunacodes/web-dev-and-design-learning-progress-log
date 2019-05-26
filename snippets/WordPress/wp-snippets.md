@@ -9,9 +9,11 @@
   * [Specific Navigation Menu](#specific-navigation-menu)
   * [Page Based Navigation](#page-based-navigation)
 * [Breadcrumbs](#breadcrumbs)
+* [Images](#images)
+  * [Lazy Load](#lazy-load)
+  * [Replace Uploaded Images](#replace-uploaded-images)
 * [Other](#other)
   * [Use $ in jQuery Code](#use-%24-in-jquery-code)
-  * [Replace Uploaded Images](#replace-uploaded-images)
   * [WP_User_Query](#wpuserquery)
   * [Passing parameters through add_action](#passing-parameters-through-add_action)
   * [Social Media Sharing Icons](#social-media-sharing-icons)
@@ -202,16 +204,53 @@ function theme_slug_widgets_init() {
   }
 ```
 
-<a id="other"></a>
-## Other
+<a id="images"></a>
+## Images
 
-<a id="use-%24-in-jquery-code"></a>
-### Use $ in jQuery Code
-```js
-jQuery( document ).ready( function( $ ) {
-    // $() will work as an alias for jQuery() inside of this function
-    [ your code goes here ]
-} );
+<a id="lazy-load"></a>
+### Lazy Load
+
+**BJ Lazy Load:**
+
+```php
+// Applying the_content filter to our image markup to work with BJ Lazy Load plugin
+$neat_responsive_image_id = get_field('responsive_image');
+$neat_responsive_image_markup = wp_get_attachment_image( $neat_responsive_image_id, 'full', false, array( 'class' => 'bio-image' ) );
+echo apply_filters( 'the_content', $neat_responsive_image_markup );
+```
+
+**ACR Responsive Image Helper Function:**
+
+```php
+function awesome_acf_responsive_image($image_id,$image_size,$max_width){
+  // check the image ID is not blank
+  if($image_id != '') {
+
+    // set the default src image size
+    $image_src = wp_get_attachment_image_url( $image_id, $image_size );
+
+    // set the srcset with various image sizes
+    $image_srcset = wp_get_attachment_image_srcset( $image_id, $image_size );
+
+    // generate the markup for the responsive image
+    echo 'src="'.$image_src.'" srcset="'.$image_srcset.'" sizes="(max-width: '.$max_width.') 100vw, '.$max_width.'"';
+  }
+}
+```
+
+**Tweaking Srcset Sizes:**
+
+```php
+// In WordPress 4.4 max srcset size is set to 1600px wide by default,
+// if you have images larger than that size that you’d like included
+// in the srcset you can use this filter:
+
+add_filter( 'max_srcset_image_width', 'awesome_acf_max_srcset_image_width', 10 , 2 );
+
+// set the max image width
+function awesome_acf_max_srcset_image_width() {
+  return 2200;
+}
 ```
 
 <a id="replace-uploaded-images"></a>
@@ -245,6 +284,19 @@ return $image_data;
 
 add_filter('wp_generate_attachment_metadata','replace_uploaded_image');
 ```
+<a id="other"></a>
+## Other
+
+<a id="use-%24-in-jquery-code"></a>
+### Use $ in jQuery Code
+```js
+jQuery( document ).ready( function( $ ) {
+    // $() will work as an alias for jQuery() inside of this function
+    [ your code goes here ]
+} );
+```
+
+
 
 <a id="wpuserquery"></a>
 ### WP_User_Query
@@ -337,7 +389,8 @@ From: https://jetpack.com/support/getting-started-with-jetpack/known-issues/
 <a id="related-posts"></a>
 ### Related Posts
 
-Remove Related Posts:
+**Remove Related Posts:**
+
 ```php
 function jetpackme_remove_rp() {
     if ( class_exists( 'Jetpack_RelatedPosts' ) ) {
@@ -350,6 +403,36 @@ function jetpackme_remove_rp() {
 add_filter( 'wp', 'jetpackme_remove_rp', 20 );
 ```
 
+**Custom Related Posts:**
+
+```php
+function jetpackme_custom_related( $atts ) {
+$posts_titles = array();
+
+if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
+$related = Jetpack_RelatedPosts::init_raw()
+->set_query_name( 'jetpackme-shortcode' ) // Optional, name can be anything
+->get_for_post_id(
+get_the_ID(),
+array( 'size' => 3 )
+);
+
+if ( $related ) {
+foreach ( $related as $result ) {
+// Get the related post IDs
+$related_post = get_post( $result[ 'id' ] );
+// From there you can do just about anything. Here we get the post titles
+$posts_titles[] = $related_post->post_title;
+}
+}
+}
+
+// Return a list of post titles separated by commas
+return implode( ', ', $posts_titles );
+}
+// Create a [jprel] shortcode
+add_shortcode( 'jprel', 'jetpackme_custom_related' );
+```
 
 <a id="needs-sorting"></a>
 ## Needs Sorting
