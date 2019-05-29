@@ -222,6 +222,9 @@ zip -r -e data.zip data/        # encrypt zip file
 # human readable, total at end, max-depth 1, multiple excluded patterns
 du -ch --max-depth=1 --exclude='haseph*' --exclude='glennys*' --exclude='lgluna*' --exclude='lunacodes*'
 
+# List the top 10 largest directories in your current directory
+du -sk * | sort -n | tail
+
 ## Find
 find . -name "*.7z" -type f     # recursively list all files ending with .7z
 find . -name "*.7z*" -type f    # recursively list all files containing .7z
