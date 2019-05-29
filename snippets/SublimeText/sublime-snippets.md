@@ -3,14 +3,16 @@
 <!-- MarkdownTOC -->
 
 * [Git Integration](#git-integration)
-	* [Navigation](#navigation)
+    * [Navigation](#navigation)
 * [Editor Settings - Global](#editor-settings---global)
-	* [Convert File Line Endings on Save](#convert-file-line-endings-on-save)
-	* [Increase the Number of Recent Files, Folders, and Projects](#increase-the-number-of-recent-files-folders-and-projects)
+    * [Convert File Line Endings on Save](#convert-file-line-endings-on-save)
+    * [Increase the Number of Recent Files, Folders, and Projects](#increase-the-number-of-recent-files-folders-and-projects)
 * [Build Systems](#build-systems)
 * [Regular Expressions \(RegEx\)](#regular-expressions-regex)
-	* [Line Endings](#line-endings)
+    * [Line Endings](#line-endings)
 * [Creating Snippets](#creating-snippets)
+* [Syntax Settings](#syntax-settings)
+    * [Add PowerShell Syntax Highlighting to Markdown and Markdown-Extended](#add-powershell-syntax-highlighting-to-markdown-and-markdown-extended)
 
 <!-- /MarkdownTOC -->
 
@@ -98,4 +100,48 @@ Example:
     <!-- Optional: Description to show in the menu -->
     <description>Set-Alias</description>
 </snippet>
+```
+
+<a id="syntax-settings"></a>
+## Syntax Settings
+
+<a id="add-powershell-syntax-highlighting-to-markdown-and-markdown-extended"></a>
+### Add PowerShell Syntax Highlighting to Markdown and Markdown-Extended
+
+Markdown:
+```yaml
+- match: |-
+     (?x)
+      {{fenced_code_block_start}}
+      ((?i:powershell|ps))
+      {{fenced_code_block_trailing_infostring_characters}}
+  captures:
+    0: meta.code-fence.definition.begin.powershell.markdown-gfm
+    2: punctuation.definition.raw.code-fence.begin.markdown
+    5: constant.other.language-name.markdown
+  embed: scope:source.powershell
+  embed_scope: markup.raw.code-fence.powershell.markdown-gfm
+  escape: '{{code_fence_escape}}'
+  escape_captures:
+    0: meta.code-fence.definition.end.powershell.markdown-gfm
+    1: punctuation.definition.raw.code-fence.end.markdown
+```
+
+Markdown Extended:
+```yaml
+- match: '(```|~~~|{%\s*highlight)\s*(powershell|ps)\s*((?:linenos\s*)?%})?$'
+  captures:
+    1: punctuation.definition.fenced.markdown
+    2: variable.language.fenced.markdown
+    3: punctuation.definition.fenced.markdown
+  push:
+    - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+    - meta_content_scope: source.powershell
+    - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      pop: true
+    - include: scope:source.powershell
 ```

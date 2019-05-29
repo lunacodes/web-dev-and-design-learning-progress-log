@@ -5,6 +5,7 @@
 * [Shell Basics](#shell-basics)
 	* [Customizing The Command Prompt](#customizing-the-command-prompt)
 	* [Navigation](#navigation)
+* [Searching](#searching)
 * [Packages](#packages)
 * [File Commands](#file-commands)
 	* [File Command Examples](#file-command-examples)
@@ -140,6 +141,14 @@ ctrl-z                          # stops current command, resume with fg in the f
 alt-d                           # deletes next word
 !!                              # repeats the last command
 
+```
+
+<a id="searching"></a>
+## Searching
+
+```sh
+# recursive insensitive number
+grep -rin str . # grep through all files in pwd for str
 ```
 
 <a id="packages"></a>
