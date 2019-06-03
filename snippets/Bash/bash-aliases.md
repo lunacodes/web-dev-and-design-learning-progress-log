@@ -1,5 +1,7 @@
 # Bash Aliases
 
+[BASH and PowerShell Quick Reference](https://cecs.wright.edu/~pmateti/Courses/233/Labs/Scripting/bashVsPowerShellTable.html) - Table of equivalient commands in Bash and PS
+
 ## My Aliases
 ```sh
 alias subl="/c/Program\ Files/Sublime\ Text\ 3/subl.exe"

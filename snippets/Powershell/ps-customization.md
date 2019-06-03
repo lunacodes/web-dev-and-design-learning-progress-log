@@ -57,6 +57,14 @@ $window.ForegroundColor = "Gray"
 
 Just Use [Concfg - Presets](https://github.com/lukesampson/concfg/blob/master/preset_examples/README.md) instead
 
+Simple Snippet:
+```powershell
+Set-PSReadLineOption -Colors @{
+    # "Comment" = "`e[90m"
+    "String" = "`e[96m"
+}
+```
+
 Fancy Snippet:
 ```powershell
 $colorScheme = @{
@@ -115,9 +123,10 @@ ErrorBackgroundColor              : Black
 
 <a id="parameters"></a>
 # Parameters
-[[-ForegroundColor] <ConsoleColor>]
-Set-PSReadlineOption -TokenKind Command -ForegroundColor White
-Set-PSReadlineOption -TokenKind Command -ForegroundColor White
+# Note: that syntax no longer works, see snippets above
+# [[-ForegroundColor] <ConsoleColor>]
+# Set-PSReadlineOption -TokenKind Command -ForegroundColor White
+# Set-PSReadlineOption -TokenKind Command -ForegroundColor White
 
 <a id="command-line-usage-examples"></a>
 #Command Line Usage Examples

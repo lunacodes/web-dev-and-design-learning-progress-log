@@ -1,15 +1,30 @@
 # Useful Windows 10 Snippets
 
+<!-- MarkdownTOC -->
+
+* [Taskbar](#taskbar)
+* [Desktop: Windows, Snap Assist and virtual desktops](#desktop-windows-snap-assist-and-virtual-desktops)
+	* [Windows](#windows)
+	* [Task View](#task-view)
+* [Windows Key - Other](#windows-key---other)
+
+<!-- /MarkdownTOC -->
+
+Full list found [here](https://support.microsoft.com/en-us/help/12445)
+
+<a id="taskbar"></a>
 ## Taskbar
 * `Windows key + T`: Cycle through the apps (including pinned apps) on the taskbar.
 * `Windows key + [Number]`: Open the app pinned in the [number] position on the taskbar. For example, if you have Edge pinned in the first position on the taskbar and you click Windows key + 1, Edge will open. If the app is already open, a new instance or window will open.
 	* May have to be done from Desktop
 * `Windows key + Alt + [Number]`: Open the right-click menu for the app pinned in the [number] position on the taskbar.
 
+<a id="desktop-windows-snap-assist-and-virtual-desktops"></a>
 ## Desktop: Windows, Snap Assist and virtual desktops
 
 These shortcuts control how individual windows act on your desktop, including virtual desktops.
 
+<a id="windows"></a>
 ### Windows
 
 * `Windows key + M`: Minimize all open windows.
@@ -23,6 +38,7 @@ These shortcuts control how individual windows act on your desktop, including vi
 	* Left, Right, or Center of screen
 * `Windows key + Shift + Left arrow or Right arrow`: Move selected window to the left or right monitor.
 
+<a id="task-view"></a>
 ### Task View
 
 * `Windows key + Tab`: Open Task view (virtual desktops).
@@ -31,6 +47,7 @@ These shortcuts control how individual windows act on your desktop, including vi
 * `Windows key + Ctrl + Left arrow`: Move to the previous virtual desktop (to the left).
 * `Windows key + Ctrl + F4`: Close current virtual desktop.
 
+<a id="windows-key---other"></a>
 ## Windows Key - Other
 
 These keyboard shortcuts use the Windows logo key to perform various tasks, such as launching both Windows and third-party apps.

@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+@app.route('${1:/}', methods=["${2:GET}"])
+def ${3:index}(${4:}):
+    ${5:pass}
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>route</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.python</scope>
+    <description>App Route</description>
+</snippet>

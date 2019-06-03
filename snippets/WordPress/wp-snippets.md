@@ -42,7 +42,7 @@
 ```css
 /* Media Query - Min-Width: 782px */
 @media screen and (min-width: 48.875em) {
-   // Prevent wrapping of admin bar that has more items than admin bar area
+   /* // Prevent wrapping of admin bar that has more items than admin bar area */
   #wpadminbar .quicklinks {
     justify-content: space-between;
   }
@@ -96,6 +96,7 @@
   }
 }
 ```
+
 <a id="navigation"></a>
 ## Navigation
 
@@ -296,8 +297,6 @@ jQuery( document ).ready( function( $ ) {
 } );
 ```
 
-
-
 <a id="wpuserquery"></a>
 ### WP_User_Query
 
@@ -410,21 +409,21 @@ function jetpackme_custom_related( $atts ) {
 $posts_titles = array();
 
 if ( class_exists( 'Jetpack_RelatedPosts' ) && method_exists( 'Jetpack_RelatedPosts', 'init_raw' ) ) {
-$related = Jetpack_RelatedPosts::init_raw()
-->set_query_name( 'jetpackme-shortcode' ) // Optional, name can be anything
-->get_for_post_id(
-get_the_ID(),
-array( 'size' => 3 )
+  $related = Jetpack_RelatedPosts::init_raw()
+  ->set_query_name( 'jetpackme-shortcode' ) // Optional, name can be anything
+  ->get_for_post_id(
+  get_the_ID(),
+  array( 'size' => 3 )
 );
 
 if ( $related ) {
-foreach ( $related as $result ) {
-// Get the related post IDs
-$related_post = get_post( $result[ 'id' ] );
-// From there you can do just about anything. Here we get the post titles
-$posts_titles[] = $related_post->post_title;
-}
-}
+  foreach ( $related as $result ) {
+    // Get the related post IDs
+    $related_post = get_post( $result[ 'id' ] );
+    // From there you can do just about anything. Here we get the post titles
+    $posts_titles[] = $related_post->post_title;
+    }
+  }
 }
 
 // Return a list of post titles separated by commas
@@ -437,11 +436,7 @@ add_shortcode( 'jprel', 'jetpackme_custom_related' );
 <a id="needs-sorting"></a>
 ## Needs Sorting
 
-
-```
-/**
- *  https://www.smashingmagazine.com/2015/12/responsive-images-in-wordpress-core/
+ * https://www.smashingmagazine.com/2015/12/responsive-images-in-wordpress-core/
  * https://css-tricks.com/responsive-images-css/
  * https://gtmetrix.com/blog/how-to-optimize-images-a-practical-guide/
  * https://www.sitepoint.com/javascript-media-queries/
- ```

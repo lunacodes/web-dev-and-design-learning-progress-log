@@ -26,6 +26,8 @@
 
 Note: See [PowerShell Customization](ps-customization.md) file for Shell setup and customization.
 
+[BASH and PowerShell Quick Reference](https://cecs.wright.edu/~pmateti/Courses/233/Labs/Scripting/bashVsPowerShellTable.html) - Table of equivalient commands in Bash and PS
+
 <a id="environment-variables"></a>
 ## Environment Variables
 
@@ -37,6 +39,13 @@ Get-ChildItem env:
 $env:DriverDate
 ```
 
+Path:
+
+```ps
+# List contents of Path file, line by line
+$Env:Path.Split(';')
+path # Apparently the same thing??
+```
 <a id="basic-commands"></a>
 ## Basic Commands
 
@@ -51,13 +60,23 @@ $env:DriverDate
 ### Finding and Listing Commands
 
 ```ps
-Get-Command # lists every command
+Get-Command # lists all the cmdlets, functions, and aliases available
+Get-Command * #  gets all types of commands, including all of the non-PowerShell files in the Path environment variable (`$env:Path`), which it lists in the Application command type.
+Get-Command command # Imports the particular command for immediate use, unless the query has wildcards
 Get-Command -verb new # lists every command whose 2nd half contains 'new'
 Get-Command -noun Job # lists every command whose 1st half contains 'job'
 Get-Command Get-Alias # Gives Summary of Get-Alias command
 Get-Command Get-Alias | Format-List # Verbose output of Get-Command Get-Alias
 Get-Help command # print man page for a command
 command -? # same thing
+```
+
+Get the file defining a function:
+```ps
+${function:$name}.File
+# Example: grep
+# $ ${function:grep}.File
+# C:\Users\lunac\OneDrive\Documents\PowerShell\Scripts\unix.ps1
 ```
 
 <a id="properties"></a>
@@ -153,6 +172,7 @@ compare-object (get-content one.txt) (get-content two.txt)
 ```
 
 Compare two versions of a .csv file:
+
 ```powershell
 $old = Get-Content .\old-roles.csv
 $new = Get-Content .\new-roles.csv
@@ -164,6 +184,7 @@ $newsort = ".\sorted-new-roles.txt"
 $oldsort = ".\sorted-old-roles.txt"
 Compare-Object $(Get-content $oldsort) $(Get-Content $newsort) -includeequal
 ```
+
 <a id="copying"></a>
 ## Copying
 
@@ -171,11 +192,13 @@ Compare-Object $(Get-content $oldsort) $(Get-Content $newsort) -includeequal
 ### Copy Directories
 
 1. Copy directory:
+
 ```powershell
 Copy-Item -Path C:\fso -Filter *.jpg -Destination c:\fsox –Recurse
 ```
 
 2. Copy all files w/ jpg extension in dir:
+
 ```powershell
 Copy-Item -Path C:\fso -Filter *.jpg -Destination c:\fsox –Recurse
 ```

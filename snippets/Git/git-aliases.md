@@ -3,9 +3,9 @@
 <!-- MarkdownTOC -->
 
 * [Git Aliases - Bash Cheatsheet](#git-aliases---bash-cheatsheet)
-	* [Git Aliases - Bash - My List](#git-aliases---bash---my-list)
+  * [Git Aliases - Bash - My List](#git-aliases---bash---my-list)
 * [Git Aliases - Powershell](#git-aliases---powershell)
-	* [Git Aliases - Powershell - My List](#git-aliases---powershell---my-list)
+  * [Git Aliases - Powershell - My List](#git-aliases---powershell---my-list)
 
 <!-- /MarkdownTOC -->
 
@@ -306,15 +306,13 @@ Set-Alias -Name .. -Value back-dir
 ### Git Aliases - Powershell - My List
 
 ```sh
-# Remove Powershell Defaults
+# Remove Powershell Defaults. Override with Git
 foreach ( $name in ("gcm", "gc", "gl") ) {
   if (Test-Path alias:$name) {
-    if ( $name -eq "gcm") {
-      rename-item alias:\gcm gcmd -force
-    } elseif ( $name -eq "gc") {
-      rename-item alias:\gc gct -force
-    } elseif ( $name -eq "gl" ) {
-      rename-item alias:\gl gll -force
+    switch ($name) {
+      "gcm" { rename-item alias:\gcm gcmd -force }
+      "gc" { rename-item alias:\gc gct -force }
+      "gl" { rename-item alias:\gl gll -force }
     }
   }
 }
@@ -386,9 +384,8 @@ Set-Alias ggo git-log-graph-pretty-old
 function git-log-graph-pretty { git log --graph --pretty=format:'%C(bold red)%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=relative }
 Set-Alias gg git-log-graph-pretty
 
-# Not Working - Git Issue
-# function git-log-since-last-pull { git log HEAD@{1}..HEAD@{0} }
-# Set-Alias gnew git-log-since-last-pull
+function git-log-since-last-pull { git log HEAD~1..HEAD~0 }
+Set-Alias gnew git-log-since-last-pull
 
 # Merge
 function git-merge { git merge $args }
