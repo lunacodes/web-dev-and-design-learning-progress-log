@@ -443,6 +443,7 @@ The div.highlighter-rouge will use the mixin’s default values:
 text "Code"
 background: $yellow
 color: rgba(black, 0.5)
+
 The .css and .scss versions, because their parameters are set, will use different labels and colors.
 
 #Mixin libraries

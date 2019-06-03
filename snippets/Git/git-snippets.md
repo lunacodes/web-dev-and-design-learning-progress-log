@@ -49,7 +49,7 @@
 
 # if the files to be tracked are in subdirectories
 !*/a/b/file1.txt
-!*/a/b/c/*
+# !*/a/b/c/*
 ```
 
 <a id="branch"></a>
@@ -66,11 +66,13 @@ Note: git pull will pull into whatever branch you're currently in. git push will
 ### Diff multiple commits ago
 
 Example - diffs two commits ago:
+
 ```git
 $ git diff HEAD^^ HEAD main.c
 $ git diff HEAD^^..HEAD -- main.c
 $ git diff HEAD~2 HEAD -- main.c
 ```
+
 <a id="diff-with-remote"></a>
 ### Diff with remote
 ```git
@@ -100,6 +102,7 @@ git diff --diff-filter=ADM
 #
 # Exclude via lowercase
 ```
+
 <a id="logging"></a>
 ## Logging
 
@@ -280,4 +283,3 @@ If you want to get changes from LOCAL
 '%><(<N>)', '%><|(<N>)': similar to '%<(<N>)', '%<|(<N>)' respectively, but padding both sides (i.e. the text is centered)
 %(trailers[:options]): display the trailers of the body as interpreted by git-interpret-trailers[1]. The trailers string may be followed by a colon and zero or more comma-separated options. If the only option is given, omit non-trailer lines from the trailer block. If the unfold option is given, behave as if interpret-trailer’s --unfold option was given. E.g., %(trailers:only,unfold) to do both.
 ```
-
