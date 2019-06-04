@@ -3,6 +3,7 @@
 <!-- MarkdownTOC -->
 
 * [Environment Variables](#environment-variables)
+* [Linting and Testing](#linting-and-testing)
 * [Basic Commands and Modules](#basic-commands-and-modules)
   * [WhatIf and Confirm](#whatif-and-confirm)
   * [Finding and Listing Commands and Modules](#finding-and-listing-commands-and-modules)
@@ -15,7 +16,6 @@
 * [Diff Files](#diff-files)
 * [Copying](#copying)
   * [Copy Directories](#copy-directories)
-* [Colors](#colors)
 * [Download Files](#download-files)
 * [Restart PowerShell as Admin](#restart-powershell-as-admin)
   * [Explanation:](#explanation)
@@ -46,6 +46,16 @@ Path:
 $Env:Path.Split(';')
 path # Apparently the same thing??
 ```
+
+<a id="linting-and-testing"></a>
+## Linting and Testing
+
+PSScriptAnalyzer:
+
+```powershell
+Invoke-ScriptAnalyzer -Path ./archiveScript.ps1 -Settings ./PSScriptAnalyzerSettings.psd1
+```
+
 <a id="basic-commands-and-modules"></a>
 ## Basic Commands and Modules
 
@@ -203,11 +213,6 @@ Copy-Item -Path C:\fso -Filter *.jpg -Destination c:\fsox –Recurse
 ```powershell
 Copy-Item -Path C:\fso -Filter *.jpg -Destination c:\fsox –Recurse
 ```
-
-<a id="colors"></a>
-## Colors
-
-
 
 <a id="download-files"></a>
 ## Download Files

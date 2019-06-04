@@ -4,6 +4,7 @@
 
 * [Shell](#shell)
 * [String Manipulation](#string-manipulation)
+* [Infinity](#infinity)
 
 <!-- /MarkdownTOC -->
 
@@ -29,6 +30,28 @@ Note: You can also specify this to the user via `#!/usr/bin/env python3`
 
 ```python
 def reverseWord(w):
-  return ' '.join(w.split()[::-1])
+    return ' '.join(w.split()[::-1])
 ```
 
+<a id="infinity"></a>
+## Infinity
+
+```python
+# positive infinity
+p_inf = float("inf")
+# negative infinity
+n_inf = float("-inf")
+```
+
+```python
+# Check if a variable or value is infinity
+
+# by using the math library (preferred way)
+import math
+math.isinf(float("-inf"))  # OUTPUT:True
+math.isinf(float("inf"))   # OUTPUT:True
+
+# by comparing to infinity
+float("inf") == float("inf")  # OUTPUT:True
+float("-inf") == float("-inf")  # OUTPUT:True
+```

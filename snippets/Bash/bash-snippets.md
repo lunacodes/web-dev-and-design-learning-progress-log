@@ -82,9 +82,9 @@ PS1='\[\033]0;]\n\[\033[32m\]\u \[\033[33m\]\W\[\033[36m\]`__git_ps1`\[\033[0m\]
 ```
 
 **ANSI Escape Sequences Used Above**
+
 ```sh
 33 = Yellow
-
 ```
 
 Explanation:

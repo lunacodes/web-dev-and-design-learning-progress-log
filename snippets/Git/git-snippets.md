@@ -2,6 +2,7 @@
 
 <!-- MarkdownTOC -->
 
+* [Config File](#config-file)
 * [File Tracking](#file-tracking)
   * [General](#general)
   * [Git Ignore](#git-ignore)
@@ -20,6 +21,43 @@
 * [Colors](#colors)
 
 <!-- /MarkdownTOC -->
+
+<a id="config-file"></a>
+## Config File
+
+```bash
+git config --global credential.helper 'cache --timeout=86400' (configure password cache for 1 day)
+git config --global pull.rebase true (set pull rebase as default pull, otherwise it is pull merge and it creates merge commit)
+git config --global diff.tool <scriptToCall>
+git config --global merge.tool <scriptToCall>
+git log origin/master..HEAD (find the logs between local master and remote head. It is equivalent to hg incoming in some ways)
+git rebase HEAD~4 (Squashing a few commits)
+git checkout <filePath> (git checkout .) (discard local changes)
+
+#repo management
+git remote -v (show remote repo config)
+git remote set-url origin https://islandhill@bitbucket.org/islandhill/myob-coding-exercise.git (change remote url by adding username)
+git remote add origin https://timsu@bitbucket.org/yarris/surveyservice-client.git
+git remote rm origin
+
+#stash: take away uncommitted changes, do whatever you want(git pull for example), then apply the change back
+git stash save "description of the change"
+git stash list
+git stash apply
+
+#Undo changes
+git reset HEAD^ (reworking last commit; changes will stay)
+git reset --hard HEAD^ (removing the last commit; changes will be gone)
+git reset HEAD~2 (reworking last two commits)
+git commit --amend (changing your last commit)
+e.g. git commit -m 'initial commit'
+     git add forgotten_file
+     git commit --amend
+
+.gitignore
+The way to ignore all directories called bin anywhere below the current level in a directory tree is with a .gitignore file with the pattern:
+bin/
+```
 
 <a id="file-tracking"></a>
 ## File Tracking

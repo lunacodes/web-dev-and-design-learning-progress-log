@@ -3,16 +3,17 @@
 <!-- MarkdownTOC -->
 
 * [Git Integration](#git-integration)
-    * [Navigation](#navigation)
+  * [Navigation](#navigation)
 * [Editor Settings - Global](#editor-settings---global)
-    * [Convert File Line Endings on Save](#convert-file-line-endings-on-save)
-    * [Increase the Number of Recent Files, Folders, and Projects](#increase-the-number-of-recent-files-folders-and-projects)
+  * [Convert File Line Endings on Save](#convert-file-line-endings-on-save)
+  * [Increase the Number of Recent Files, Folders, and Projects](#increase-the-number-of-recent-files-folders-and-projects)
 * [Build Systems](#build-systems)
 * [Regular Expressions \(RegEx\)](#regular-expressions-regex)
-    * [Line Endings](#line-endings)
+  * [Line Endings](#line-endings)
 * [Creating Snippets](#creating-snippets)
 * [Syntax Settings](#syntax-settings)
-    * [Add PowerShell Syntax Highlighting to Markdown and Markdown-Extended](#add-powershell-syntax-highlighting-to-markdown-and-markdown-extended)
+  * [Add PowerShell Syntax Highlighting to Markdown and Markdown-Extended](#add-powershell-syntax-highlighting-to-markdown-and-markdown-extended)
+* [Sublime Linter Config](#sublime-linter-config)
 
 <!-- /MarkdownTOC -->
 
@@ -39,7 +40,7 @@ Note: I have included this b/c it's interesting... it seems unnecessary, and pot
 
 Save this as change_line_endings.py in your User package folder. I generally wouldn't recommend this, but I hope you know what you're doing with this.
 
-```py
+```python
 import sublime_plugin
 
 # Options are: "Windows", "Unix", "CR" (don't use CR)
@@ -144,4 +145,24 @@ Markdown Extended:
         3: punctuation.definition.fenced.markdown
       pop: true
     - include: scope:source.powershell
+```
+
+<a id="sublime-linter-config"></a>
+## Sublime Linter Config
+
+How you deal w/ providing linter paths on Windows:
+
+```json
+// SublimeLinter Settings - User
+{
+    "debug": true,
+    "linters": {
+        "phpcs": {
+            "cmd": "/Users/javorszky/.composer/vendor/bin/phpcs",
+            "args": [
+                "--standard=WordPress-Extra"
+            ]
+        }
+    }
+}
 ```

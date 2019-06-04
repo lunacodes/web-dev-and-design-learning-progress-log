@@ -254,6 +254,7 @@ Trigger hardware acceleration for some animation.
 /// @param {Number} $n
 /// @return {Number}
 /// @source https://github.com/adambom/Sass-Math/blob/master/math.scss Sass-Math
+
 @function pow($x, $n) {
   $result: 1;
 
