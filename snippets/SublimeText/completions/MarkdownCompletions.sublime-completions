@@ -1,0 +1,14 @@
+{
+  "scope": "text.html.markdown",
+  "completions":
+  [
+    {
+      "trigger": "Set-Alias\tSet-Alias",
+      "contents": "function ${1:Function-Name} { ${2:Command} }\n Set-Alias ${3:alias} ${1:Function-Name}"
+    },
+    {
+      "trigger": "switch\tPS switch statement",
+      "contents": "switch (${1:expr}) {\n  ${2:case} { ${3:statement} }\n  ${4:${5:case} { ${6:statement} \\}}\n}\n${7:}"
+    }
+  ]
+}

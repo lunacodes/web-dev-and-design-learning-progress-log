@@ -4,6 +4,7 @@
 
 * [Environment Variables](#environment-variables)
 * [Linting and Testing](#linting-and-testing)
+  * [PSScriptAnalyzer:](#psscriptanalyzer)
 * [Basic Commands and Modules](#basic-commands-and-modules)
   * [WhatIf and Confirm](#whatif-and-confirm)
   * [Finding and Listing Commands and Modules](#finding-and-listing-commands-and-modules)
@@ -50,7 +51,8 @@ path # Apparently the same thing??
 <a id="linting-and-testing"></a>
 ## Linting and Testing
 
-PSScriptAnalyzer:
+<a id="psscriptanalyzer"></a>
+### PSScriptAnalyzer:
 
 ```powershell
 Invoke-ScriptAnalyzer -Path ./archiveScript.ps1 -Settings ./PSScriptAnalyzerSettings.psd1
