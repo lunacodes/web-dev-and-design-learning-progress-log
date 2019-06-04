@@ -3,9 +3,9 @@
 <!-- MarkdownTOC -->
 
 * [Environment Variables](#environment-variables)
-* [Basic Commands](#basic-commands)
+* [Basic Commands and Modules](#basic-commands-and-modules)
   * [WhatIf and Confirm](#whatif-and-confirm)
-  * [Finding and Listing Commands](#finding-and-listing-commands)
+  * [Finding and Listing Commands and Modules](#finding-and-listing-commands-and-modules)
   * [Properties](#properties)
   * [Command History](#command-history)
   * [Run Multiple Commands](#run-multiple-commands)
@@ -46,8 +46,8 @@ Path:
 $Env:Path.Split(';')
 path # Apparently the same thing??
 ```
-<a id="basic-commands"></a>
-## Basic Commands
+<a id="basic-commands-and-modules"></a>
+## Basic Commands and Modules
 
 <a id="whatif-and-confirm"></a>
 ### WhatIf and Confirm
@@ -56,10 +56,11 @@ path # Apparently the same thing??
 
 `-Confirm` - similar to `-WhatIf`, except it will ask a question for each sub-operation it is about to execute, only actually executing it when you answer Yes.
 
-<a id="finding-and-listing-commands"></a>
-### Finding and Listing Commands
+<a id="finding-and-listing-commands-and-modules"></a>
+### Finding and Listing Commands and Modules
 
 ```ps
+Find-Module -Name moduleName | Format-List -Property * # Outputs a pretty-formatted list of the module's properties
 Get-Command # lists all the cmdlets, functions, and aliases available
 Get-Command * #  gets all types of commands, including all of the non-PowerShell files in the Path environment variable (`$env:Path`), which it lists in the Application command type.
 Get-Command command # Imports the particular command for immediate use, unless the query has wildcards
