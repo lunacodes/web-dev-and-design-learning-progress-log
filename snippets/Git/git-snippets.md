@@ -7,6 +7,9 @@
   * [General](#general)
   * [Git Ignore](#git-ignore)
 * [Branch](#branch)
+* [Commit Editing](#commit-editing)
+  * [Change Date and Time of Commit](#change-date-and-time-of-commit)
+  * [Set the date of an arbitrary commit to an arbitrary or current date](#set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date)
 * [Diff](#diff)
   * [Diff multiple commits ago](#diff-multiple-commits-ago)
   * [Diff with remote](#diff-with-remote)
@@ -15,8 +18,8 @@
   * [Graphing](#graphing)
 * [Merge](#merge)
   * [Merge Conflicts](#merge-conflicts)
-    * [Fixing Merge Conflicts](#fixing-merge-conflicts)
 * [Pull](#pull)
+  * [Pull Requests](#pull-requests)
 * [Stash](#stash)
 * [Colors](#colors)
 
@@ -97,6 +100,58 @@ bin/
 
 Note: git pull will pull into whatever branch you're currently in. git push will push the current branch into whatever branch you specify
 
+<a id="commit-editing"></a>
+## Commit Editing
+
+<a id="change-date-and-time-of-commit"></a>
+### Change Date and Time of Commit
+
+`git commit --date="<formatted date here">`
+  
+<a id="git-docs---date-formats"></a>
+#### Git Docs - Date Formats
+
+The `GIT_AUTHOR_DATE`, `GIT_COMMITTER_DATE` environment variables and the `--date` option support the following date formats:
+
+**Git internal format**
+It is `<unix timestamp> <time zone offset>`, where `<unix timestamp>` is the number of seconds since the UNIX epoch. `<time zone offset>` is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`.
+
+**RFC 2822**
+The standard email format as described by RFC 2822, for example `Thu, 07 Apr 2005 22:13:13 +0200`.
+
+ISO 8601
+Time and date specified by the ISO 8601 standard, for example `2005-04-07T22:13:13`. The parser accepts a space instead of the `T` character as well. Fractional parts of a second will be ignored, for example `2005-04-07T22:13:13.019` will be treated as `2005-04-07T22:13:13`.
+
+Note
+In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.
+
+<a id="snippets"></a>
+#### Snippets
+
+```sh
+# Set the date of the last commit to the current date
+`GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"`
+
+# Set the date of the last commit to an arbitrary date
+`GIT_COMMITTER_DATE="Mon 20 Aug 2018 20:19:19 BST" git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"`
+```
+
+<a id="set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date"></a>
+### Set the date of an arbitrary commit to an arbitrary or current date
+
+Rebase to before said commit and stop for amendment:
+
+1. `git rebase <commit-hash>^ -i`
+2. Replace pick with e (edit) on the line with that commit (the first one)
+3. quit the editor (ESC followed by :wq in VIM)
+4. Either:
+
+```sh
+GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"
+
+GIT_COMMITTER_DATE="Mon 20 Aug 2018 20:19:19 BST" git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
+```
+
 <a id="diff"></a>
 ## Diff
 
@@ -114,6 +169,7 @@ $ git diff HEAD~2 HEAD -- main.c
 <a id="diff-with-remote"></a>
 ### Diff with remote
 ```git
+<a id="note-you-can-compare-any-branch-to-any-other-ex-master---remotedev"></a>
 # Note: you can compare any branch to any other (ex master -> remote/dev)
 git diff branch remote/name/branch
 ```
@@ -124,20 +180,33 @@ git diff branch remote/name/branch
 Note: This applies to logging, diff, etc
 
 ```sh
+<a id="git-diff-filter-example-usage"></a>
 # Git Diff-Filter Example usage
 git diff --diff-filter=ADM
 
+<a id="include-files-that-are"></a>
 # Include files that are:
+<a id="a--added-a"></a>
 # A  Added (A)
+<a id="c--copied-c"></a>
 # C  Copied (C)
+<a id="d--deleted-d"></a>
 # D  Deleted (D)
+<a id="m--modified-m"></a>
 # M  Modified (M)
+<a id="r--renamed-r"></a>
 # R  Renamed (R)
+<a id="t--type-ie-regular-file-symlink-submodule--changed-t"></a>
 # T  Type (i.e. regular file, symlink, submodule, …​) changed (T)
+<a id="u--unmerged-u"></a>
 # U  Unmerged (U)
+<a id="x--unknown-x"></a>
 # X  Unknown (X)
+<a id="b--pairing-broken-b"></a>
 # B  Pairing Broken (B)
+<a id="-exclude-via-lowercase"></a>
 #
+<a id="exclude-via-lowercase"></a>
 # Exclude via lowercase
 ```
 
@@ -239,6 +308,21 @@ If you want to get changes from LOCAL
 ## Pull
 * `git pull origin branchname --allow-unrelated-histories`
 
+<a id="pull-requests"></a>
+### Pull Requests
+
+PR for specific commit. From: https://stackoverflow.com/questions/34027850/how-to-pull-request-a-specific-commit
+
+```bash
+$ git fetch --all                                   # Get the latest code
+# If you haven't set up your remote yet, run this line:
+# git remote add upstream https://github.com/konradjk/exac_browser.git
+$ git checkout -b my-single-change upstream/master  # Create new branch based on upstream/master
+$ git cherry-pick b50b2e7                           # Cherry pick the commit you want
+$ git push -u origin my-single-change               # Push your changes to the remote branch
+```
+
+Then create the PR from that branch.
 
 <a id="stash"></a>
 ## Stash

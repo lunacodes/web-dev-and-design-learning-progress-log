@@ -27,3 +27,41 @@
 ## Media Queries
 
 * [MDN](https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/)
+
+## Sticky Footer Fix
+
+```css
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin: auto auto 0;
+}
+```
+
+Alternate:
+
+```css
+/**
+ * Fix for Sticky Footer
+ */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 61px 0 0;
+}
+
+.content-wrapper {
+  /* Double-check if these are equivalent */
+  flex: 1 0 auto;
+  flex: 1;
+}
+```
