@@ -4,6 +4,7 @@
 
 * [Automatically Center a Block Element](#automatically-center-a-block-element)
 * [Clearfix](#clearfix)
+* [Sticky Footer Fix](#sticky-footer-fix)
 * [Responsive Ratio](#responsive-ratio)
 * [CSS Triangles](#css-triangles)
 * [Font styles](#font-styles)
@@ -51,6 +52,47 @@ div::after {
   height: 1rem;
   top: -1rem;
   width: 1rem;
+}
+```
+
+<a id="sticky-footer-fix"></a>
+## Sticky Footer Fix
+
+```scss
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  // Not part of the fix
+  overflow-x: hidden;
+}
+
+.site-footer {
+  margin: auto auto 0;
+}
+```
+
+Alternate:
+
+```scss
+/**
+ * Fix for Sticky Footer
+ */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 61px 0 0;
+}
+
+.content-wrapper {
+  // Double-check if these are equivalent
+  flex: 1 0 auto;
+  flex: 1;
 }
 ```
 

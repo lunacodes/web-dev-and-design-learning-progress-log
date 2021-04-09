@@ -14,6 +14,9 @@
   * [Git Ignore](#git-ignore)
   * [Skip Worktree & Assume Unchanged](#skip-worktree--assume-unchanged)
 * [Branch](#branch)
+* [Commit Editing](#commit-editing)
+  * [Change Date and Time of Commit](#change-date-and-time-of-commit)
+  * [Set the date of an arbitrary commit to an arbitrary or current date](#set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date)
 * [Diff](#diff)
   * [Diff multiple commits ago](#diff-multiple-commits-ago)
   * [Diff with remote](#diff-with-remote)
@@ -22,9 +25,9 @@
   * [Graphing](#graphing)
 * [Merge](#merge)
   * [Merge Conflicts](#merge-conflicts)
-    * [Fixing Merge Conflicts](#fixing-merge-conflicts)
 * [Patch](#patch)
 * [Pull](#pull)
+  * [Pull Requests](#pull-requests)
 * [Stash](#stash)
 * [Troubleshooting](#troubleshooting)
 * [Editor Hangs During Commit](#editor-hangs-during-commit)
@@ -243,6 +246,58 @@ which might be easier to remember than
 $ git push <remote_name> :<branch_name>
 ```
 
+<a id="commit-editing"></a>
+## Commit Editing
+
+<a id="change-date-and-time-of-commit"></a>
+### Change Date and Time of Commit
+
+`git commit --date="<formatted date here">`
+  
+<a id="git-docs---date-formats"></a>
+#### Git Docs - Date Formats
+
+The `GIT_AUTHOR_DATE`, `GIT_COMMITTER_DATE` environment variables and the `--date` option support the following date formats:
+
+**Git internal format**
+It is `<unix timestamp> <time zone offset>`, where `<unix timestamp>` is the number of seconds since the UNIX epoch. `<time zone offset>` is a positive or negative offset from UTC. For example CET (which is 1 hour ahead of UTC) is `+0100`.
+
+**RFC 2822**
+The standard email format as described by RFC 2822, for example `Thu, 07 Apr 2005 22:13:13 +0200`.
+
+ISO 8601
+Time and date specified by the ISO 8601 standard, for example `2005-04-07T22:13:13`. The parser accepts a space instead of the `T` character as well. Fractional parts of a second will be ignored, for example `2005-04-07T22:13:13.019` will be treated as `2005-04-07T22:13:13`.
+
+Note
+In addition, the date part is accepted in the following formats: `YYYY.MM.DD`, `MM/DD/YYYY` and `DD.MM.YYYY`.
+
+<a id="snippets"></a>
+#### Snippets
+
+```sh
+# Set the date of the last commit to the current date
+`GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"`
+
+# Set the date of the last commit to an arbitrary date
+`GIT_COMMITTER_DATE="Mon 20 Aug 2018 20:19:19 BST" git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"`
+```
+
+<a id="set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date"></a>
+### Set the date of an arbitrary commit to an arbitrary or current date
+
+Rebase to before said commit and stop for amendment:
+
+1. `git rebase <commit-hash>^ -i`
+2. Replace pick with e (edit) on the line with that commit (the first one)
+3. quit the editor (ESC followed by :wq in VIM)
+4. Either:
+
+```sh
+GIT_COMMITTER_DATE="$(date)" git commit --amend --no-edit --date "$(date)"
+
+GIT_COMMITTER_DATE="Mon 20 Aug 2018 20:19:19 BST" git commit --amend --no-edit --date "Mon 20 Aug 2018 20:19:19 BST"
+```
+
 <a id="diff"></a>
 ## Diff
 
@@ -422,6 +477,21 @@ This lets you choose one path out of a status like selection. After choosing the
 ## Pull
 * `git pull origin branchname --allow-unrelated-histories`
 
+<a id="pull-requests"></a>
+### Pull Requests
+
+PR for specific commit. From: https://stackoverflow.com/questions/34027850/how-to-pull-request-a-specific-commit
+
+```bash
+$ git fetch --all                                   # Get the latest code
+# If you haven't set up your remote yet, run this line:
+# git remote add upstream https://github.com/konradjk/exac_browser.git
+$ git checkout -b my-single-change upstream/master  # Create new branch based on upstream/master
+$ git cherry-pick b50b2e7                           # Cherry pick the commit you want
+$ git push -u origin my-single-change               # Push your changes to the remote branch
+```
+
+Then create the PR from that branch.
 
 <a id="stash"></a>
 ## Stash

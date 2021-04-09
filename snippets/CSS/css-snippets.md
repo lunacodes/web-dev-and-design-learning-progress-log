@@ -1,5 +1,16 @@
 # CSS Snippets
 
+<!-- MarkdownTOC -->
+
+* [Selectors](#selectors)
+* [Canvas](#canvas)
+* [Media Queries](#media-queries)
+  * [Bootstrap Breakpoints](#bootstrap-breakpoints)
+* [Sticky Footer Fix](#sticky-footer-fix)
+
+<!-- /MarkdownTOC -->
+
+<a id="selectors"></a>
 ## Selectors
 
 * https://css-tricks.com/child-and-sibling-selectors/
@@ -8,6 +19,7 @@
 * https://css-tricks.com/spacing-the-bottom-of-modules/
 		* Note: Replace with Lobotomized Owl: `* + *`
 
+<a id="canvas"></a>
 ## Canvas
 
 1. Canvas Positioning:
@@ -24,10 +36,12 @@
 }
 ```
 
+<a id="media-queries"></a>
 ## Media Queries
 
 * [MDN](https://hacks.mozilla.org/2016/08/using-feature-queries-in-css/)
 
+<a id="bootstrap-breakpoints"></a>
 ### Bootstrap Breakpoints
 
 ```scss
@@ -119,3 +133,43 @@ Similarly, media queries may span multiple breakpoint widths:
 The Sass mixin for targeting the same screen size range would be:
 
 @include media-breakpoint-between(md, xl) { ... }
+```
+
+<a id="sticky-footer-fix"></a>
+## Sticky Footer Fix
+
+```css
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer {
+  margin: auto auto 0;
+}
+```
+
+Alternate:
+
+```css
+/**
+ * Fix for Sticky Footer
+ */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 61px 0 0;
+}
+
+.content-wrapper {
+  /* Double-check if these are equivalent */
+  flex: 1 0 auto;
+  flex: 1;
+}
+```
