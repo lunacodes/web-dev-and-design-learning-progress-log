@@ -3,9 +3,16 @@
 <!-- MarkdownTOC -->
 
 * [Config File](#config-file)
+  * [Locations and Priority](#locations-and-priority)
+  * [Commands](#commands)
+* [Repo Management](#repo-management)
+* [Delete Sensitive Data](#delete-sensitive-data)
+  * [BFG Repo Cleaner](#bfg-repo-cleaner)
 * [File Tracking](#file-tracking)
   * [General](#general)
+  * [Listing Files](#listing-files)
   * [Git Ignore](#git-ignore)
+  * [Skip Worktree & Assume Unchanged](#skip-worktree--assume-unchanged)
 * [Branch](#branch)
 * [Diff](#diff)
   * [Diff multiple commits ago](#diff-multiple-commits-ago)
@@ -16,14 +23,34 @@
 * [Merge](#merge)
   * [Merge Conflicts](#merge-conflicts)
     * [Fixing Merge Conflicts](#fixing-merge-conflicts)
+* [Patch](#patch)
 * [Pull](#pull)
 * [Stash](#stash)
+* [Troubleshooting](#troubleshooting)
+* [Editor Hangs During Commit](#editor-hangs-during-commit)
 * [Colors](#colors)
 
 <!-- /MarkdownTOC -->
 
 <a id="config-file"></a>
 ## Config File
+
+<a id="locations-and-priority"></a>
+### Locations and Priority
+
+The three options are `--local`, `--global`, `--system`. Git traverses and prioritizes them in that order (i.e. local always overrides global, which always overrides system)
+
+* `--local`: found in your repo's`.git/.gitconfig`. Git config writes here by default, if no config option is passed
+* `--global`: user-specific. Found in user's home directory.
+  * Unix: `~/.gitconfig`
+  * Windows: `C:\Users\<username>\.gitconfig`
+* `--system`: System-level configuration is applied across an entire machine. This covers all users on an operating system and all repos.
+  * Unix: `$(prefix)/etc/gitconfig`
+  * Windows: `C:\ProgramData\Git\config`
+    * XP & Older: `C:\Documents and Settings\All Users\Application Data\Git\config`
+
+<a id="commands"></a>
+### Commands
 
 ```bash
 git config --global credential.helper 'cache --timeout=86400' (configure password cache for 1 day)
@@ -33,19 +60,25 @@ git config --global merge.tool <scriptToCall>
 git log origin/master..HEAD (find the logs between local master and remote head. It is equivalent to hg incoming in some ways)
 git rebase HEAD~4 (Squashing a few commits)
 git checkout <filePath> (git checkout .) (discard local changes)
+git config --global core.eol lf # Ensure Unix-style line endings
+git config --global core.autocrlf input # Windows: Use the file's line-endings
+```
 
-#repo management
+<a id="repo-management"></a>
+## Repo Management
+
+```bash
 git remote -v (show remote repo config)
 git remote set-url origin https://islandhill@bitbucket.org/islandhill/myob-coding-exercise.git (change remote url by adding username)
 git remote add origin https://timsu@bitbucket.org/yarris/surveyservice-client.git
 git remote rm origin
 
-#stash: take away uncommitted changes, do whatever you want(git pull for example), then apply the change back
+# stash: take away uncommitted changes, do whatever you want(git pull for example), then apply the change back
 git stash save "description of the change"
 git stash list
 git stash apply
 
-#Undo changes
+# Undo changes
 git reset HEAD^ (reworking last commit; changes will stay)
 git reset --hard HEAD^ (removing the last commit; changes will be gone)
 git reset HEAD~2 (reworking last two commits)
@@ -59,6 +92,68 @@ The way to ignore all directories called bin anywhere below the current level in
 bin/
 ```
 
+<a id="delete-sensitive-data"></a>
+## Delete Sensitive Data
+
+<a id="bfg-repo-cleaner"></a>
+### BFG Repo Cleaner
+
+From: https://rtyley.github.io/bfg-repo-cleaner/
+
+```bash
+bfg --strip-blobs-bigger-than 100M --replace-text banned.txt repo.git
+
+https://github.com/lunacodes/config_files_central.git
+
+git clone --mirror https://github.com/lunacodes/config_files_central.git
+
+# java -jar bfg.jar --strip-blobs-bigger-than 100M config_files_central.git
+java -jar bgf.jar --delete-files id_{dsa,rsa}  my-repo.git
+
+cd my-repo.git
+# note: I probably need to unalias gc before I run this!
+git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+bfg --delete-files
+# After deleting data from the main repo - you have to destroy it on any clones as well:
+
+# Finally, once you're happy with the updated state of your repo, push it back up (note that because your clone command used the --mirror flag, this push will update all refs on your remote server):
+$ git push
+```
+
+
+```bash
+#Important: If you have any local changes, they will be lost. With or without --hard option, any local commits that haven't been pushed will be lost.[*]
+# If you have any files that are not tracked by Git (e.g. uploaded user content), these files will not be affected.
+
+git fetch --all
+
+# Then, you have two options:
+git reset --hard origin/master
+
+# OR If you are on some other branch:
+git reset --hard origin/<branch_name>
+
+# Explanation:
+# git fetch downloads the latest from remote without trying to merge or rebase anything.
+
+# Then the git reset resets the master branch to what you just fetched. The --hard option changes all the files in your working tree to match the files in origin/master
+
+# Maintain current local commits
+# [*]: It's worth noting that it is possible to maintain current local commits by creating a branch from master before resetting:
+
+git checkout master
+git branch new-branch-to-save-current-commits
+git fetch --all
+git reset --hard origin/master
+After this, all of the old commits will be kept in new-branch-to-save-current-commits.
+
+# Uncommitted changes, however (even staged), will be lost. Make sure to stash and commit anything you need. For that you can run the following:
+git stash
+# And then to reapply these uncommitted changes:
+git stash pop
+```
+
 <a id="file-tracking"></a>
 ## File Tracking
 
@@ -70,32 +165,83 @@ bin/
 * `git ls-tree -r master --name-only` -  see what files git is tracking
 * `git log --pretty=format: --name-only --diff-filter=A | sort - | sed '/^$/d'` - list all files that ever existed
 
+<a id="listing-files"></a>
+### Listing Files
+
+```bash
+# H cached
+# S skip-worktree
+# M unmerged
+# R removed/deleted
+# C modified/changed
+# K to be killed
+# ? other
+
+git ls-files -v # List files git is tracking + status
+git ls-files -v | grep ^S # List skipped files
+# Follow pattern above for any of the other letters/file statuses
+```
+
 <a id="git-ignore"></a>
 ### Git Ignore
 ```php
+<a id="ignore-everything"></a>
 # Ignore everything
 *
 
+<a id="but-not-these-files"></a>
 # But not these files...
 !.gitignore
 !script.pl
 !template.latex
+<a id="etc"></a>
 # etc...
 
+<a id="even-if-they-are-in-subdirectories"></a>
 # ...even if they are in subdirectories
 !*/
 
+<a id="if-the-files-to-be-tracked-are-in-subdirectories"></a>
 # if the files to be tracked are in subdirectories
 !*/a/b/file1.txt
+<a id="abc"></a>
 # !*/a/b/c/*
+```
+
+<a id="skip-worktree--assume-unchanged"></a>
+### Skip Worktree & Assume Unchanged
+
+```bash
+git update-index --assume-unchanged # assume file unchanged
+git update-index --no-assume-unchanged # stop assuming unchanged
+git update-index --skip-worktree # skip the file
+git update-index --no-skip-worktree # unskip the file
+git ls-files -v . | grep ^S # List skipped files
 ```
 
 <a id="branch"></a>
 ## Branch
+
 * `git branch` list of local branches
 * `git branch -a` list all branches (remote and local)
 
 Note: git pull will pull into whatever branch you're currently in. git push will push the current branch into whatever branch you specify
+
+Deleting Branches:
+
+```bash
+$ git branch -d branch_name
+$ git branch -D branch_name
+Note: The -d option is an alias for --delete, which only deletes the branch if it has already been fully merged in its upstream branch. You could also use -D, which is an alias for --delete --force, which deletes the branch "irrespective of its merged status." [Source: man git-branch]
+
+Delete Remote Branch [Updated on 8-Sep-2017]
+As of Git v1.7.0, you can delete a remote branch using
+
+$ git push <remote_name> --delete <branch_name>
+which might be easier to remember than
+
+$ git push <remote_name> :<branch_name>
+```
 
 <a id="diff"></a>
 ## Diff
@@ -114,6 +260,7 @@ $ git diff HEAD~2 HEAD -- main.c
 <a id="diff-with-remote"></a>
 ### Diff with remote
 ```git
+<a id="note-you-can-compare-any-branch-to-any-other-ex-master---remotedev"></a>
 # Note: you can compare any branch to any other (ex master -> remote/dev)
 git diff branch remote/name/branch
 ```
@@ -124,20 +271,33 @@ git diff branch remote/name/branch
 Note: This applies to logging, diff, etc
 
 ```sh
+<a id="git-diff-filter-example-usage"></a>
 # Git Diff-Filter Example usage
 git diff --diff-filter=ADM
 
+<a id="include-files-that-are"></a>
 # Include files that are:
+<a id="a-added-a"></a>
 # A  Added (A)
+<a id="c-copied-c"></a>
 # C  Copied (C)
+<a id="d-deleted-d"></a>
 # D  Deleted (D)
+<a id="m-modified-m"></a>
 # M  Modified (M)
+<a id="r-renamed-r"></a>
 # R  Renamed (R)
+<a id="t-type-ie-regular-file-symlink-submodule-%E2%80%A6%E2%80%8B-changed-t"></a>
 # T  Type (i.e. regular file, symlink, submodule, …​) changed (T)
+<a id="u-unmerged-u"></a>
 # U  Unmerged (U)
+<a id="x-unknown-x"></a>
 # X  Unknown (X)
+<a id="b-pairing-broken-b"></a>
 # B  Pairing Broken (B)
+<a id="<a-id="exclude-via-lowercase"></a>"></a>
 #
+<a id="exclude-via-lowercase"></a>
 # Exclude via lowercase
 ```
 
@@ -235,6 +395,29 @@ If you want to get changes from LOCAL
 
 `git clean` Remove extra files (e.g. \*.orig) created by diff tool.
 
+<a id="patch"></a>
+## Patch
+
+```bash
+-p patch
+This lets you choose one path out of a status like selection. After choosing the path, it presents the diff between the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of the following options and type return:
+
+   y - stage this hunk
+   n - do not stage this hunk
+   q - quit; do not stage this hunk nor any of the remaining ones
+   a - stage this hunk and all later hunks in the file
+   d - do not stage this hunk nor any of the later hunks in the file
+   g - select a hunk to go to
+   / - search for a hunk matching the given regex
+   j - leave this hunk undecided, see next undecided hunk
+   J - leave this hunk undecided, see next hunk
+   k - leave this hunk undecided, see previous undecided hunk
+   K - leave this hunk undecided, see previous hunk
+   s - split the current hunk into smaller hunks
+   e - manually edit the current hunk
+   ? - print help
+```
+
 <a id="pull"></a>
 ## Pull
 * `git pull origin branchname --allow-unrelated-histories`
@@ -246,6 +429,16 @@ If you want to get changes from LOCAL
 * `git stash show` to see what n is in the below commands.
 * `git stash apply` to apply the most recent stash.
 * `git stash apply stash@{n}` to apply an older stash.
+
+<a id="troubleshooting"></a>
+## Troubleshooting
+
+<a id="editor-hangs-during-commit"></a>
+## Editor Hangs During Commit
+
+1. Delete `.git/index.lock`.
+2. If that doesn't work, then `pgrep` and `taskkill /F /IM git.exe`
+
 
 <a id="colors"></a>
 ## Colors
@@ -321,3 +514,4 @@ If you want to get changes from LOCAL
 '%><(<N>)', '%><|(<N>)': similar to '%<(<N>)', '%<|(<N>)' respectively, but padding both sides (i.e. the text is centered)
 %(trailers[:options]): display the trailers of the body as interpreted by git-interpret-trailers[1]. The trailers string may be followed by a colon and zero or more comma-separated options. If the only option is given, omit non-trailer lines from the trailer block. If the unfold option is given, behave as if interpret-trailer’s --unfold option was given. E.g., %(trailers:only,unfold) to do both.
 ```
+

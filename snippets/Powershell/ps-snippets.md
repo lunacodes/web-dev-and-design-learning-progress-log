@@ -3,14 +3,20 @@
 <!-- MarkdownTOC -->
 
 * [Environment Variables](#environment-variables)
-* [Linting and Testing](#linting-and-testing)
-  * [PSScriptAnalyzer:](#psscriptanalyzer)
+  * [Path](#path)
 * [Basic Commands and Modules](#basic-commands-and-modules)
+  * [Parameters](#parameters)
+    * [Common Parametrs](#common-parametrs)
+    * [List Object's Parameters](#list-objects-parameters)
   * [WhatIf and Confirm](#whatif-and-confirm)
   * [Finding and Listing Commands and Modules](#finding-and-listing-commands-and-modules)
+    * [Check if Module, Function, or Alias Exists](#check-if-module-function-or-alias-exists)
+    * [Display the Function Source Code](#display-the-function-source-code)
+    * [Finding the Function File](#finding-the-function-file)
   * [Properties](#properties)
   * [Command History](#command-history)
   * [Run Multiple Commands](#run-multiple-commands)
+  * [Loops](#loops)
 * [Searching](#searching)
 * [Help](#help)
 * [Chords \(Key Combinations\)](#chords-key-combinations)
@@ -25,14 +31,29 @@
 
 <!-- /MarkdownTOC -->
 
-Note: See [PowerShell Customization](ps-customization.md) file for Shell setup and customization.
+See the following files for anything that may not be included here:
 
-[BASH and PowerShell Quick Reference](https://cecs.wright.edu/~pmateti/Courses/233/Labs/Scripting/bashVsPowerShellTable.html) - Table of equivalient commands in Bash and PS
+**Powershell:**
+
+* [ps-aliases-builtin.md](ps-aliases-builtin.md) -  Built-In Aliases
+* [ps-automatic-variables.md](ps-automatic-variables.md) -  Shell and System Variables
+* [ps-customization.md](ps-customization.md) - Shell setup and customization.
+* [ps-defaults.md](ps-defaults.md) -  Default Variables and Settings
+* [ps-fundamentals.md](ps-fundamentals.md) - Conceptual Introduction to How Powershell Works
+* [ps-scripting-snippets.md](ps-scripting-snippets.md) - Scripting, Linting, Testing, Etc.
+
+* [ps-sysadmin-snippets.md](ps-sysadmin-snippets.md) - Useful Sys Admin Functions
+
+**BASH to Powershell:**
+
+* [BASH and PowerShell Quick Reference](https://cecs.wright.edu/~pmateti/Courses/233/Labs/Scripting/bashVsPowerShellTable.html) - Table of equivalient commands in Bash and PS
 
 <a id="environment-variables"></a>
 ## Environment Variables
 
-```ps
+`Get-Variable` - lists all variables
+
+```powershell
 # List Environment Variables
 Get-ChildItem env:
 # Get content of Specific Environment variable
@@ -40,26 +61,52 @@ Get-ChildItem env:
 $env:DriverDate
 ```
 
-Path:
+<a id="path"></a>
+### Path
 
-```ps
+```powershell
 # List contents of Path file, line by line
 $Env:Path.Split(';')
 path # Apparently the same thing??
 ```
 
-<a id="linting-and-testing"></a>
-## Linting and Testing
-
-<a id="psscriptanalyzer"></a>
-### PSScriptAnalyzer:
-
-```powershell
-Invoke-ScriptAnalyzer -Path ./archiveScript.ps1 -Settings ./PSScriptAnalyzerSettings.psd1
-```
-
 <a id="basic-commands-and-modules"></a>
 ## Basic Commands and Modules
+
+<a id="parameters"></a>
+### Parameters
+
+<a id="common-parametrs"></a>
+#### Common Parametrs
+
+```ps
+# The following list displays the common parameters. Their aliases are listed
+# in parentheses:
+
+-   Debug (db)
+-   ErrorAction (ea)
+-   ErrorVariable (ev)
+-   InformationAction (infa)
+-   InformationVariable (iv)
+-   OutVariable (ov)
+-   OutBuffer (ob)
+-   PipelineVariable (pv)
+-   Verbose (vb)
+-   WarningAction (wa)
+-   WarningVariable (wv)
+
+The risk mitigation parameters are:
+
+-   WhatIf (wi)
+-   Confirm (cf)
+```
+
+<a id="list-objects-parameters"></a>
+#### List Object's Parameters
+
+```powershell
+Get-Help $CommandName -Parameter *
+```
 
 <a id="whatif-and-confirm"></a>
 ### WhatIf and Confirm
@@ -71,7 +118,7 @@ Invoke-ScriptAnalyzer -Path ./archiveScript.ps1 -Settings ./PSScriptAnalyzerSett
 <a id="finding-and-listing-commands-and-modules"></a>
 ### Finding and Listing Commands and Modules
 
-```ps
+```powershell
 Find-Module -Name moduleName | Format-List -Property * # Outputs a pretty-formatted list of the module's properties
 Get-Command # lists all the cmdlets, functions, and aliases available
 Get-Command * #  gets all types of commands, including all of the non-PowerShell files in the Path environment variable (`$env:Path`), which it lists in the Application command type.
@@ -84,18 +131,47 @@ Get-Help command # print man page for a command
 command -? # same thing
 ```
 
+<a id="check-if-module-function-or-alias-exists"></a>
+#### Check if Module, Function, or Alias Exists
+
+```powershell
+# Basic:
+# Check all the aliases for a given functionGet-Alias -Definition Select-ColorString
+
+function CheckIf-ModuleNotLoaded {
+  if (-Not (Get-Module -ListAvailable -Name $module_name)) {
+    echo "Error: Module Not Available - $module_name"
+  }
+ }
+Set-Alias modcheck CheckIf-ModuleNotLoaded
+```
+
+<a id="display-the-function-source-code"></a>
+#### Display the Function Source Code
+
+```powershell
+# Can use this for multiple commands at once
+Get-Command -ShowCommandInfo $args
+```
+
+<a id="finding-the-function-file"></a>
+#### Finding the Function File
+
 Get the file defining a function:
-```ps
+
+```powershell
 ${function:$name}.File
 # Example: grep
 # $ ${function:grep}.File
 # C:\Users\lunac\OneDrive\Documents\PowerShell\Scripts\unix.ps1
 ```
 
+
+
 <a id="properties"></a>
 ### Properties
 
-```ps
+```powershell
 Get-Process | Get-Member # lists Object's Properties
 (Get-Process)[0] | Format-List # prints the Properties' values.
 Get-Process | Select-Object Id, ProcessName -last 20 # Get the Id & Process Name of the last 20 processes
@@ -108,7 +184,7 @@ Get-Process | Where-Object WS -gt 150MB # Get processes whose working set (memor
 
 `Invoke-History` is really buggy - don't use!!
 
-```ps
+```powershell
 # List number of items in history
 (Get-History | Measure-Object).count
 ```
@@ -127,6 +203,38 @@ Running multiple commands in terminal:
 ```powershell
 # Note: see https://superuser.com/questions/612409/how-do-i-run-multiple-commands-on-one-line-in-powershell for more discussion around powershell`'s idiosyncratic behavior
 command1; command2; command 3;
+```
+
+<a id="loops"></a>
+### Loops
+
+https://powertoe.wordpress.com/2009/12/14/powershell-part-4-arrays-and-for-loops/
+
+```powershell
+$array = @("test1", "test2", "test3")
+for ($i=0; $i -lt $array.length; $i++) {
+  $array[$i]
+}
+
+# Faster method
+$array = @("test1", "test2", "test3")
+foreach ($element in $array) {
+  $element
+}
+
+# Pipeline - the foreach reach that is used in the pipeline is actually an alias to ForEach-Object.
+# Faster way to write a foreach, but it can incur overhead with large data sets.
+# When you use foreach through the pipeline, you're given a special variable to represent the element in your code bloc, $_:
+$array = ("test1", "test2", "test3")
+$array |foreach {
+  $_
+}
+```
+
+Example: convert dictionary entries to uppercase:
+
+```powershell
+Get-Content dictionary.txt | foreach {$_.toupper()}
 ```
 
 <a id="searching"></a>
@@ -276,7 +384,7 @@ Set-PSReadlineOption -BellStyle None
 }).Count
 ```
 
-```ps
+```powershell
 <a id="how-to-get-n-files-in-a-directory-order-by-last-modified-date"></a>
 # How to get N files in a directory order by last modified date?
 Get-ChildItem -Path 'D:\Temp' |
@@ -285,7 +393,7 @@ Get-ChildItem -Path 'D:\Temp' |
     Select-Object -firs
 ```
 
-```ps
+```powershell
 <a id="powershell-script-to-list-folders-that-have-files-with-date-modified-in-a-range"></a>
 # PowerShell script to list folders that have files with date modified in a range
 <a id="actually-this-may-be-iffy-check-further-answers-here"></a>

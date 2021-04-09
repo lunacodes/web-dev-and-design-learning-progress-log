@@ -8,6 +8,7 @@
   * [Bash Basics](#bash-basics)
   * [File Commands](#file-commands)
   * [Directory Commands](#directory-commands)
+    * [List All Directories](#list-all-directories)
   * [SSH, System Info & Network Commands](#ssh-system-info--network-commands)
   * [Variables](#variables)
   * [Functions](#functions)
@@ -205,6 +206,34 @@ mkdir <dirname>  # makes a new directory
 cd               # changes to home
 cd <dirname>     # changes directory
 pwd              # tells you where you currently are
+```
+
+
+<a id="list-all-directories"></a>
+#### List All Directories
+
+```bash
+function lsdirs() {
+  local target_dir="$1"
+  pdir=$PWD
+
+  # If no dir passed, set target to pwd
+  if [[ "" == "$target_dir" ]]; then
+    target_dir="."
+  fi
+
+  # If dir does not exist, return
+  if [ ! -d "$target_dir" ]; then
+    echo "ls: cannot access '$target_dir': No such file or directory"
+    return
+  # otherwise, cd, list contents, and return to original dir
+  else
+    cd $target_dir
+    # Set to blue dir color, Trim the beginning ./ using sed, Reset color
+    echo -e "\e[1;34m$(find ./ -maxdepth 1 -mindepth 1 -type d)" | sed 's/.\///' | column && echo -e "\e[0m"
+    cd $pdir
+  fi
+}
 ```
 
 <a id="ssh-system-info--network-commands"></a>

@@ -7,6 +7,7 @@
 * [Editor Settings - Global](#editor-settings---global)
   * [Convert File Line Endings on Save](#convert-file-line-endings-on-save)
   * [Increase the Number of Recent Files, Folders, and Projects](#increase-the-number-of-recent-files-folders-and-projects)
+* [Project Files and Settings](#project-files-and-settings)
 * [Build Systems](#build-systems)
 * [Regular Expressions \(RegEx\)](#regular-expressions-regex)
   * [Line Endings](#line-endings)
@@ -57,6 +58,50 @@ class SilentlyChangeLineEndingsListener(sublime_plugin.EventListener):
 ### Increase the Number of Recent Files, Folders, and Projects
 
 https://stackoverflow.com/questions/15769156/increase-number-of-recent-projects-in-sublime-text-2
+
+<a id="project-files-and-settings"></a>
+## Project Files and Settings
+
+From: [Sublime Text 3 - Documentation: Projects](https://www.sublimetext.com/docs/3/projects.html)
+```json
+{
+    "folders":
+    [
+        {
+            "path": "src",
+            "folder_exclude_patterns": ["backup"],
+            "follow_symlinks": true
+        },
+        {
+            "path": "docs",
+            "name": "Documentation",
+            "file_exclude_patterns": ["*.css"]
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 8
+    },
+    "build_systems":
+    [
+        {
+            "name": "List",
+            "shell_cmd": "ls -l"
+        }
+    ]
+}
+```
+
+* `name` - A string used in place of the folder name in the side bar.
+* `file_include_patterns` - A list of strings for filenames to include from the folder. Anything not matching these patterns will be excluded. This is checked before `file_exclude_patterns`.
+* `file_exclude_patterns` - A list of strings for filenames to exclude from the folder. This is added to the global setting of the same name. This is checked after `file_include_patterns`.
+* `folder_include_patterns` - A list of strings for subfolder paths to include from the folder. Anything not matching these patterns will be excluded. This is checked before `folder_exclude_patterns`.
+* `folder_exclude_patterns` - A list of strings for subfolder paths to exclude from the folder. This is added to the global setting of the same name. This is checked after `folder_include_patterns`.
+* `binary_file_patterns` - A list of strings for filenames to treat as binary files, and thus ignored in `Goto Anything` or `Find in Files`.
+* `index_include_patterns` - A list of strings for full file paths to index in the folder. This is added to the `global setting` of the same name. Anything not matching these patterns will be excluded from the index. This is checked before `index_exclude_patterns`.
+* `index_exclude_patterns` - A list of strings for file full paths to index in the folder. This is added to the `global setting` of the same name. This is checked after `index_include_patterns`.
+* `follow_symlinks` - If symlinks should be followed when building the folder tree.
+
 
 <a id="build-systems"></a>
 ## Build Systems

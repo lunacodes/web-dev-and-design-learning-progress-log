@@ -1,50 +1,79 @@
+# WP-CLI Snippets
+
 <!-- MarkdownTOC -->
 
-* [WP-CLI Snippets](#wp-cli-snippets)
-  * [My Snippets](#my-snippets)
-  * [Bash Completions](#bash-completions)
-  * [Cache](#cache)
-  * [Cap](#cap)
-  * [Cli](#cli)
-  * [Comment](#comment)
-  * [Config](#config)
-  * [Core](#core)
-  * [Cron](#cron)
-  * [Db](#db)
-  * [Embed](#embed)
-  * [Language](#language)
-  * [Media](#media)
-  * [Menu](#menu)
-  * [Network](#network)
-  * [Option](#option)
-  * [Package](#package)
-  * [Plugin](#plugin)
-  * [Post-type](#post-type)
-  * [Post](#post)
-  * [Profile](#profile)
-  * [Rewrite](#rewrite)
-  * [Role](#role)
-  * [Scaffold](#scaffold)
-  * [Sidebar](#sidebar)
-  * [Site](#site)
-  * [Super-admin](#super-admin)
-  * [Taxonomy](#taxonomy)
-  * [Term](#term)
-  * [Theme](#theme)
-  * [Transient](#transient)
-  * [User](#user)
-  * [Widget](#widget)
-  * [W3TC - total-cache](#w3tc---total-cache)
-  * [Global Parameters](#global-parameters)
-  * [Extending WP-CLI Commands](#extending-wp-cli-commands)
+* [Packages](#packages)
+  * [Packages to Check Out](#packages-to-check-out)
+  * [Memory Issues](#memory-issues)
+* [My Snippets](#my-snippets)
+  * [Aliases](#aliases)
+  * [Database Management](#database-management)
+* [Bash Completions](#bash-completions)
+* [Cache](#cache)
+* [Cap](#cap)
+* [Cli](#cli)
+* [Comment](#comment)
+* [Config](#config)
+* [Core](#core)
+* [Cron](#cron)
+* [Db](#db)
+* [Embed](#embed)
+* [Language](#language)
+* [Media](#media)
+* [Menu](#menu)
+* [Network](#network)
+* [Option](#option)
+* [Package](#package)
+* [Plugin](#plugin)
+* [Post-type](#post-type)
+* [Post](#post)
+* [Profile](#profile)
+* [Rewrite](#rewrite)
+* [Role](#role)
+* [Scaffold](#scaffold)
+* [Sidebar](#sidebar)
+* [Site](#site)
+* [Super-admin](#super-admin)
+* [Taxonomy](#taxonomy)
+* [Term](#term)
+* [Theme](#theme)
+* [Transient](#transient)
+* [User](#user)
+* [Widget](#widget)
+* [W3TC - total-cache](#w3tc---total-cache)
+* [Global Parameters](#global-parameters)
+* [Extending WP-CLI Commands](#extending-wp-cli-commands)
 
 <!-- /MarkdownTOC -->
-<a id="wp-cli-snippets"></a>
-# WP-CLI Snippets
-<a id="wp-cli-snippets"></a>
+
+<a id="packages"></a>
+## Packages
+
+<a id="packages-to-check-out"></a>
+### Packages to Check Out
+
+* wp package install anhskohbo/wp-cli-themecheck
+* binarygary/db-checkpoint
+* https://github.com/eriktorsner/wp-bootstrap/
+* https://github.com/ernilambar/database-command
+* https://github.com/buddypress/wp-cli-buddypress
+* https://github.com/alessandrotesoro/wp-usergen-cli
+* https://github.com/wpup/wp-cli-media-restore
+* https://github.com/lucatume/wpcli-wpbrowser-tests
+* https://github.com/danielbachhuber/dictator
+* https://github.com/10up/wp-hammer
+
+<a id="memory-issues"></a>
+### Memory Issues
+
+`php -d memory_limit=1G $(which wp) package install <name> --allow-root`
 
 <a id="my-snippets"></a>
 ## My Snippets
+
+<a id="aliases"></a>
+### Aliases
+
 ```sh
 # WPCLI Aliases
 # Plugins
@@ -59,6 +88,7 @@ alias wplsr='wp plugin search'
 alias wplu='wp plugin update'
 alias wplua='wp plugin update --all'
 alias wpflsh='wp cache flush'
+alias wpsalts='wp config shuffle-salts'
 
 # Debugging and Config
 wp_debug_on () {
@@ -78,6 +108,41 @@ wp_debug_off () {
 alias wpdbgoff='wp_debug_off'
 alias wpcfgls='wp config get'
 alias wpcfset='wp config set'
+
+### Database Management
+alias wpdboptcheck="wp db query \"SHOW TABLE STATUS WHERE Engine = 'MyISAM'\" --allow-root"
+alias wpmysam="wp db query \"SHOW TABLE STATUS WHERE Engine = 'MyISAM'\" --allow-root"
+```
+
+<a id="database-management"></a>
+### Database Management
+
+```bash
+# Export DB
+wp db export before-engine-change.sql --all-tablespaces --add-drop-table --allow-root
+# Import DB
+wp db import before-engine-change.sql --allow-root
+
+# Check if your tables are using MyISAM
+wp db query "SHOW TABLE STATUS WHERE Engine = 'MyISAM'" --allow-root
+
+# Convert tables from MyISAM to InnoDB
+#!/usr/bin/env bash
+# Author Mike https://guides.wp-bullet.com
+# Purpose - Convert MyISAM tables to InnoDB with WP-CLI
+
+# create array of MyISAM tables
+WPTABLES=($(wp db query "SHOW TABLE STATUS WHERE Engine = 'MyISAM'" --allow-root --silent --skip-column-names | awk '{ print $1}'))
+
+# loop through array and alter tables
+for WPTABLE in ${WPTABLES[@]}
+do
+    echo "Converting ${WPTABLE} to InnoDB"
+    wp db query "ALTER TABLE ${WPTABLE} ENGINE=InnoDB" --allow-root
+    echo "Converted ${WPTABLE} to InnoDB"
+done
+
+
 ```
 
 <a id="bash-completions"></a>

@@ -19,6 +19,7 @@
 * [Mobile Menu](#mobile-menu)
     * [Remove text from next to hamburger menu:](#remove-text-from-next-to-hamburger-menu)
     * [Prevent Ugly Load of Mobile Menu](#prevent-ugly-load-of-mobile-menu)
+* [Add Classes or Other Attributes to Markup](#add-classes-or-other-attributes-to-markup)
 
 <!-- /MarkdownTOC -->
 
@@ -809,4 +810,16 @@ add_action( 'genesis_before', function () {
     </script>
     <?php
 }, 1 );
+```
+
+<a id="add-classes-or-other-attributes-to-markup"></a>
+## Add Classes or Other Attributes to Markup
+
+```php
+<?php
+add_filter( 'genesis_attr_content', 'genesis_main_content_class' );
+function genesis_main_content_class( $attributes ) {
+    $attributes['class'] = '.genesis-content';
+    return $attributes;
+}
 ```

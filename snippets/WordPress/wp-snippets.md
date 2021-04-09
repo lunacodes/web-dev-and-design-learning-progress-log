@@ -12,6 +12,7 @@
 * [Images](#images)
   * [Lazy Load](#lazy-load)
   * [Replace Uploaded Images](#replace-uploaded-images)
+  * [Image and Text Wrapping](#image-and-text-wrapping)
 * [Other](#other)
   * [Use $ in jQuery Code](#use-%24-in-jquery-code)
   * [WP_User_Query](#wpuserquery)
@@ -40,8 +41,8 @@
 ## WP Admin Bar Wrap Fix
 
 ```css
-/* Media Query - Min-Width: 782px */
-@media screen and (min-width: 48.875em) {
+/* Media Query - Max-Width: 782px */
+@media screen and (max-width: 48.875em) {
    /* // Prevent wrapping of admin bar that has more items than admin bar area */
   #wpadminbar .quicklinks {
     justify-content: space-between;
@@ -96,7 +97,10 @@
   }
 }
 ```
+`theht`
 
+```
+```
 <a id="navigation"></a>
 ## Navigation
 
@@ -285,6 +289,30 @@ return $image_data;
 
 add_filter('wp_generate_attachment_metadata','replace_uploaded_image');
 ```
+
+<a id="image-and-text-wrapping"></a>
+### Image and Text Wrapping
+
+Prevent bizarrely thing text-wrapping around images on mobile screens
+
+```css
+@media only screen and (max-width: 600px) {
+  .alignleft,
+  .alignright,
+  .single-post.content-max-width .wp-block-image.alignleft,
+  .single-post.content-max-width .wp-block-image.alignright,
+  wp-catpion.alignleft,
+  wp-caption.alignright {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    float: none;
+    margin: 0 auto 20px !important;
+    width: 100% !important;
+  }
+}
+```
+
 <a id="other"></a>
 ## Other
 
@@ -339,9 +367,9 @@ add_action('init', function($pt_name) {
 $fb_url = 'https://www.facebook.com/sharer/sharer.php?u=' . $post_url;
 // echo( $fb_url);
 $twitter_url = 'https://twitter.com/share?text=' . $post_title . '&url=' . $post_url . '&via=haSepharadi';
-// $google_plus_url = 'https://plus.google.com/share?url='.$post_url;
-// $linked_in_url = 'https://www.linkedin.com/shareArticle?mini=true&title='.$post_title.'&source-'.$post_url.'&url='.$post_url;
-// $pinterest_url = 'https://pinterest.com/pin/create/button/?media='.$post_url.'&media='.$post_thumbnail[0].'&description='.$post_title;
+$google_plus_url = 'https://plus.google.com/share?url='.$post_url;
+$linked_in_url = 'https://www.linkedin.com/shareArticle?mini=true&title='.$post_title.'&source-'.$post_url.'&url='.$post_url;
+$pinterest_url = 'https://pinterest.com/pin/create/button/?media='.$post_url.'&media='.$post_thumbnail[0].'&description='.$post_title;
 // var_dump($post_thumbnail);
 $whats_app_url = 'whatsapp://send?text=' . $post_title . ' ' . $post_url;
 

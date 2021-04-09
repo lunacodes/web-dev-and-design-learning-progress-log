@@ -1,0 +1,21 @@
+# The default inputrc is located in /etc/inputrc
+# Full path: C:\Program Files\Git\etc
+# Full path: /c/Program\ Files/Git/etc/
+bind '"\e[A": history-search-backward' # Up
+bind '"\e[B": history-search-forward'  # Down
+bind '"\e[1;5D": backward-word'        # Ctrl-Left
+bind '"\e[1;5C": forward-word'         # Ctrl-Right
+
+# This is getting set to history-search-forward otherwise...
+bind '"b": self-insert'
+
+# bind '"\eOA": history-search-backward' # idk what this is
+# bind '"\eOB": history-search-forward' # This is "b"
+# The Alt mappings don't seem to be the right ones
+# bind '"\e\e[C": forward-word'          # Alt-Right
+# bind '"\e\e[D": backward-word'         # Alt-Left
+# bind -r '"\e[A"'
+# bind -r '"\eOA"'
+
+# Case-Insensitive Tab Completion For All Users
+set completion-ignore-case On

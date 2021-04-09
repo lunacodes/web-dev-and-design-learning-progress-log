@@ -1,98 +1,8 @@
-# Powershell 6 Defaults
+# Powershell 6 Aliases
 
-<!-- MarkdownTOC -->
+## Built-In
 
-* [Automatic Variables](#automatic-variables)
-* [Environment Variables](#environment-variables)
-* [Aliases](#aliases)
-  * [Native](#native)
-* [My Additions \(Incomplete\)](#my-additions-incomplete)
-  * [PSCX](#pscx)
-
-<!-- /MarkdownTOC -->
-
-<a id="automatic-variables"></a>
-## Automatic Variables
-
-From: [Powershell 6 - About Automatic Variable](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-6)
-
-In Progress. See [ps-automatic-variables.md](ps-automatic-variables.md) or the link above, for the complete list.
-
-```powershell
-# From: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables?view=powershell-6
-$$                  # last token in the last line received by the session
-$?                  # execution status of the last operation. Boolean
-$^                  # first token in the last line received by the session
-$_                  # same as $PSITEM. Contains the current object in the pipeline object.
-$args               # Array of values for undeclared parameters. See link above for further notes.
-$ConsoleFileName    # contains the path of the console file (.psc1) most recently used in the session.
-$Error              # Array of error objs representing the most recent errors.
-                    #To prevent an err from being adderd to the $Error array, use -ErrorAction Ignore
-$EventArgs
-
-```
-
-<a id="environment-variables"></a>
-## Environment Variables
-
-Listed with `env:`
-
-```powershell
-Name                           Value
-----                           -----
-ALLUSERSPROFILE                C:\ProgramData
-APPDATA                        ~\AppData\Roaming
-ChocolateyInstall              C:\ProgramData\chocolatey
-ChocolateyLastPathUpdate       132035309434772920
-ChocolateyToolsLocation        C:\tools
-COLUMNS                        120
-CommonProgramFiles             C:\Program Files\Common Files
-CommonProgramFiles(x86)        C:\Program Files (x86)\Common Files
-CommonProgramW6432             C:\Program Files\Common Files
-COMPUTERNAME                   DESKTOP-6JK90R2
-ComSpec                        C:\WINDOWS\system32\cmd.exe
-DOCUMENTS                      ~\OneDrive\Documents
-DriverData                     C:\Windows\System32\Drivers\DriverData
-EDITOR                         code --wait
-HOME                           ~
-HOMEDRIVE                      C:
-HOMEPATH                       \Users\lunac
-LOCALAPPDATA                   ~\AppData\Local
-LOGONSERVER                    \\DESKTOP-6JK90R2
-NUMBER_OF_PROCESSORS           4
-OneDrive                       ~\OneDrive
-OneDriveConsumer               ~\OneDrive
-OS                             Windows_NT
-Path                           C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOW…
-PATHEXT                        .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW
-PROCESSOR_ARCHITECTURE         AMD64
-PROCESSOR_IDENTIFIER           Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
-PROCESSOR_LEVEL                6
-PROCESSOR_REVISION             4e03
-ProgramData                    C:\ProgramData
-ProgramFiles                   C:\Program Files
-ProgramFiles(x86)              C:\Program Files (x86)
-ProgramW6432                   C:\Program Files
-PSModulePath                   ~\OneDrive\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Module…
-PUBLIC                         C:\Users\Public
-SystemDrive                    C:
-SystemRoot                     C:\WINDOWS
-TEMP                           ~\AppData\Local\Temp
-TMP                            ~\AppData\Local\Temp
-USERDOMAIN                     DESKTOP-6JK90R2
-USERDOMAIN_ROAMINGPROFILE      DESKTOP-6JK90R2
-USERNAME                       lunac
-USERPROFILE                    ~
-VBOX_MSI_INSTALL_PATH          C:\Program Files\Oracle\VirtualBox\
-windir                         C:\WINDOWS
-```
-
-<a id="aliases"></a>
-## Aliases
-
-<a id="native"></a>
-### Native
-```powershell
+```ps
 Name                                               Version    Source
 ----                                               -------    ------
 % -> ForEach-Object
@@ -232,10 +142,9 @@ wjb -> Wait-Job
 write -> Write-Output
 ```
 
-<a id="my-additions-incomplete"></a>
 ## My Additions (Incomplete)
 
-```powershell
+```ps
 glennys -> cd-glennys
 haseph -> cd-haseph
 home -> cd-home
@@ -253,10 +162,9 @@ zmn -> cd-zmn
 7ze -> 7Zip-Expand
 ```
 
-<a id="pscx"></a>
-### PSCX
+## PSCX
 
-```powershell
+```ps
 ?: -> Invoke-Ternary                               3.3.2      Pscx
 ?? -> Invoke-NullCoalescing                        3.3.2      Pscx
 call -> Invoke-Method                              3.3.2      Pscx

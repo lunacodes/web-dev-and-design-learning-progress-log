@@ -5,6 +5,7 @@
 * [Shell](#shell)
 * [String Manipulation](#string-manipulation)
 * [Infinity](#infinity)
+* [Unit Testing](#unit-testing)
 
 <!-- /MarkdownTOC -->
 
@@ -54,4 +55,40 @@ math.isinf(float("inf"))   # OUTPUT:True
 # by comparing to infinity
 float("inf") == float("inf")  # OUTPUT:True
 float("-inf") == float("-inf")  # OUTPUT:True
+```
+
+<a id="unit-testing"></a>
+## Unit Testing
+
+
+| METHOD              			| CHECKS THAT |
+| ------              			| ----------- |
+| assertEqual(a,b) 					|	a==b |
+| assertNotEqual(a,b) 			|	a != b |
+| assertTrue(x)	 						| bool(x) is True |
+| assertFalse(x) 						|	bool(x) is False |
+| assertIs(a,b) 						|	a is b |
+| assertIs(a,b) 						|	a is b |
+| assertIsNot(a, b) 				|	a is not b |
+| assertIsNone(x) 					|	x is None |
+| assertIsNotNone(x) 				|	x is not None |
+| assertIn(a, b) 						|	a in b |
+| assertNotIn(a, b) 				|	a not in b |
+| assertIsInstance(a, b) 		|	isinstance(a, b) |
+| assertNotIsInstance(a, b) |	not isinstance(a, b) |
+
+```python
+assertEqual(a, b) 	# a==b
+assertNotEqual(a, b) 	# a != b
+assertTrue(x)	 # bool(x) is True
+assertFalse(x)  	# bool(x) is False
+assertIs(a, b) 	# a is b
+assertIs(a, b) 	# a is b
+assertIsNot(a, b) 	# a is not b
+assertIsNone(x)  # x is None
+assertIsNotNone(x)  # x is not None
+assertIn(a, b)  # a in b
+assertNotIn(a, b)  # a not in b
+assertIsInstance(a, b)  # isinstance(a, b)
+assertNotIsInstance(a, b)  # not isinstance(a, b)
 ```
