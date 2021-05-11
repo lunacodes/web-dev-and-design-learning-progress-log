@@ -16,6 +16,9 @@
 * [Permalinks](#permalinks)
 * [Themes](#themes)
 * [Importing](#importing)
+* [Auto-Generated Anchor Links](#auto-generated-anchor-links)
+	* [AnchorJS](#anchorjs)
+	* [Manual](#manual)
 
 <!-- /MarkdownTOC -->
 
@@ -284,3 +287,61 @@ From WP.org sites:
 
 Other Tools:
 [GitHub - wpXml2Jekyll](https://github.com/theaob/wpXml2Jekyll)
+
+<a id="auto-generated-anchor-links"></a>
+## Auto-Generated Anchor Links
+
+<a id="anchorjs"></a>
+### AnchorJS
+
+https://www.bryanbraun.com/anchorjs/#basic-usage
+
+Relevant files:
+
+* https://github.com/bryanbraun/anchorjs/blob/master/anchor.js
+* https://github.com/bryanbraun/anchorjs/blob/master/anchor.min.js
+
+<a id="manual"></a>
+### Manual 
+
+```html
+<!-- Auto-generate anchor links -->
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+```
+
+```js
+$(function() {
+  return $("h2, h3, h4, h5, h6").each(function(i, el) {
+    var $el, icon, id;
+    $el = $(el);
+    id = $el.attr('id');
+    icon = '<i class="fa fa-link"></i>';
+    if (id) {
+      return $el.prepend($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+    }
+  });
+});
+```
+
+```css
+/* Heading Anchor links */
+.header-link {
+  position: absolute;
+  left: -0.5em;
+  opacity: 0;
+
+  \-webkit-transition: opacity 0.2s ease-in-out 0.1s;
+  \-moz-transition: opacity 0.2s ease-in-out 0.1s;
+  \-ms-transition: opacity 0.2s ease-in-out 0.1s;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  opacity: 1;
+}
+```
+

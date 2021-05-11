@@ -4,7 +4,7 @@
 
 * [Jekyll Plugins to Check Out](#jekyll-plugins-to-check-out)
 * [Deploying to GitHub Pages](#deploying-to-github-pages)
-  * [Relative URLs](#relative-urls)
+	* [Relative URLs](#relative-urls)
 * [Building Jekyll](#building-jekyll)
 * [Import WordPress.com Posts](#import-wordpresscom-posts)
 * [Nav Menu - Dealing With Relative and Absolute URLs](#nav-menu---dealing-with-relative-and-absolute-urls)
@@ -12,16 +12,17 @@
 * [List Recent Posts](#list-recent-posts)
 * [Change Layout Based on Post Type](#change-layout-based-on-post-type)
 * [Related Posts](#related-posts)
-  * [Related Posts By Tag](#related-posts-by-tag)
-  * [Related Posts By Categories](#related-posts-by-categories)
+	* [Related Posts By Tag](#related-posts-by-tag)
+	* [Related Posts By Categories](#related-posts-by-categories)
 * [List Categories With Number of Posts](#list-categories-with-number-of-posts)
-  * [Categories and Posts](#categories-and-posts)
+	* [Categories and Posts](#categories-and-posts)
 * [Tag Cloud](#tag-cloud)
 * [Custom Classes and Attributes on Markdown Elements](#custom-classes-and-attributes-on-markdown-elements)
 * [Local vs GitHub Pages](#local-vs-github-pages)
 * [Quickly Convert HTML to Markdown with Pandoc](#quickly-convert-html-to-markdown-with-pandoc)
-  * [Plugins](#plugins)
+	* [Plugins](#plugins)
 * [Dealing With Data and Collections](#dealing-with-data-and-collections)
+	* [Blog Archives](#blog-archives)
 * [Remove Unwanted  Tags](#remove-unwanted-tags)
 * [Post Excerpts](#post-excerpts)
 * [Category Pages](#category-pages)
@@ -64,11 +65,11 @@ If you don't need to regenerate all your posts:
 
 ```ruby
 ruby -r rubygems -e 'require "jekyll-import";
-    JekyllImport::Importers::WordpressDotCom.run({
-      "source" => "wordpress.xml",
-      "no_fetch_images" => false,
-      "assets_folder" => "assets"
-    })'
+		JekyllImport::Importers::WordpressDotCom.run({
+			"source" => "wordpress.xml",
+			"no_fetch_images" => false,
+			"assets_folder" => "assets"
+		})'
 ```
 
 <a id="nav-menu---dealing-with-relative-and-absolute-urls"></a>
@@ -77,24 +78,24 @@ ruby -r rubygems -e 'require "jekyll-import";
 ```php
 {%- if titles_size > 0 -%}
 <nav class="site-nav top-nav">
-  {% assign prefix = "/get" | append: include.year | default: "2016" %}
-  {% if prefix contains "201" %}
-    {% assign year = "2015" %}
-  {% endif %}
-  <ul class="trigger nav-links">
-  {% for menu in site.data.navigation %}
-    {% if menu[0] contains include.year %}
-      {% for item in menu[1] %}
-        {% unless item.url contains "http"%}
-          <li><a href="{{ site.baseurl }}{{ year_str }}{{ item.url }}">{{ item.title }}</a></li>
-        {% endunless %}
-        {% if item.url contains "http" %}
-        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
-  </ul>
+	{% assign prefix = "/get" | append: include.year | default: "2016" %}
+	{% if prefix contains "201" %}
+		{% assign year = "2015" %}
+	{% endif %}
+	<ul class="trigger nav-links">
+	{% for menu in site.data.navigation %}
+		{% if menu[0] contains include.year %}
+			{% for item in menu[1] %}
+				{% unless item.url contains "http"%}
+					<li><a href="{{ site.baseurl }}{{ year_str }}{{ item.url }}">{{ item.title }}</a></li>
+				{% endunless %}
+				{% if item.url contains "http" %}
+				<li><a href="{{ item.url }}">{{ item.title }}</a></li>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+	</ul>
 </nav>
 {%- endif -%}
 ```
@@ -114,10 +115,10 @@ ruby -r rubygems -e 'require "jekyll-import";
 *  called `sorted`.
 *
 <ul>
-    {% assign sorted = site.collection_name | sort: 'date' | reverse %}
-    {% for item in sorted %}
-    <li>{{ item.title }}</li>
-    {% endfor %}
+		{% assign sorted = site.collection_name | sort: 'date' | reverse %}
+		{% for item in sorted %}
+		<li>{{ item.title }}</li>
+		{% endfor %}
 </ul>
 
 {% %}
@@ -128,23 +129,23 @@ ruby -r rubygems -e 'require "jekyll-import";
 ## List Recent Posts
 
 <ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </li>
-  {% endfor %}
+	{% for post in site.posts %}
+		<li>
+			<a href="{{ post.url }}">{{ post.title }}</a>
+		</li>
+	{% endfor %}
 </ul>
 
 {% assign maxPost = 5 %}
 {% assign counter = 0 %}
 {% for post in site.posts | sort:"date" | reverse %}
-    {% if post.thumb %}
-        <img src= ... />
-        {% assign counter = counter | plus: 1 %}
-        {% if counter == maxPost %}
-            {% break %} {% comment %}exit the for loop{% endcomment %}
-        {% endif %}
-    {% endif %}
+		{% if post.thumb %}
+				<img src= ... />
+				{% assign counter = counter | plus: 1 %}
+				{% if counter == maxPost %}
+						{% break %} {% comment %}exit the for loop{% endcomment %}
+				{% endif %}
+		{% endif %}
 {% endfor %}
 
 <a id="change-layout-based-on-post-type"></a>
@@ -154,18 +155,18 @@ Specify default settings in `_config.yml`
 
 ```yaml
 defaults:
-  -
-    scope:
-      path: ""      # empty string for all files
-      type: posts   # limit to posts
-    values:
-      is_post: true # automatically set is_post=true for all posts
+	-
+		scope:
+			path: ""      # empty string for all files
+			type: posts   # limit to posts
+		values:
+			is_post: true # automatically set is_post=true for all posts
 ```
 
 then you can use {{ page.is_post }} to check whether the page is post.
 
 You can also use `{{ page.id }}` to check if the page is a post
-  * The ID seems to be the permalink? And only posts will have them
+	* The ID seems to be the permalink? And only posts will have them
 
 <a id="related-posts"></a>
 ## Related Posts
@@ -184,32 +185,32 @@ From: https://blog.webjeda.com/jekyll-related-posts/
 {% assign minCommonTags =  2 %}
 {% assign maxRelatedCounter = 0 %}
 
-  {% for post in site.posts %}
+	{% for post in site.posts %}
 
-    {% assign sameTagCount = 0 %}
-    {% assign commonTags = '' %}
+		{% assign sameTagCount = 0 %}
+		{% assign commonTags = '' %}
 
-    {% for tag in post.tags %}
-      {% if post.url != page.url %}
-        {% if page.tags contains tag %}
-          {% assign sameTagCount = sameTagCount | plus: 1 %}
-          {% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
-          {% assign commonTags = commonTags | append: tagmarkup %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
+		{% for tag in post.tags %}
+			{% if post.url != page.url %}
+				{% if page.tags contains tag %}
+					{% assign sameTagCount = sameTagCount | plus: 1 %}
+					{% capture tagmarkup %} <span class="label label-default">{{ tag }}</span> {% endcapture %}
+					{% assign commonTags = commonTags | append: tagmarkup %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
 
-    {% if sameTagCount >= minCommonTags %}
-      <div>
-      <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
-      </div>
-      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-      {% if maxRelatedCounter >= maxRelated %}
-        {% break %}
-      {% endif %}
-    {% endif %}
+		{% if sameTagCount >= minCommonTags %}
+			<div>
+			<h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
+			</div>
+			{% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+			{% if maxRelatedCounter >= maxRelated %}
+				{% break %}
+			{% endif %}
+		{% endif %}
 
-  {% endfor %}
+	{% endfor %}
 
 </div>
 ```
@@ -230,30 +231,30 @@ From: https://blog.webjeda.com/jekyll-related-posts/
 
 {% for post in site.posts %}
 
-    {% assign sameTagCount = 0 %}
-    {% assign commonTags = '' %}
+		{% assign sameTagCount = 0 %}
+		{% assign commonTags = '' %}
 
-    {% for category in post.categories %}
-      {% if post.url != page.url %}
-        {% if page.categories contains category %}
-          {% assign sameTagCount = sameTagCount | plus: 1 %}
-          {% capture tagmarkup %} <span class="label label-default">{{ category }}</span> {% endcapture %}
-          {% assign commonTags = commonTags | append: tagmarkup %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
+		{% for category in post.categories %}
+			{% if post.url != page.url %}
+				{% if page.categories contains category %}
+					{% assign sameTagCount = sameTagCount | plus: 1 %}
+					{% capture tagmarkup %} <span class="label label-default">{{ category }}</span> {% endcapture %}
+					{% assign commonTags = commonTags | append: tagmarkup %}
+				{% endif %}
+			{% endif %}
+		{% endfor %}
 
-    {% if sameTagCount >= minCommonTags %}
-      <div>
-      <h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
-      </div>
-      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
-      {% if maxRelatedCounter >= maxRelated %}
-        {% break %}
-      {% endif %}
-    {% endif %}
+		{% if sameTagCount >= minCommonTags %}
+			<div>
+			<h5><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a></h5>
+			</div>
+			{% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+			{% if maxRelatedCounter >= maxRelated %}
+				{% break %}
+			{% endif %}
+		{% endif %}
 
-  {% endfor %}
+	{% endfor %}
 </div>
 
 ```
@@ -264,15 +265,15 @@ From: https://blog.webjeda.com/jekyll-related-posts/
 <h2>Categories</h2>
 <ul>
 {% assign categories_list = site.categories %}
-  {% if categories_list.first[0] == null %}
-    {% for category in categories_list %}
-      <li><a href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a></li>
-    {% endfor %}
-  {% else %}
-    {% for category in categories_list %}
-      <li><a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a></li>
-    {% endfor %}
-  {% endif %}
+	{% if categories_list.first[0] == null %}
+		{% for category in categories_list %}
+			<li><a href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a></li>
+		{% endfor %}
+	{% else %}
+		{% for category in categories_list %}
+			<li><a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a></li>
+		{% endfor %}
+	{% endif %}
 {% assign categories_list = nil %}
 </ul>
 ```
@@ -284,32 +285,32 @@ From: https://blog.webjeda.com/jekyll-related-posts/
 <h2>Categories</h2>
 <ul>
 {% assign categories_list = site.categories %}
-  {% if categories_list.first[0] == null %}
-    {% for category in categories_list %}
-      <li><a href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a></li>
-    {% endfor %}
-  {% else %}
-    {% for category in categories_list %}
-      <li><a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a></li>
-    {% endfor %}
-  {% endif %}
+	{% if categories_list.first[0] == null %}
+		{% for category in categories_list %}
+			<li><a href="#{{ category | downcase | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category | camelcase }} ({{ site.tags[category].size }})</a></li>
+		{% endfor %}
+	{% else %}
+		{% for category in categories_list %}
+			<li><a href="#{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }} ({{ category[1].size }})</a></li>
+		{% endfor %}
+	{% endif %}
 {% assign categories_list = nil %}
 </ul>
 
 {% for category in site.categories %}
-  <h3 id="{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }}</h3>
-  <ul>
-    {% assign pages_list = category[1] %}
-    {% for post in pages_list %}
-      {% if post.title != null %}
-      {% if group == null or group == post.group %}
-      <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></a></li>
-      {% endif %}
-      {% endif %}
-    {% endfor %}
-    {% assign pages_list = nil %}
-    {% assign group = nil %}
-  </ul>
+	<h3 id="{{ category[0] | downcase | url_escape | strip | replace: ' ', '-' }}">{{ category[0] | camelcase }}</h3>
+	<ul>
+		{% assign pages_list = category[1] %}
+		{% for post in pages_list %}
+			{% if post.title != null %}
+			{% if group == null or group == post.group %}
+			<li><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d, %Y" }}</time></a></li>
+			{% endif %}
+			{% endif %}
+		{% endfor %}
+		{% assign pages_list = nil %}
+		{% assign group = nil %}
+	</ul>
 {% endfor %}
 ```
 
@@ -328,16 +329,16 @@ See the following:
 {% assign tags = site.tags | sort %}
 {% for tag in tags %}
  <span class="site-tag">
-    <a href="/tag/{{ tag | first | slugify }}/"
-        style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
-            {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
-    </a>
+		<a href="/tag/{{ tag | first | slugify }}/"
+				style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
+						{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
+		</a>
 </span>
 {% endfor %}
 
 .site-tag a {
-    display: inline-block;
-    margin-right: 12px;
+		display: inline-block;
+		margin-right: 12px;
 }
 ```
 
@@ -399,59 +400,59 @@ GitHub Pages Optional Plugins:
 
 ```html
 {%- for agenda_hash in site.data.agendas -%}
-  {%- assign year = agenda_hash[0] -%}
-  {%- if year contains include.year -%}
-      {%- assign ay = "a" | append: include.year -%}
-      {%- assign agenda = agenda_hash[1][ay] -%}
-      {%- assign day1 = agenda.day1 -%}
-      {%- assign day2 = agenda.day2 -%}
-      {%- assign day3 = agenda.day3 -%}
-      {%- endif -%}
+	{%- assign year = agenda_hash[0] -%}
+	{%- if year contains include.year -%}
+			{%- assign ay = "a" | append: include.year -%}
+			{%- assign agenda = agenda_hash[1][ay] -%}
+			{%- assign day1 = agenda.day1 -%}
+			{%- assign day2 = agenda.day2 -%}
+			{%- assign day3 = agenda.day3 -%}
+			{%- endif -%}
 {%- endfor -%}
 
 {%- if include.date1 -%}
-  <h3 class="agenda-heading">{{ include.date1 }}</h3>
-  <ul class="session-list">
-    {%- for session in day1 -%}
-      <li class="sessions {{ session.class }}">
-        <time class="session-time">{{ session.time }}</time>
-        <div class="session-details">
-          <span class="session-title"><strong>{{ session.title }}</strong></span>
-          {{ session.details | markdownify }}
-        </div>
-      </li>
-    {%- endfor -%}
-  </ul>
+	<h3 class="agenda-heading">{{ include.date1 }}</h3>
+	<ul class="session-list">
+		{%- for session in day1 -%}
+			<li class="sessions {{ session.class }}">
+				<time class="session-time">{{ session.time }}</time>
+				<div class="session-details">
+					<span class="session-title"><strong>{{ session.title }}</strong></span>
+					{{ session.details | markdownify }}
+				</div>
+			</li>
+		{%- endfor -%}
+	</ul>
 {%- endif -%}
 
 {%- if include.date2 -%}
-  <h3 class="agenda-heading">{{ include.date2 }}</h3>
-  <ul class="session-list">
-    {%- for session in day2 -%}
-    <li class="sessions {{ session.class }}">
-      <time class="session-time">{{ session.time }}</time>
-      <div class="session-details">
-        <span class="session-title"><strong>{{ session.title }}</strong></span>
-        {{ session.details | markdownify }}
-      </div>
-    </li>
-    {%- endfor -%}
-  </ul>
+	<h3 class="agenda-heading">{{ include.date2 }}</h3>
+	<ul class="session-list">
+		{%- for session in day2 -%}
+		<li class="sessions {{ session.class }}">
+			<time class="session-time">{{ session.time }}</time>
+			<div class="session-details">
+				<span class="session-title"><strong>{{ session.title }}</strong></span>
+				{{ session.details | markdownify }}
+			</div>
+		</li>
+		{%- endfor -%}
+	</ul>
 {%- endif-%}
 
 {%- if include.date3 -%}
-  <h3 class="agenda-heading">{{ include.date3 }}</h3>
-  <ul class="session-list">
-    {%- for session in day3 -%}
-    <li class="sessions {{ session.class }}">
-      <time class="session-time">{{ session.time }}</time>
-      <div class="session-details">
-        <span class="session-title"><strong>{{ session.title }}</strong></span>
-        {{ session.details | markdownify }}
-      </div>
-    </li>
-    {%- endfor -%}
-  </ul>
+	<h3 class="agenda-heading">{{ include.date3 }}</h3>
+	<ul class="session-list">
+		{%- for session in day3 -%}
+		<li class="sessions {{ session.class }}">
+			<time class="session-time">{{ session.time }}</time>
+			<div class="session-details">
+				<span class="session-title"><strong>{{ session.title }}</strong></span>
+				{{ session.details | markdownify }}
+			</div>
+		</li>
+		{%- endfor -%}
+	</ul>
 {%- endif-%}
 ```
 
@@ -469,18 +470,199 @@ GitHub Pages Optional Plugins:
 
 ```html
 {% for collection in site.collections %}
-  {% if include.col_name contains collection.label %}
-  <ul class="speakers-list">
-    {% assign sorted = (collection.docs | sort: 'last') %}
-    {% for speaker in sorted %}
-  <li class="speaker">
-    <img class="speaker-img" src="{{ speaker.image | relative_url | escape }}" alt="{{ speaker.name }}">
-    <div class="speaker-bio">{{ speaker.content }}</div>
-  </li>
-  {% endfor %}
+	{% if include.col_name contains collection.label %}
+	<ul class="speakers-list">
+		{% assign sorted = (collection.docs | sort: 'last') %}
+		{% for speaker in sorted %}
+	<li class="speaker">
+		<img class="speaker-img" src="{{ speaker.image | relative_url | escape }}" alt="{{ speaker.name }}">
+		<div class="speaker-bio">{{ speaker.content }}</div>
+	</li>
+	{% endfor %}
 </ul>
-  {% endif%}
+	{% endif%}
 {% endfor %}
+```
+
+<a id="blog-archives"></a>
+### Blog Archives 
+
+```html
+<div class="thin-sidebar sidebar-left spad">
+	<div id="archives-3" class="widget widget_archive">
+		<h2 class="widget-title">Archives</h2>
+		<ul>
+		{% assign currentYear = site.time | date: "%Y" %}
+		{% assign currentMonth = site.time | date: "%B" %}
+
+		{% for post in site.posts %}
+			{% assign postYear = post.date | date: "%Y" %}
+			{% assign postMonth = post.date  | date: "%B" %}
+			{% assign postMonthNum = post.date | date: "%m" %}
+
+				{% if forloop.first %}
+					<li> <a href="{{site.baseurl}}/{{ postYear }}/{{ postMonthNum }}">{{ postMonth }} {{ postYear}}</a></li>
+				{% endif %}
+
+				{% if postYear == currentYear and postMonth != currentMonth %}
+					<li> <a href="{{site.baseurl}}/{{ postYear }}/{{ postMonthNum }}">{{ postMonth }} {{ postYear}}</a></li>
+				{% endif %}
+
+			{% assign currentYear = postYear %}
+			{% assign currentMonth = postMonth %}
+
+		{% endfor %}
+
+		</ul>
+	</div>
+</div>
+```
+
+```ruby
+# Author: Luna Lunapiena
+# Author Site: https://lunacodesdesign.com
+# License: GPL 3+
+
+require 'fileutils'
+require 'date'
+
+def canonical_form(str)
+	str.tr('^0-9', '')
+end
+
+def generate_year_files(year)
+	yaml_div = "---"
+	layout = "layout: year"
+	permalink = "permalink: /#{year}/"
+	redirect = "redirect_from:\n - /#{year}"
+	title = "title: Archive for #{year} Archives"
+	year_str = "year: '#{year}'"
+
+	lines = [yaml_div, layout, permalink, redirect, title, year_str, yaml_div]
+	return lines
+end
+
+def generate_month_files(year, month)
+	yaml_div = "---"
+	layout = "layout: month"
+	permalink = "permalink: /#{year}/#{month}/"
+	redirect = "redirect_from:\n - /#{year}/#{month}"
+
+	month_sing = month.dup
+	month_sing.sub!(/^0/, "")
+
+	# (month_sing != month) ? (redirect += "\n - /#{year}/#{month_sing}") : ''
+
+	if (month_sing != month)
+		redirect += "\n - /#{year}/#{month_sing}"
+	end
+
+	year_str = "year: '#{year}'"
+
+	month_str = "month: '#{month}'"
+	month_name = Date::MONTHNAMES[month.to_i]
+	month_name_str = "month_name: " +  month_name.to_s
+
+	title = "title: #{month_name} #{year} Archives"
+
+	lines = [yaml_div, layout, permalink, redirect, title, year_str, month_str, month_name_str, yaml_div]
+	return lines
+end
+
+def generate_day_files(year, month, day)
+	yaml_div = "---"
+	layout = "layout: day"
+
+	permalink = "permalink: /#{year}/#{month}/#{day}/"
+	redirect = "redirect_from:\n - /#{year}/#{month}/#{day}"
+
+	month_sing = month.dup
+	month_sing.sub!(/^0/, "")
+	month_identical = (month_sing == month)
+
+	day_sing = day.dup
+	day_sing.sub!(/^0/, "")
+	day_identical = (day_sing == day)
+
+	if (month_identical == false)
+		# If only Month has a leading zero
+		redirect += "\n - /#{year}/#{month_sing}/#{day}"
+		if (day_identical == false)
+			# Month & Day have leading zero
+			redirect += "\n - /#{year}/#{month_sing}/#{day_sing}"
+		end
+	end
+
+	if (day_identical == false)
+		# Only day has leading zero
+		redirect += "\n - /#{year}/#{month}/#{day_sing}"
+	end
+
+	year_str = "year: '#{year}'"
+
+	month_str = "month: '#{month}'"
+	month_name = Date::MONTHNAMES[month.to_i]
+	month_name_str = "month_name: " +  month_name.to_s
+
+	day_str = "day: '#{day}'"
+
+	title = "title: #{month_name} #{day}, #{year} Archives"
+
+	lines = [yaml_div, layout, permalink, redirect, title, year_str, month_str, month_name_str, day_str, yaml_div]
+	return lines
+end
+
+
+if Dir.exist?('../collections/_posts/') || Dir.exist?('collections/_posts')
+	files = Dir['collections/_posts/*']
+
+	files.each do |item|
+		str = canonical_form(item)
+		y = str.slice(0..3).to_str
+		m = str.slice(4..5).to_str
+		d = str.slice(6..8).to_str
+
+		year_dir = "collections/_blog_archives/" + y
+
+		year_file = year_dir + "/index.html"
+
+		month_dir = "collections/_blog_archives/" + y + "/" + m
+
+		month_fname = month_dir + "/index.html"
+
+		day_dir = "collections/_blog_archives/" + y + "/" + m + "/" + d
+		day_fname = day_dir + "/index.html"
+		# puts "day_fname: #{day_fname}"
+
+
+		FileUtils.mkdir_p year_dir
+		lines = generate_year_files(y)
+
+		File.open(year_file, "w", universal_newline: true) do |f|
+			f.puts(lines)
+		end
+
+		FileUtils.mkdir_p month_dir
+		lines = generate_month_files(y, m)
+
+		File.open(month_fname, "w", universal_newline: true) do |f|
+			f.puts(lines)
+		end
+
+		FileUtils.mkdir_p day_dir
+		lines = generate_day_files(y, m, d)
+
+		File.open(day_fname, "w", universal_newline: true) do |f|
+			f.puts(lines)
+		end
+
+	end
+
+else
+	puts "_plugins/archives_generator.rb: Error - Unable to find _posts directory. Archive pages will not be generated"
+end
+
+# puts "archives_generator.rb has finished"
 ```
 
 <a id="remove-unwanted-tags"></a>
