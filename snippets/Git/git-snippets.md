@@ -3,31 +3,35 @@
 <!-- MarkdownTOC -->
 
 * [Config File](#config-file)
-	* [Locations and Priority](#locations-and-priority)
-	* [Commands](#commands)
+  * [Locations and Priority](#locations-and-priority)
+    * [Signoff](#signoff)
+  * [Commands](#commands)
 * [Repo Management](#repo-management)
 * [Delete Sensitive Data](#delete-sensitive-data)
-	* [BFG Repo Cleaner](#bfg-repo-cleaner)
+  * [BFG Repo Cleaner](#bfg-repo-cleaner)
 * [File Tracking](#file-tracking)
-	* [General](#general)
-	* [Listing Files](#listing-files)
-	* [Git Ignore](#git-ignore)
-	* [Skip Worktree & Assume Unchanged](#skip-worktree--assume-unchanged)
+  * [General](#general)
+  * [Listing Files](#listing-files)
+  * [Git Ignore](#git-ignore)
+  * [Skip Worktree & Assume Unchanged](#skip-worktree--assume-unchanged)
 * [Branch](#branch)
 * [Commit Editing](#commit-editing)
-	* [Change Date and Time of Commit](#change-date-and-time-of-commit)
-	* [Set the date of an arbitrary commit to an arbitrary or current date](#set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date)
+  * [Change Date and Time of Commit](#change-date-and-time-of-commit)
+    * [Git Docs - Date Formats](#git-docs---date-formats)
+    * [Snippets](#snippets)
+  * [Set the date of an arbitrary commit to an arbitrary or current date](#set-the-date-of-an-arbitrary-commit-to-an-arbitrary-or-current-date)
 * [Diff](#diff)
-	* [Diff multiple commits ago](#diff-multiple-commits-ago)
-	* [Diff with remote](#diff-with-remote)
-	* [Diff Filter](#diff-filter)
+  * [Diff multiple commits ago](#diff-multiple-commits-ago)
+  * [Diff with remote](#diff-with-remote)
+  * [Diff Filter](#diff-filter)
 * [Logging](#logging)
-	* [Graphing](#graphing)
+  * [Graphing](#graphing)
 * [Merge](#merge)
-	* [Merge Conflicts](#merge-conflicts)
+  * [Merge Conflicts](#merge-conflicts)
+    * [Fixing Merge Conflicts](#fixing-merge-conflicts)
 * [Patch](#patch)
 * [Pull](#pull)
-	* [Pull Requests](#pull-requests)
+  * [Pull Requests](#pull-requests)
 * [Stash](#stash)
 * [Troubleshooting](#troubleshooting)
 * [Editor Hangs During Commit](#editor-hangs-during-commit)
@@ -47,13 +51,14 @@ The three options are `--local`, `--global`, `--system`. Git traverses and prior
 
 * `--local`: found in your repo's`.git/.gitconfig`. Git config writes here by default, if no config option is passed
 * `--global`: user-specific. Found in user's home directory.
-	* Unix: `~/.gitconfig`
-	* Windows: `C:\Users\<username>\.gitconfig`
+  * Unix: `~/.gitconfig`
+  * Windows: `C:\Users\<username>\.gitconfig`
 * `--system`: System-level configuration is applied across an entire machine. This covers all users on an operating system and all repos.
-	* Unix: `$(prefix)/etc/gitconfig`
-	* Windows: `C:\ProgramData\Git\config`
-		* XP & Older: `C:\Documents and Settings\All Users\Application Data\Git\config`
+  * Unix: `$(prefix)/etc/gitconfig`
+  * Windows: `C:\ProgramData\Git\config`
+    * XP & Older: `C:\Documents and Settings\All Users\Application Data\Git\config`
 
+<a id="signoff"></a>
 #### Signoff
 
 Sign off previous commits
@@ -69,7 +74,7 @@ Suggested:
 ```sh
 # Add the following to the repo's .git/config file
 [commit]
-	template = ~/.git-arvados-message.txt
+  template = ~/.git-arvados-message.txt
 ```
 
 <a id="commands"></a>
@@ -107,8 +112,8 @@ git reset --hard HEAD^ (removing the last commit; changes will be gone)
 git reset HEAD~2 (reworking last two commits)
 git commit --amend (changing your last commit)
 e.g. git commit -m 'initial commit'
-		 git add forgotten_file
-		 git commit --amend
+     git add forgotten_file
+     git commit --amend
 
 .gitignore
 The way to ignore all directories called bin anywhere below the current level in a directory tree is with a .gitignore file with the pattern:
@@ -273,7 +278,7 @@ $ git push <remote_name> :<branch_name>
 ### Change Date and Time of Commit
 
 `git commit --date="<formatted date here">`
-	
+  
 <a id="git-docs---date-formats"></a>
 #### Git Docs - Date Formats
 
@@ -425,14 +430,14 @@ This will set vimdiff as the default merge tool.
 **Step 3:** You will see a vimdiff display in following format
 
 ```
-	+----------------------+
-	|       |      |       |
-	|LOCAL  |BASE  |REMOTE |
-	|       |      |       |
-	+----------------------+
-	|      MERGED          |
-	|                      |
-	+----------------------+
+  +----------------------+
+  |       |      |       |
+  |LOCAL  |BASE  |REMOTE |
+  |       |      |       |
+  +----------------------+
+  |      MERGED          |
+  |                      |
+  +----------------------+
 ```
 
 These 4 views are:
@@ -477,20 +482,20 @@ If you want to get changes from LOCAL
 -p patch
 This lets you choose one path out of a status like selection. After choosing the path, it presents the diff between the index and the working tree file and asks you if you want to stage the change of each hunk. You can select one of the following options and type return:
 
-	 y - stage this hunk
-	 n - do not stage this hunk
-	 q - quit; do not stage this hunk nor any of the remaining ones
-	 a - stage this hunk and all later hunks in the file
-	 d - do not stage this hunk nor any of the later hunks in the file
-	 g - select a hunk to go to
-	 / - search for a hunk matching the given regex
-	 j - leave this hunk undecided, see next undecided hunk
-	 J - leave this hunk undecided, see next hunk
-	 k - leave this hunk undecided, see previous undecided hunk
-	 K - leave this hunk undecided, see previous hunk
-	 s - split the current hunk into smaller hunks
-	 e - manually edit the current hunk
-	 ? - print help
+   y - stage this hunk
+   n - do not stage this hunk
+   q - quit; do not stage this hunk nor any of the remaining ones
+   a - stage this hunk and all later hunks in the file
+   d - do not stage this hunk nor any of the later hunks in the file
+   g - select a hunk to go to
+   / - search for a hunk matching the given regex
+   j - leave this hunk undecided, see next undecided hunk
+   J - leave this hunk undecided, see next hunk
+   k - leave this hunk undecided, see previous undecided hunk
+   K - leave this hunk undecided, see previous hunk
+   s - split the current hunk into smaller hunks
+   e - manually edit the current hunk
+   ? - print help
 ```
 
 <a id="pull"></a>
